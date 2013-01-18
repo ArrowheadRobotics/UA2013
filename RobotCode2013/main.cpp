@@ -6,6 +6,7 @@
 #include "GenericController.h"
 #include "Threading.h"
 #include "Parser.h"
+#include "RoboSock.h"
 
 void* testThread(void*);
 
@@ -28,7 +29,7 @@ public:
 
 	void OperatorControl(void) {
 		while (IsOperatorControl()) {
-
+				
 		}
 	}
 	
