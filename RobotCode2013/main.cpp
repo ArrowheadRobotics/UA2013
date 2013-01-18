@@ -1,3 +1,7 @@
+/*
+ * This class (Cyberhawk) is the entry point of the robot.
+ */
+
 #include "WPILib.h"
 #include "GenericController.h"
 #include "Threading.h"
@@ -7,11 +11,11 @@ void* testThread(void*);
 
 class Cyberhawk : public SimpleRobot {
 	GenericController<Joystick> sticks;
-	GenericController<Victor> gjkgf;
-	GenericController<CANJaguar> asdfsd;
+	Parser test;
 	Thread hi;
 public:
 	Cyberhawk(void) : sticks(2, 0, 1),
+					  test("file.txt"),
 					  hi(testThread) 
 	{
 		hi.spawnThread();
@@ -33,9 +37,17 @@ public:
 	}
 };
 
-START_ROBOT_CLASS(Cyberhawk);
-
 void* testThread(void *args) {
 	printf("matlab");
 	return 0;
 }
+
+/***************************************************************************/
+/*                            DO NOT TOUCH THIS                            */
+/* DO NOT TOUCH THIS */ START_ROBOT_CLASS(Cyberhawk); /* DO NOT TOUCH THIS */
+/*                            DO NOT TOUCH THIS                            */
+/***************************************************************************/
+/*                                                                         */
+/*          !!! END OF FILE, DO NOT PUT ANYTHING BELOW THIS !!!            */
+/*                                                                         */
+/***************************************************************************/
