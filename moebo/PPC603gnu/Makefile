@@ -31,7 +31,7 @@ else
 MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
-PRJ_ROOT_DIR := C:/Users/Bimba/Documents/GitHub/2013UA/CB2013
+PRJ_ROOT_DIR := C:/Users/Bimba/Documents/GitHub/2013UA/moebo
 WS_ROOT_DIR := C:/WindRiver/workspace
 
 
@@ -114,41 +114,41 @@ CommandBasedRobotTemplate/$(MODE_DIR)/% : LIBPATH =
 CommandBasedRobotTemplate/$(MODE_DIR)/% : LIBS = 
 CommandBasedRobotTemplate/$(MODE_DIR)/% : OBJ_DIR := CommandBasedRobotTemplate/$(MODE_DIR)
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Commands/AutonomousCommand.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Commands/AutonomousCommand.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Commands/AutonomousCommand.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Commands/AutonomousCommand.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Commands/Command1.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Commands/Command1.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Commands/Command1.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Commands/Command1.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/OI.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/OI.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/OI.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/OI.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Robot.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Robot.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Robot.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Robot.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/RobotMap.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/RobotMap.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/RobotMap.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/RobotMap.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Subsystems/Subsystem1.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Subsystems/Subsystem1.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Subsystems/Subsystem1.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Subsystems/Subsystem1.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Token.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Token.cpp
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Token.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Token.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_CommandBasedRobotTemplate = CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Commands/AutonomousCommand.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Commands/Command1.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/OI.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Robot.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/RobotMap.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Subsystems/Subsystem1.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Token.o
+OBJECTS_CommandBasedRobotTemplate = CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Commands/AutonomousCommand.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Commands/Command1.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/OI.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Robot.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/RobotMap.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Subsystems/Subsystem1.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Token.o
 
 CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate.out : $(OBJECTS_CommandBasedRobotTemplate)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@";rm -f "$@";nmppc $(OBJECTS_CommandBasedRobotTemplate) $(IDE_LIBRARIES) | tclsh $(WIND_BASE)/host/resource/hutils/tcl/munch.tcl -c ppc > $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc $(DEBUGFLAGS_Linker) $(CC_ARCH_SPEC) -fdollars-in-identifiers -Wall $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES)  -o $(OBJ_DIR)/ctdt.o -c $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X -T $(WIND_BASE)/target/h/tool/gnu/ldscripts/link.OUT -o "$@" $(OBJ_DIR)/ctdt.o $(OBJECTS_CommandBasedRobotTemplate) $(IDE_LIBRARIES) $(LIBPATH) $(LIBS)  $(ADDED_LIBPATH) $(ADDED_LIBS) && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -192,41 +192,41 @@ CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/% : LIBPATH =
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/% : LIBS = 
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/% : OBJ_DIR := CommandBassedRobotTemplate_partialImage/$(MODE_DIR)
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Commands/AutonomousCommand.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Commands/AutonomousCommand.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Commands/AutonomousCommand.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Commands/AutonomousCommand.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Commands/Command1.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Commands/Command1.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Commands/Command1.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Commands/Command1.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/OI.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/OI.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/OI.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/OI.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Robot.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Robot.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Robot.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Robot.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/RobotMap.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/RobotMap.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/RobotMap.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/RobotMap.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Subsystems/Subsystem1.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Subsystems/Subsystem1.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Subsystems/Subsystem1.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Subsystems/Subsystem1.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Token.o : C:/Users/Bimba/Documents/GitHub/2013UA/CB2013/Token.cpp
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Token.o : C:/Users/Bimba/Documents/GitHub/2013UA/moebo/Token.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_CommandBassedRobotTemplate_partialImage = CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Commands/AutonomousCommand.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Commands/Command1.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/OI.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Robot.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/RobotMap.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Subsystems/Subsystem1.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Token.o
+OBJECTS_CommandBassedRobotTemplate_partialImage = CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Commands/AutonomousCommand.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Commands/Command1.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/OI.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Robot.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/RobotMap.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Subsystems/Subsystem1.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Token.o
 
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/CommandBassedRobotTemplate_partialImage.o : $(OBJECTS_CommandBassedRobotTemplate_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_CommandBassedRobotTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -238,11 +238,11 @@ _clean :: CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/CommandBassedRobot
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/CommandBassedRobotTemplate_partialImage_clean : 
 	$(TRACE_FLAG)if [ -d "CommandBassedRobotTemplate_partialImage" ]; then cd "CommandBassedRobotTemplate_partialImage"; rm -rf $(MODE_DIR); fi
 
-DEP_FILES := CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Commands/AutonomousCommand.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Commands/Command1.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/OI.d \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Robot.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/RobotMap.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Subsystems/Subsystem1.d \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB/Token.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Commands/AutonomousCommand.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Commands/Command1.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/OI.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Robot.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/RobotMap.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Subsystems/Subsystem1.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB/Token.d
+DEP_FILES := CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Commands/AutonomousCommand.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Commands/Command1.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/OI.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Robot.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/RobotMap.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Subsystems/Subsystem1.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/moebo/Token.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Commands/AutonomousCommand.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Commands/Command1.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/OI.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Robot.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/RobotMap.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Subsystems/Subsystem1.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/moebo/Token.d
 -include $(DEP_FILES)
 
 
