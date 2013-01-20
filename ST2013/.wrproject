@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wrxml>
     <properties platform="VxWorks" platform_name="vxworks-6.3" root="1" type="DownloadableKernelModuleProject"/>
     <attributes>
@@ -246,12 +246,12 @@
     <buildtargets>
         <buildtarget buildtool="Linker" name="RobotCode2013" passed="false" targetname="RobotCode2013">
             <contents>
-                <buildtargetreference name="/SimpleTemplateExtended2013/RobotCode2013_partialImage"/>
+                <buildtargetreference name="/ST2013/RobotCode2013_partialImage"/>
             </contents>
         </buildtarget>
         <buildtarget buildtool="Partial Image Linker" name="RobotCode2013_partialImage" passed="true" targetname="RobotCode2013_partialImage">
             <contents>
-                <folder name="/SimpleTemplateExtended2013" recursive="true"/>
+                <folder name="/ST2013" recursive="true"/>
             </contents>
         </buildtarget>
     </buildtargets>

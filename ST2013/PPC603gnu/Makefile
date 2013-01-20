@@ -31,8 +31,8 @@ else
 MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
-PRJ_ROOT_DIR := C:/Users/Bimba/Documents/GitHub/2013UA/ST2013
-WS_ROOT_DIR := C:/WindRiver/workspace
+WS_ROOT_DIR := C:/Users/SERVER/Documents/GitHub/2013UA
+PRJ_ROOT_DIR := $(WS_ROOT_DIR)/ST2013
 
 
 
@@ -55,6 +55,8 @@ LIBS =
 IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
 
 IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+
+IDE_DEFINES = 
 
 
 
@@ -101,6 +103,7 @@ RobotCode2013/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce -fno-
 endif
 RobotCode2013/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
 RobotCode2013/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+RobotCode2013/$(MODE_DIR)/% : IDE_DEFINES = 
 RobotCode2013/$(MODE_DIR)/% : PROJECT_TYPE = DKM
 RobotCode2013/$(MODE_DIR)/% : DEFINES = 
 RobotCode2013/$(MODE_DIR)/% : EXPAND_DBG = 0
@@ -145,6 +148,7 @@ RobotCode2013_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength
 endif
 RobotCode2013_partialImage/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h/wrn/coreip 
 RobotCode2013_partialImage/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
+RobotCode2013_partialImage/$(MODE_DIR)/% : IDE_DEFINES = 
 RobotCode2013_partialImage/$(MODE_DIR)/% : PROJECT_TYPE = DKM
 RobotCode2013_partialImage/$(MODE_DIR)/% : DEFINES = 
 RobotCode2013_partialImage/$(MODE_DIR)/% : EXPAND_DBG = 0
@@ -158,11 +162,11 @@ RobotCode2013_partialImage/$(MODE_DIR)/% : LIBPATH =
 RobotCode2013_partialImage/$(MODE_DIR)/% : LIBS = 
 RobotCode2013_partialImage/$(MODE_DIR)/% : OBJ_DIR := RobotCode2013_partialImage/$(MODE_DIR)
 
-RobotCode2013_partialImage/$(MODE_DIR)/Objects/SimpleTemplateExtended2013/main.o : C:/Users/Bimba/Documents/GitHub/2013UA/ST2013/main.cpp
+RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/main.o : $(PRJ_ROOT_DIR)/main.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Objects/SimpleTemplateExtended2013/main.o
+OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/main.o
 
 RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage.o : $(OBJECTS_RobotCode2013_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_RobotCode2013_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -174,7 +178,9 @@ _clean :: RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage_clea
 RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage_clean : 
 	$(TRACE_FLAG)if [ -d "RobotCode2013_partialImage" ]; then cd "RobotCode2013_partialImage"; rm -rf $(MODE_DIR); fi
 
-DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/SimpleTemplateExtended2013/main.d
+force : 
+
+DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/main.d
 -include $(DEP_FILES)
 
 
