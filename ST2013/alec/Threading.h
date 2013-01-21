@@ -38,8 +38,6 @@ public:
 	void initThread(void*(*)(void*), bool=false, void(*)=NULL);
 	void setFunction(void*(*)(void*));
 	
-	int stupid() { return 4; }
-	
 	int spawnThread(void(*)=NULL, bool=false);
 	void waitForThread();
 	bool checkThread();
@@ -80,7 +78,7 @@ void Thread::setFunction(void*(*funcPointer)(void*)) {
 }
 
 int Thread::spawnThread(void *args, bool force) {
-	if(handle==0 || (checkThread() && !force)) return -1; // TODO verify stability
+	if(handle!=0 || (checkThread() && !force)) return -1; // TODO verify stability
 	return pthread_create(&handle, NULL, funcPointer, args);
 }
 

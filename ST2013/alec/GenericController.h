@@ -21,9 +21,11 @@ class GenericController {
 	int count;
 public:
 	GenericController(){};
-	GenericController(int, int, ...);
+	GenericController(int, ...);
+	
+	~GenericController();
 
-	void initController(int, int, ...);
+	void initController(int, ...);
 	
 	int getCount() const;
 	T* getObject(int) const;
@@ -31,12 +33,12 @@ public:
 };
 
 template <class T>
-GenericController<T>::GenericController(int count, int arg1, ...) {
-	objects = (T**)calloc(count,sizeof(T));
+GenericController<T>::GenericController(int count, ...) {
+	objects = new T*[count];
 	this->count = count;
 	
 	va_list args;
-	va_start(args, arg1);
+	va_start(args, count);
 	
 	for(int i = 0; i < count; i++)
 		objects[i] = new T(va_arg(args,int));
@@ -45,12 +47,17 @@ GenericController<T>::GenericController(int count, int arg1, ...) {
 }
 
 template <class T>
-void GenericController<T>::initController(int count, int arg1, ...) {
-	objects = (T**)calloc(count,sizeof(T));
+GenericController<T>::~GenericController() {
+	for(int i = 0; i < count; i++) delete objects[i];
+}
+
+template <class T>
+void GenericController<T>::initController(int count, ...) {
+	objects = new T*[count];
 	this->count = count;
 	
 	va_list args;
-	va_start(args, arg1);
+	va_start(args, count);
 
 	for(int i = 0; i < count; i++)
 		objects[i] = new T(va_arg(args,int));

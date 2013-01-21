@@ -162,11 +162,11 @@ RobotCode2013_partialImage/$(MODE_DIR)/% : LIBPATH =
 RobotCode2013_partialImage/$(MODE_DIR)/% : LIBS = 
 RobotCode2013_partialImage/$(MODE_DIR)/% : OBJ_DIR := RobotCode2013_partialImage/$(MODE_DIR)
 
-RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/main.o : $(PRJ_ROOT_DIR)/main.cpp $(FORCE_FILE_BUILD)
+RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.o : $(PRJ_ROOT_DIR)/Robot.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/main.o
+OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.o
 
 RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage.o : $(OBJECTS_RobotCode2013_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_RobotCode2013_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -180,7 +180,7 @@ RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage_clean :
 
 force : 
 
-DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/main.d
+DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.d
 -include $(DEP_FILES)
 
 
