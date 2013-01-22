@@ -31,7 +31,7 @@ else
 MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
-WS_ROOT_DIR := C:/Users/SERVER/Documents/GitHub/2013UA
+WS_ROOT_DIR := C:/Users/robot_dev/Documents/GitHub/2013UA
 PRJ_ROOT_DIR := $(WS_ROOT_DIR)/ST2013
 
 
@@ -162,11 +162,21 @@ RobotCode2013_partialImage/$(MODE_DIR)/% : LIBPATH =
 RobotCode2013_partialImage/$(MODE_DIR)/% : LIBS = 
 RobotCode2013_partialImage/$(MODE_DIR)/% : OBJ_DIR := RobotCode2013_partialImage/$(MODE_DIR)
 
+RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Autonomous.o : $(PRJ_ROOT_DIR)/Autonomous.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.o : $(PRJ_ROOT_DIR)/Robot.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.o
+RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Teleop.o : $(PRJ_ROOT_DIR)/Teleop.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Autonomous.o \
+	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.o \
+	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Teleop.o
 
 RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage.o : $(OBJECTS_RobotCode2013_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_RobotCode2013_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -180,7 +190,7 @@ RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage_clean :
 
 force : 
 
-DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.d
+DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Autonomous.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Teleop.d
 -include $(DEP_FILES)
 
 

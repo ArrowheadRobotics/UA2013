@@ -7,8 +7,7 @@
  * TODO Check to see if filesystem clears on reboot.
  */
 
-#ifndef PARSERH
-#define PARSERH
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,7 +21,6 @@ class Parser {
 	RobotCommand *cmds;
 	int count;
 public:
-	
 	Parser(){cmds = NULL;count=0;};
 	Parser(const char*);
 	
@@ -71,5 +69,3 @@ int Parser::parseFromFile(const char *filename) {
 	
 	return 0;
 }
-
-#endif

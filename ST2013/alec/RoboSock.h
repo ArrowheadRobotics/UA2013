@@ -4,8 +4,7 @@
  * TODO Stress test this to hell.
  */
 
-#ifndef SOCKSH
-#define SOCKSH
+#ifndef TORTELLINI
 
 #include "stdio.h" // standard i/o
 #include "stdlib.h" // standard functions
@@ -55,5 +54,3 @@ int RoboSock::initConnection(char *ip, int port, bool blocking, bool conn) {
 	
 	return 0;
 }
-
-#endif

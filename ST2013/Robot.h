@@ -1,13 +1,10 @@
 /*
  * This class (Cyberhawk) is the entry point of the robot.
  * 
- * todo fix everything
- * 
+ * Please do NOT implement Autonomous or Teleop in this
+ * file. Use the respective Autonomous.cpp and Teleop.cpp
+ * for implementations.
  */
-
-/***************************************************************************/
-/*                   DO NOT EDIT ANYTHING IN THIS FILE!                    */
-/***************************************************************************/
 
 #ifndef ROBOTH
 #define ROBOTH
@@ -15,6 +12,7 @@
 #include "WPILib.h"
 
 class Cyberhawk : public SimpleRobot {
+	
 public:
 	Cyberhawk(void) {};
 	~Cyberhawk(void) {};
@@ -22,12 +20,5 @@ public:
 	void Autonomous(void);
 	void OperatorControl(void);
 };
-
-class Delegator {
-public:
-	void RunAutonomous(Cyberhawk*);
-	void RunTeleop(Cyberhawk*);
-};
-
 
 #endif
