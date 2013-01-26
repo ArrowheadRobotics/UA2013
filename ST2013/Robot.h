@@ -6,16 +6,26 @@
  * for implementations.
  */
 
-#ifndef ROBOTH
-#define ROBOTH
+#ifndef RAVIOLI
+#define RAVIOLI
 
 #include "WPILib.h"
+#include "alec/AutoParser.h"
+#include "alec/ConstParser.h"
+#include "alec/GenericController.h"
+#include "alec/RoboSock.h"
+#include "alec/Threading.h"
 
 class Cyberhawk : public SimpleRobot {
 	
 public:
-	Cyberhawk(void) {};
-	~Cyberhawk(void) {};
+	Cyberhawk(void) {
+		
+	};
+	
+	~Cyberhawk(void) {
+		
+	};
 	
 	void Autonomous(void);
 	void OperatorControl(void);

@@ -5,16 +5,20 @@
  */
 
 #ifndef TORTELLINI
+#define TORTELLINI
 
+#include "WPILib.h"
 #include "stdio.h" // standard i/o
-#include "stdlib.h" // standard functions
 #include "arpa/inet.h" // inet functions
 #include "netinet/in.h" // inet functions
+#include "stdio.h" // standard i/o (again)
 #include "sys/types.h" // socket types
 #include "sys/socket.h" // core socket functions
+#include "netinet/in.h" // inet functions (again)
 #include "netdb.h" // error ids for network functions
 #include "errno.h" // error handling for network functions
-#include "ioctl.h" // (non)blocking functionality
+#include "pthread.h" // POSIX threading
+#include "ioctl.h"
 
 class RoboSock {
 	int sock, port, error;
@@ -36,21 +40,4 @@ public:
 	int getError() const;
 };
 
-RoboSock::RoboSock(char *ip, int port, bool blocking, bool conn) {
-	sock = 0;
-	initConnection(ip, port, blocking, conn);
-}
-
-int RoboSock::initConnection(char *ip, int port, bool blocking, bool conn) {
-	sock = socket(AF_INET, SOCK_STREAM, 0);
-	if(sock <= 0) return -1;
-	
-	memset((char*)&addr, 0, sizeof(addr));
-	addr.sin_family = AF_INET;
-	addr.sin_addr.s_addr = inet_addr(ip);
-	addr.sin_port = htons(port);
-	
-	//fcntl(sock, (blocking)?O_BLOCK:O_NONBLOCK); // TODO fix this
-	
-	return 0;
-}
+#endif
