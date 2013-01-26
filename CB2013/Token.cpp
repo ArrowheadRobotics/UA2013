@@ -47,17 +47,17 @@ int Token::parse(const char* fname, const char* token[1000][20]) {
 	    token[idx][0] = strtok(buf, DELIMITER); // first token
 	    if (token[idx][0]) // zero if line is blank
 	    {
-	      for (n = 1; n < MAX_TOKENS_PER_LINE; n++)
+	      for (n = 0; n < MAX_TOKENS_PER_LINE; n++)
 	      {
 	        token[idx][n] = strtok(0, DELIMITER); // subsequent tokens
+	       
 	        if (!token[idx][n]) break; // no more tokens
+	        
 	      }
 	    }
-
-	    // process (print) the tokens
-//	    for (int i = 0; i < n; i++) // n = #of tokens
-//	      cout << "Token[" << idx << ","<<i<<"] = " << token[idx][i] << endl;
-//	    cout << endl;
+	    printf("%s %d\n",token[idx][0],token[idx][1]);
+	   
+	    
 	  idx++;
 	  }
 	return 0;
