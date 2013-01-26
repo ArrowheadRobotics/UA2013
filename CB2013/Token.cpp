@@ -1,4 +1,4 @@
-//#include "Token.h"
+#include "Token.h"
 
 #define ever() for(;;)
 
@@ -11,13 +11,13 @@
 using std::ifstream;
 
 #include <cstring>
-/*
+
 const int MAX_CHARS_PER_LINE = 512;
 const int MAX_TOKENS_PER_LINE = 20;
 const int MAX_LINES_PER_FILE = 1000;
 const char* const DELIMITER = " ";
 
-/*int Token::parse(const char* fname, const char* token[1000][20]) {
+int Token::parse(const char* fname, const char* token[1000][20]) {
 
 
 	  // create a file-reading object
@@ -25,7 +25,7 @@ const char* const DELIMITER = " ";
 	  fin.open(fname); // open a file														
 	  if (!fin.good()){
 		  for(;;){
-	    cout<<"LOL";
+	    
 		  }
 		  return 1; // exit if file not found
 	  }
@@ -62,4 +62,3 @@ const char* const DELIMITER = " ";
 	  }
 	return 0;
 }
-*/

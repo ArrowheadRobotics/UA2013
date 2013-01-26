@@ -1,5 +1,4 @@
 //TOKENIZER
-/*
 
 #ifndef _TOKEN_H
 #define _TOKEN_H
@@ -15,8 +14,7 @@
 
 
 class Token {
-//public:
-	//int parse(const char*, const char*[1000][20]);
+public:
+	int parse(const char*, const char*[1000][20]);
 };
 #endif
-*/
