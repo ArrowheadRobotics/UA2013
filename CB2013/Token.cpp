@@ -15,7 +15,8 @@ const int MAX_TOKENS_PER_LINE = 20;
 const int MAX_LINES_PER_FILE = 1000;
 const char* const DELIMITER = " ";
 
-int Token::parse(const char* fname, const char* token[1000][20]) {
+
+int Token::parse(const char* fname, Pair** f) {
 
 	// create a file-reading object
 	ifstream fin;
@@ -38,22 +39,27 @@ int Token::parse(const char* fname, const char* token[1000][20]) {
 
 		// array to store memory addresses of the tokens in buf
 
-
+try{
 		// parse the line
-		token[idx][0] = strtok(buf, DELIMITER); // first token
-		if (token[idx][0]) // zero if line is blank
+		f[idx]->name = strtok(buf, DELIMITER); // first token
+		if (f[idx]->name) // zero if line is blank
 		{
-			for (n = 1; n < MAX_TOKENS_PER_LINE; n++) {
-				token[idx][n] = strtok(0, DELIMITER); // subsequent tokens
+			
+				f[idx]->value = atof(strtok(0, DELIMITER)); // subsequent tokens
 
-				if (!token[idx][n])
-					break; // no more tokens
+//				if (!token[idx][n])  //Do we need this?
+//					break; // no more tokens
 
-			}
+			
 		}
-		printf("String: %s ", token[idx][0]);
-		printf("Data: %d\n",atoi(token[idx][1]));
-
+		
+		
+		printf("String: %s ", f[idx]->name);
+		printf("Data: %f\n", f[idx]->value);
+}
+catch(...){
+	printf("There was issue!");
+}
 		idx++;
 	}
 	return 0;

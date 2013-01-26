@@ -11,9 +11,15 @@
 #include "OI.h"
 #include <String>
 
+struct Pair {
+	char *	name;
+	float value;
+};
 
 class Token {
+
 public:
-	int parse(const char*, const char*[1000][20]);
+
+	int parse(const char*, Pair**);
 };
 #endif
