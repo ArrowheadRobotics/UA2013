@@ -20,15 +20,15 @@ struct RobotCommand {  //one set of data
 };
 
 class AutoParser {
-	RobotCommand *cmds;
-	int count;
+	RobotCommand *cmds;  //parsed data
+	int count;  //length of data
 public:
-	AutoParser(){};
-	AutoParser(const char*);
+	AutoParser(){};  //pointless
+	AutoParser(const char*);  //initialization -- takes filename
 	
-	int parseFromFile(const char*);
-	RobotCommand* getCommands() const;
-	int getCount() const;
+	int parseFromFile(const char*);  //parsing function -- takes filename
+	RobotCommand* getCommands() const;  //returns constant parsed data
+	int getCount() const;  //returns constant length of data
 };
 
 #endif
