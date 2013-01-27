@@ -46,6 +46,7 @@ public:
 	
 	int spawnThread(void(*)=NULL, bool=false);  //make new thread if it doesnt exist -- takes arguments for thread and force boolean
 	//if force is true then the tread will create a new tread regardless of if it already exists
+	//returns 0 if it succeeds and -1 if it fails
 	void waitForThread();  //function waits until the current tread is done, if it doesnt exist it exits immediatly
 	bool checkThread();  //returns true if the thread exists, false if it doesn't
 	/*
