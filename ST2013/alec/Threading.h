@@ -27,20 +27,27 @@
 #define THREADINGH
 
 #include <pthread.h>
+//#include <sys/types.h>
+//i think this is needed for pthread_t
+//#include <signal.h>
+//i think this is needed for pthread_kill used in checkThread()
 
 class Thread {
-	pthread_t handle;
-	void*(*funcPointer)(void*);
+	pthread_t handle;  //thread ID
+	void*(*funcPointer)(void*);  //typeless pointer typecast to void that contains the function for the thread
 public:
-	Thread(){handle = 0;};
-	Thread(void*(*)(void*), bool=false, void(*)=NULL);
+	Thread(){handle = 0;};  //pointless
+	//Arguments -- function for new thread (funcPointer), spawn thread immediatly, argumets for thread
+	Thread(void*(*)(void*), bool=false, void(*)=NULL);  //clears handel and initilizes thread
 	
-	void initThread(void*(*)(void*), bool=false, void(*)=NULL);
-	void setFunction(void*(*)(void*));
+	//Arugments -- same as above
+	void initThread(void*(*)(void*), bool=false, void(*)=NULL);  //sets funcPointer and spawns thread if bool = true
+	void setFunction(void*(*)(void*));  //sets funcPointer -- takes typeless pointer typecast to void
 	
-	int spawnThread(void(*)=NULL, bool=false);
-	void waitForThread();
-	bool checkThread();
+	int spawnThread(void(*)=NULL, bool=false);  //make new thread if it doesnt exist -- takes arguments for thread and force boolean
+	//if force is true then the tread will create a new tread regardless of if it already exists
+	void waitForThread();  //function waits until the current tread is done, if it doesnt exist it exits immediatly
+	bool checkThread();  //returns true if the thread exists, false if it doesn't
 	/*
 	 *   ###################
 	 *   #~~~~~~~~~~~~~~~~~#
@@ -58,9 +65,9 @@ public:
 	 * 	 
 	 * 	 This kills the developer.
 	 */
-	void killThread();
+	void killThread();  //violently murders the tread in cold blood
 	
-	pthread_t getHandle() const;
+	pthread_t getHandle() const;  //get current thread ID
 };
 
 #endif
