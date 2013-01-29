@@ -22,12 +22,13 @@ int AutoParser::parseFromFile(const char *filename) {
 	int length = ftell(fp);  //set length fo file
 	rewind(fp);  //start at beginning of file again
 	
-	char *buf = (char*)malloc(length);  //define new buffer to dump file into
+	char *buf = new char[length];  //define new buffer to dump file into
 	fread(buf, 1, length, fp);  //dump file into buffer
 	fclose(fp);  //close file
 	
 	for(int i = 0; i <= length; i++)
 		count += (buf[i]==',')?1:0;  //count delimiters
+	
 	count /= 3;  //devide by three because data comes in clumps of three
 	//The counter assumes that the file starts or ends with a comma
 	
@@ -38,6 +39,8 @@ int AutoParser::parseFromFile(const char *filename) {
 		cmds[i].v2 = atof(strtok(NULL, ","));  //convert second string into double
 		cmds[i].type = atoi(strtok(NULL, ","));  //convert third sting into int
 	}
+	
+	delete buf;
 	
 	return 0;
 }

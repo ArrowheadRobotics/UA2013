@@ -27,14 +27,10 @@
 #define THREADINGH
 
 #include <pthread.h>
-//#include <sys/types.h>
-//i think this is needed for pthread_t
-//#include <signal.h>
-//i think this is needed for pthread_kill used in checkThread()
 
 class Thread {
 	pthread_t handle;  //thread ID
-	void*(*funcPointer)(void*);  //typeless pointer typecast to void that contains the function for the thread
+	void*(*funcPointer)(void*);  // function pointer for a function that takes and returns a void pointer
 public:
 	Thread(){handle = 0;};  //pointless
 	//Arguments -- function for new thread (funcPointer), spawn thread immediatly, argumets for thread
@@ -42,7 +38,7 @@ public:
 	
 	//Arugments -- same as above
 	void initThread(void*(*)(void*), bool=false, void(*)=NULL);  //sets funcPointer and spawns thread if bool = true
-	void setFunction(void*(*)(void*));  //sets funcPointer -- takes typeless pointer typecast to void
+	void setFunction(void*(*)(void*));  //sets funcPointer
 	
 	int spawnThread(void(*)=NULL, bool=false);  //make new thread if it doesnt exist -- takes arguments for thread and force boolean
 	//if force is true then the tread will create a new tread regardless of if it already exists

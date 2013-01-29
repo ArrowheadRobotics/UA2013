@@ -1,13 +1,13 @@
 #include "Threading.h"
 
-Thread::Thread(void*(*funcPointer)(void*), bool spawn, void *args) {  //inizilazation call
+Thread::Thread(void*(*funcPointer)(void*), bool spawn, void *args) {  //initialization call
 	handle = 0;  //clears pointer ID
-	this->initThread(funcPointer, spawn, args);  //runs thread initilization
+	this->initThread(funcPointer, spawn, args);  //runs thread initialization
 }
 
-void Thread::initThread(void*(*funcPointer)(void*), bool spawn, void *args) {  //initilizes thread
+void Thread::initThread(void*(*funcPointer)(void*), bool spawn, void *args) {  //initializes thread
 	this->funcPointer = funcPointer;  //sets thread function
-	if(spawn) this->spawnThread(args);  //if spwan=true runs thread spawning
+	if(spawn) this->spawnThread(args);  //if spawn=true runs thread spawning
 }
 
 void Thread::setFunction(void*(*funcPointer)(void*)) {  //sets thread function
@@ -22,8 +22,7 @@ int Thread::spawnThread(void *args, bool force) {  //spawns new thread if it doe
 }
 
 void Thread::waitForThread() {  //waits for thread
-	//the if is redundant -- the pthread_join will exit immediatly if the tread doesn't exist
-	if(handle!=0) pthread_join(handle, NULL);  //if a thread has been created wait for it to die
+	if(checkThread()) pthread_join(handle, NULL);  //if a thread has been created wait for it to die
 }
 
 bool Thread::checkThread() {  //check if the thread exists
