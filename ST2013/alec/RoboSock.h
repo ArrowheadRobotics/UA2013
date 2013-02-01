@@ -33,8 +33,8 @@ public:
 	int connectToServer();
 	int disconnectFromServer();
 
-	int Send(const char*) const;
-	const char* Get() const;
+	int Send(const char*);
+	const char* Get();
 	
 	void setBlocking(bool);
 	int getError() const;

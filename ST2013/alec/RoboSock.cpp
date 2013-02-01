@@ -14,7 +14,44 @@ int RoboSock::initConnection(char *ip, int port, bool blocking, bool conn) {
 	addr.sin_addr.s_addr = inet_addr(ip);
 	addr.sin_port = htons(port);
 	
-	//fcntl(sock, (blocking)?O_BLOCK:O_NONBLOCK); // TODO fix this
+	int opts = fcntl(sock, F_GETFL);
+	opts = (blocking)? opts|O_NONBLOCK : opts&(~O_NONBLOCK);
+	fcntl(sock, F_SETFL, opts);
 	
 	return 0;
+}
+
+int RoboSock::connectToServer() {
+	if(sock <= 0) return 0xDEAD;
+	return (error = connect(sock, (struct sockaddr*)&addr, sizeof(addr)));
+}
+
+int RoboSock::disconnectFromServer() {
+	if(sock <= 0) return 0xDEAD;
+	return shutdown(sock, SHUT_RDWR);
+}
+
+void RoboSock::setBlocking(bool blocking) {
+	int opts = fcntl(sock, F_GETFL);
+	opts = (blocking)? opts|O_NONBLOCK : opts&(~O_NONBLOCK);
+	fcntl(sock, F_SETFL, opts);
+}
+
+int RoboSock::getError() const {
+	return error;
+}
+
+int RoboSock::Send(const char *msg) {
+	return (error = send(sock, msg, sizeof(msg), 0));
+}
+
+/*
+ * If you're using nonblocking and you need to check
+ * if EAGAIN was returned by Get, call GetError to
+ * check the most recent error.
+ */
+const char* RoboSock::Get() {
+	char *msg;
+	error = recv(sock, msg, 512, 0);
+	return msg;
 }
