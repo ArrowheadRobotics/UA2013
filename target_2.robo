@@ -1,11 +1,11 @@
-<head><version>2.48.20</version></head>
+<head><version>2.49.1</version></head>
 <Axis_Internet_Camera>
   <auto_exposure>FALSE</auto_exposure>
   <auto_back_light>TRUE</auto_back_light>
   <color_level_value>50</color_level_value>
   <exposure_value>50</exposure_value>
   <auto_white_balance>TRUE</auto_white_balance>
-  <compression_index>2</compression_index>
+  <compression_index>3</compression_index>
   <sharpness_value>50</sharpness_value>
   <ip_address>10.7.6.19</ip_address>
   <password>pass</password>
@@ -13,6 +13,7 @@
   <port>80</port>
   <contrast_value>50</contrast_value>
   <is_active>TRUE</is_active>
+  <resolution>2</resolution>
   <brightness_value>50</brightness_value>
 </Axis_Internet_Camera>
 <RGB_Filter>
@@ -87,11 +88,6 @@
   <show_weights>FALSE</show_weights>
   <create_blob_array_variable>FALSE</create_blob_array_variable>
 </Blob_Filter>
-<Fill>
-  <four_pixel_connectivity>FALSE</four_pixel_connectivity>
-  <check_border>FALSE</check_border>
-  <fill_with_average_color>FALSE</fill_with_average_color>
-</Fill>
 <Close>
   <restrict_dilation>FALSE</restrict_dilation>
   <erode_count>3</erode_count>
@@ -99,6 +95,11 @@
   <close_borders>FALSE</close_borders>
   <symmetrical>TRUE</symmetrical>
 </Close>
+<Fill>
+  <four_pixel_connectivity>FALSE</four_pixel_connectivity>
+  <check_border>FALSE</check_border>
+  <fill_with_average_color>FALSE</fill_with_average_color>
+</Fill>
 <Blob_Replace>
   <thickness>1</thickness>
   <color_index>3</color_index>
@@ -192,10 +193,16 @@ MOUSE_Y
 </west>
   <font_size_index>2</font_size_index>
 </Display_Variables>
+<Timer>
+  <once_every>TRUE</once_every>
+  <freq_num>1</freq_num>
+  <between>FALSE</between>
+</Timer>
 <NetworkTables>
   <port>1735</port>
   <variable_type_index>3</variable_type_index>
   <variables_to_send>/SmartDashboard/BFR</variables_to_send>
+  <prefix/>
   <filter_type_index>0</filter_type_index>
   <hostname>10.7.6.2</hostname>
 </NetworkTables>
