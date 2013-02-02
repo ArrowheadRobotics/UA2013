@@ -1,0 +1,201 @@
+<head><version>2.48.20</version></head>
+<Axis_Internet_Camera>
+  <auto_exposure>FALSE</auto_exposure>
+  <auto_back_light>TRUE</auto_back_light>
+  <color_level_value>50</color_level_value>
+  <exposure_value>50</exposure_value>
+  <auto_white_balance>TRUE</auto_white_balance>
+  <compression_index>2</compression_index>
+  <sharpness_value>50</sharpness_value>
+  <ip_address>10.7.6.19</ip_address>
+  <password>pass</password>
+  <username>root</username>
+  <port>80</port>
+  <contrast_value>50</contrast_value>
+  <is_active>TRUE</is_active>
+  <brightness_value>50</brightness_value>
+</Axis_Internet_Camera>
+<RGB_Filter>
+  <hue_value>82</hue_value>
+  <hysteresis>0</hysteresis>
+  <min_value>215</min_value>
+  <channel>2</channel>
+</RGB_Filter>
+<Adaptive_Threshold>
+  <mean_offset>-10</mean_offset>
+  <filter_size>26</filter_size>
+  <min_threshold>40</min_threshold>
+  <channel_type>2</channel_type>
+  <max_threshold>175</max_threshold>
+</Adaptive_Threshold>
+<Blob_Filter>
+  <filters>
+    <tab:5/>
+    <tab:2/>
+    <tab:4/>
+    <tab>
+      <filter:2>
+        <create_array>0</create_array>
+        <ratio>2.85000</ratio>
+        <count_threshold>0</count_threshold>
+        <weight_threshold>0.71</weight_threshold>
+        <invert_count>0</invert_count>
+        <filter_id>63</filter_id>
+        <invert_threshold>0</invert_threshold>
+      </filter:2>
+      <filter:4>
+        <create_array>0</create_array>
+        <count_threshold>0</count_threshold>
+        <weight_threshold>0.3</weight_threshold>
+        <invert_count>0</invert_count>
+        <filter_id>14</filter_id>
+        <invert_threshold>0</invert_threshold>
+      </filter:4>
+      <filter:3>
+        <create_array>0</create_array>
+        <count_threshold>0</count_threshold>
+        <weight_threshold>0.2</weight_threshold>
+        <invert_count>0</invert_count>
+        <image>Source</image>
+        <filter_id>77</filter_id>
+        <invert_threshold>0</invert_threshold>
+      </filter:3>
+      <filter:5>
+        <create_array>0</create_array>
+        <count_threshold>0</count_threshold>
+        <weight_threshold>0.7</weight_threshold>
+        <invert_count>0</invert_count>
+        <filter_id>14</filter_id>
+        <invert_threshold>1</invert_threshold>
+      </filter:5>
+      <filter>
+        <create_array>0</create_array>
+        <count_threshold>0</count_threshold>
+        <weight_threshold>0</weight_threshold>
+        <invert_count>0</invert_count>
+        <filter_id>8</filter_id>
+        <invert_threshold>0</invert_threshold>
+        <minimum_size>100</minimum_size>
+      </filter>
+    </tab>
+    <tab:6/>
+    <tab:3/>
+  </filters>
+  <sort_array_on_y>FALSE</sort_array_on_y>
+  <largest_is_background>FALSE</largest_is_background>
+  <sort_array_on_x>FALSE</sort_array_on_x>
+  <show_weights>FALSE</show_weights>
+  <create_blob_array_variable>FALSE</create_blob_array_variable>
+</Blob_Filter>
+<Fill>
+  <four_pixel_connectivity>FALSE</four_pixel_connectivity>
+  <check_border>FALSE</check_border>
+  <fill_with_average_color>FALSE</fill_with_average_color>
+</Fill>
+<Close>
+  <restrict_dilation>FALSE</restrict_dilation>
+  <erode_count>3</erode_count>
+  <dilate_count>3</dilate_count>
+  <close_borders>FALSE</close_borders>
+  <symmetrical>TRUE</symmetrical>
+</Close>
+<Blob_Replace>
+  <thickness>1</thickness>
+  <color_index>3</color_index>
+  <fill_shape>TRUE</fill_shape>
+  <order_array_on_x>FALSE</order_array_on_x>
+  <shape_index>15</shape_index>
+  <order_array_on_y>FALSE</order_array_on_y>
+</Blob_Replace>
+<VBScript_Program>
+  <tab_size_index>1</tab_size_index>
+  <script>list = GetArrayVariable("BFR_COORDINATES")
+if isArray(list) then
+  if ubound(list) &gt; 0 then
+
+		targetPixelHeight = 0
+    targetSamples = 0
+
+    ' calibrated for an Axis camera
+    imageHeight = GetVariable("IMAGE_HEIGHT")
+  	cameraFieldOfView = 47.5
+	  targetHeight = 18.0
+
+    ' grab list of coordinates from blob_replace
+	 	' note the array is sorted by previous module in a specific order
+    righty = list(1)
+    rightyy = list(7)
+    lefty = list(3)
+    leftyy = list(5)
+
+		' based on these two side lines get the center line height
+		' the center line is used since we want to aim to the center
+  	' of the target. This also removes any perspective distortion
+	  ' where the right or left size may be a couple inches closer
+		' or futher away from the camera
+  	targetPixelHeight = ((lefty - leftyy) + (righty - rightyy)) / 2
+
+write targetPixelHeight 
+
+    ' we can use a known distance to determine FOV if we don't know it
+	  ' measuredDistance = 10.0*12.0
+ 	  ' write "Calculated FOV " &amp; (((atan((((targetHeight*imageHeight)/targetPixelHeight)/2)/measuredDistance)*2.0)*180.0)/3.14159) &amp; vbCRLF
+
+    ' determine distance in inches
+    totalDistance = (((targetHeight*imageHeight)/targetPixelHeight)/2)/tan(((cameraFieldOfView*3.14159)/180.0)/2.0)
+	
+		SetVariable "Distance", CInt((totalDistance*100)/12)/100
+
+	end if
+end if
+</script>
+  <source_mode>gui</source_mode>
+</VBScript_Program>
+<Math>
+  <image2>Current</image2>
+  <function>5</function>
+  <divisor>1</divisor>
+  <image1>Source</image1>
+  <all_channels>TRUE</all_channels>
+  <bias>0</bias>
+</Math>
+<Set_Variable>
+  <set_1_once>FALSE</set_1_once>
+  <set_3_array>FALSE</set_3_array>
+  <set_3_once>FALSE</set_3_once>
+  <value_1>[BFR_COORDINATES]</value_1>
+  <set_1_array>FALSE</set_1_array>
+  <set_4_once>FALSE</set_4_once>
+  <set_2_once>FALSE</set_2_once>
+  <set_2_array>FALSE</set_2_array>
+  <set_4_array>FALSE</set_4_array>
+  <variable_1>/SmartDashboard/BFR</variable_1>
+</Set_Variable>
+<Display_Variables>
+  <northwest>Distance
+</northwest>
+  <display_as_annotation>TRUE</display_as_annotation>
+  <dim_background>TRUE</dim_background>
+  <northeast>FPS
+</northeast>
+  <southwest>/SmartDashboard/BFR
+</southwest>
+  <display_value_only>FALSE</display_value_only>
+  <north>/SmartDashboard/IM
+</north>
+  <font_color>white</font_color>
+  <border_color_index>5</border_color_index>
+  <border_color>purple</border_color>
+  <font_size>Tiny (6pt)</font_size>
+  <west>MOUSE_X
+MOUSE_Y
+</west>
+  <font_size_index>2</font_size_index>
+</Display_Variables>
+<NetworkTables>
+  <port>1735</port>
+  <variable_type_index>3</variable_type_index>
+  <variables_to_send>/SmartDashboard/BFR</variables_to_send>
+  <filter_type_index>0</filter_type_index>
+  <hostname>10.7.6.2</hostname>
+</NetworkTables>
