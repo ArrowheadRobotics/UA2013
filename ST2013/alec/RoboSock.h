@@ -11,30 +11,27 @@
 #include "stdio.h" // standard i/o
 #include "arpa/inet.h" // inet functions
 #include "netinet/in.h" // inet functions
-#include "stdio.h" // standard i/o (again)
 #include "sys/types.h" // socket types
 #include "sys/socket.h" // core socket functions
-#include "netinet/in.h" // inet functions (again)
 #include "netdb.h" // error ids for network functions
 #include "errno.h" // error handling for network functions
-#include "pthread.h" // POSIX threading
-#include "ioctl.h"
+#include "ioctl.h"  //input output flag stuff
 
-class RoboSock {
-	int sock, port, error;
-	struct sockaddr_in addr;
+class RoboSock {  //socket connection
+	int sock, port, error;  //socket ID, port #, most recent error
+	struct sockaddr_in addr; //server info
 public:
-	RoboSock(){sock=0;};
+	RoboSock(){sock=0;};  //shit
 	// ip, port, blocking, connect on creation
-	RoboSock(char*, int, bool=true, bool=false);
+	RoboSock(char*, int, bool=true, bool=false);  //init
 
 	// ip, port, blocking, connect on call
-	int initConnection(char*, int, bool=true, bool=false);
-	int connectToServer();
-	int disconnectFromServer();
+	int initConnection(char*, int, bool=true, bool=false);  //init#2 -- returns error
+	int connectToServer();  //returns error
+	int disconnectFromServer();  //returns error
 
-	int Send(const char*);
-	const char* Get();
+	int Send(const char*);  //return error
+	const char* Get();  //get info from other server
 	
 	void setBlocking(bool);
 	int getError() const;
