@@ -45,14 +45,14 @@ int ConstParser::parseFromFile(const char *filename) {
 	fclose(fp);  //close file
 
 	bool state = 0; // 0 = key ; 1 = value
-	char *buf2 = strtok(buf, "=;"), *key;
+	char *buf2 = strtok(buf, "=;"), *key;  //buf2 holds temporary characters, key
 	
 	do {
-		if(!state) key = buf2;
-		else consts[key] = atof(buf2);
+		if(!state) key = buf2;  //if stete = 0 set the name of the variable
+		else consts[key] = atof(buf2);  //get the value as a float
 			
 		state = !state;  //inverte state
-	} while((buf2 = strtok(NULL, "=;")) != NULL);
+	} while((buf2 = strtok(NULL, "=;")) != NULL);  //while the next character is not null
 	
 	delete buf, buf2, key;  //delete temporary stuff
 	
