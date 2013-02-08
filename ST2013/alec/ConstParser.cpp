@@ -1,11 +1,11 @@
 #include "ConstParser.h"
 
-ConstParser::ConstParser(const char *filename) {
-	count = 0;
-	this->parseFromFile(filename);
+ConstParser::ConstParser(const char *filename) {  //initilization
+	count = 0;  //reset shit
+	this->parseFromFile(filename);  //parse file immediatly
 }
 
-std::map<std::string,float> ConstParser::getConstants() const {
+std::map<std::string,float> ConstParser::getConstants() const {  //return ouput
 	return consts;
 }
 
@@ -24,25 +24,25 @@ std::map<std::string,float> ConstParser::getConstants() const {
  */
 
 int ConstParser::parseFromFile(const char *filename) {
-	consts.clear();
+	consts.clear();  //clear output
 	
-	FILE *fp = fopen(filename, "rb");
+	FILE *fp = fopen(filename, "rb");  //open file
 		
-	fseek(fp, 0, SEEK_END);
-	int length = ftell(fp);
-	rewind(fp);
+	fseek(fp, 0, SEEK_END);  //go to the end of the file
+	int length = ftell(fp);  //get the length of the file
+	rewind(fp);  //go back to the beginning
 		
-	char *buf = new char[length];
+	char *buf = new char[length];  //create temporary buffer storage
 	
 	int i = 0;
-	for(; !feof(fp); i++) {
-		char in = fgetc(fp);
-		if(in > ' ') buf[i] = in;
-		else i--;
+	for(; !feof(fp); i++) {  //while still in the file
+		char in = fgetc(fp);  //get the character
+		if(in > ' ') buf[i] = in;  //actual character
+		else i--;  //dont count spaces
 	}
 	buf[i] = 0;
 	
-	fclose(fp);
+	fclose(fp);  //close file
 
 	bool state = 0; // 0 = key ; 1 = value
 	char *buf2 = strtok(buf, "=;"), *key;
@@ -51,10 +51,10 @@ int ConstParser::parseFromFile(const char *filename) {
 		if(!state) key = buf2;
 		else consts[key] = atof(buf2);
 			
-		state = !state;
+		state = !state;  //inverte state
 	} while((buf2 = strtok(NULL, "=;")) != NULL);
 	
-	delete buf, buf2, key;
+	delete buf, buf2, key;  //delete temporary stuff
 	
-	return 0;
+	return 0;  //return 0;
 }
