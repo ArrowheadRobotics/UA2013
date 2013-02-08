@@ -9,14 +9,14 @@
 #include <map>
 
 class ConstParser {
-	std::map<std::string,float> consts;
-	int count;
+	std::map<std::string,float> consts;  //makes new map that holds two elements, a string and a float
+	int count;  //counter
 public:
-	ConstParser(){};
-	ConstParser(const char*);
+	ConstParser(){};  //does nothing
+	ConstParser(const char*);  //initilization
 	
-	int parseFromFile(const char*);
-	std::map<std::string,float> getConstants() const;
+	int parseFromFile(const char*);  //parse form file -- returns 0
+	std::map<std::string,float> getConstants() const;  //returns ouput
 };
 
 #endif
