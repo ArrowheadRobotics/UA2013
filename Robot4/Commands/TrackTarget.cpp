@@ -30,15 +30,18 @@ void TrackTarget::Execute() {
 		{
 			printf("FAILBLOG.ORG\n");
 			}
-	if(height>245) {
-		Robot::elevation->Down();
-	}else if (height<235){
-		Robot::elevation->Up();
+	if(height>125) {
+		Robot::elevation->Up(.7*(height-120.0f)/120);
+		printf(" %f\n",height);
+	}else if (height<115){
+		Robot::elevation->Down(.7*(height-120.0f)/120);
+		printf("Up %f\n",height);
 	}
 	else{
 		Robot::elevation->Stop();
+		printf("STOP %f\n",height);
 	}
-	printf("%f\n",height);
+	
 }
 // Make this return true when this Command no longer needs to run execute()
 bool TrackTarget::IsFinished() {
