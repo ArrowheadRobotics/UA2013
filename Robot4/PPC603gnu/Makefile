@@ -31,8 +31,8 @@ else
 MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
-WS_ROOT_DIR := C:/WindRiver/workspace_2013
-PRJ_ROOT_DIR := $(WS_ROOT_DIR)/Robot4
+WS_ROOT_DIR := C:/WindRiver/workspace
+PRJ_ROOT_DIR := C:/Users/c/Documents/GitHub/2013UA/Robot4
 
 
 
