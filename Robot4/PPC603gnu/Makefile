@@ -117,51 +117,91 @@ CommandBasedRobotTemplate/$(MODE_DIR)/% : LIBPATH =
 CommandBasedRobotTemplate/$(MODE_DIR)/% : LIBS = 
 CommandBasedRobotTemplate/$(MODE_DIR)/% : OBJ_DIR := CommandBasedRobotTemplate/$(MODE_DIR)
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/AutonomousCommand.o : $(PRJ_ROOT_DIR)/Commands/AutonomousCommand.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.o : $(PRJ_ROOT_DIR)/Commands/AutonomousCommand.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/TrackTarget.o : $(PRJ_ROOT_DIR)/Commands/TrackTarget.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.o : $(PRJ_ROOT_DIR)/Commands/TrackTarget.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_dn.o : $(PRJ_ROOT_DIR)/Commands/move_dn.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive1.o : $(PRJ_ROOT_DIR)/Commands/drive1.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_st.o : $(PRJ_ROOT_DIR)/Commands/move_st.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive2.o : $(PRJ_ROOT_DIR)/Commands/drive2.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_up.o : $(PRJ_ROOT_DIR)/Commands/move_up.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive3.o : $(PRJ_ROOT_DIR)/Commands/drive3.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/OI.o : $(PRJ_ROOT_DIR)/OI.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move.o : $(PRJ_ROOT_DIR)/Commands/move.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Robot.o : $(PRJ_ROOT_DIR)/Robot.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_dn.o : $(PRJ_ROOT_DIR)/Commands/move_dn.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/RobotMap.o : $(PRJ_ROOT_DIR)/RobotMap.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_st.o : $(PRJ_ROOT_DIR)/Commands/move_st.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Subsystems/Elevation.o : $(PRJ_ROOT_DIR)/Subsystems/Elevation.cpp $(FORCE_FILE_BUILD)
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_up.o : $(PRJ_ROOT_DIR)/Commands/move_up.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_CommandBasedRobotTemplate = CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/AutonomousCommand.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/TrackTarget.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_dn.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_st.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_up.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/OI.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Robot.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/RobotMap.o \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Subsystems/Elevation.o
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/square.o : $(PRJ_ROOT_DIR)/Commands/square.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/stop.o : $(PRJ_ROOT_DIR)/Commands/stop.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/OI.o : $(PRJ_ROOT_DIR)/OI.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Robot.o : $(PRJ_ROOT_DIR)/Robot.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/RobotMap.o : $(PRJ_ROOT_DIR)/RobotMap.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o : $(PRJ_ROOT_DIR)/Subsystems/Elevation.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/driver.o : $(PRJ_ROOT_DIR)/Subsystems/driver.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/gate.o : $(PRJ_ROOT_DIR)/Subsystems/gate.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+OBJECTS_CommandBasedRobotTemplate = CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive1.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive2.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive3.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_dn.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_st.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_up.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/square.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/stop.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/OI.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Robot.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/RobotMap.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/driver.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/gate.o
 
 CommandBasedRobotTemplate/$(MODE_DIR)/CommandBasedRobotTemplate.out : $(OBJECTS_CommandBasedRobotTemplate)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@";rm -f "$@";nmppc $(OBJECTS_CommandBasedRobotTemplate) $(IDE_LIBRARIES) | tclsh $(WIND_BASE)/host/resource/hutils/tcl/munch.tcl -c ppc > $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc $(DEBUGFLAGS_Linker) $(CC_ARCH_SPEC) -fdollars-in-identifiers -Wall $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES)  -o $(OBJ_DIR)/ctdt.o -c $(OBJ_DIR)/ctdt.c; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X -T $(WIND_BASE)/target/h/tool/gnu/ldscripts/link.OUT -o "$@" $(OBJ_DIR)/ctdt.o $(OBJECTS_CommandBasedRobotTemplate) $(IDE_LIBRARIES) $(LIBPATH) $(LIBS)  $(ADDED_LIBPATH) $(ADDED_LIBS) && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -206,51 +246,91 @@ CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/% : LIBPATH =
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/% : LIBS = 
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/% : OBJ_DIR := CommandBassedRobotTemplate_partialImage/$(MODE_DIR)
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/AutonomousCommand.o : $(PRJ_ROOT_DIR)/Commands/AutonomousCommand.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.o : $(PRJ_ROOT_DIR)/Commands/AutonomousCommand.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/TrackTarget.o : $(PRJ_ROOT_DIR)/Commands/TrackTarget.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.o : $(PRJ_ROOT_DIR)/Commands/TrackTarget.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_dn.o : $(PRJ_ROOT_DIR)/Commands/move_dn.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive1.o : $(PRJ_ROOT_DIR)/Commands/drive1.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_st.o : $(PRJ_ROOT_DIR)/Commands/move_st.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive2.o : $(PRJ_ROOT_DIR)/Commands/drive2.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_up.o : $(PRJ_ROOT_DIR)/Commands/move_up.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive3.o : $(PRJ_ROOT_DIR)/Commands/drive3.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/OI.o : $(PRJ_ROOT_DIR)/OI.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move.o : $(PRJ_ROOT_DIR)/Commands/move.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Robot.o : $(PRJ_ROOT_DIR)/Robot.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_dn.o : $(PRJ_ROOT_DIR)/Commands/move_dn.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/RobotMap.o : $(PRJ_ROOT_DIR)/RobotMap.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_st.o : $(PRJ_ROOT_DIR)/Commands/move_st.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Subsystems/Elevation.o : $(PRJ_ROOT_DIR)/Subsystems/Elevation.cpp $(FORCE_FILE_BUILD)
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_up.o : $(PRJ_ROOT_DIR)/Commands/move_up.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-OBJECTS_CommandBassedRobotTemplate_partialImage = CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/AutonomousCommand.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/TrackTarget.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_dn.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_st.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_up.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/OI.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Robot.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/RobotMap.o \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Subsystems/Elevation.o
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/square.o : $(PRJ_ROOT_DIR)/Commands/square.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/stop.o : $(PRJ_ROOT_DIR)/Commands/stop.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/OI.o : $(PRJ_ROOT_DIR)/OI.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Robot.o : $(PRJ_ROOT_DIR)/Robot.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.o : $(PRJ_ROOT_DIR)/RobotMap.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o : $(PRJ_ROOT_DIR)/Subsystems/Elevation.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/driver.o : $(PRJ_ROOT_DIR)/Subsystems/driver.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/gate.o : $(PRJ_ROOT_DIR)/Subsystems/gate.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
+OBJECTS_CommandBassedRobotTemplate_partialImage = CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive1.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive2.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive3.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_dn.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_st.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_up.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/square.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/stop.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/OI.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Robot.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/driver.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/gate.o
 
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/CommandBassedRobotTemplate_partialImage.o : $(OBJECTS_CommandBassedRobotTemplate_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_CommandBassedRobotTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -264,12 +344,18 @@ CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/CommandBassedRobotTemplate_p
 
 force : 
 
-DEP_FILES := CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/AutonomousCommand.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/TrackTarget.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_dn.d \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_st.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Commands/move_up.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/OI.d \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Robot.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/RobotMap.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/Robot4/Subsystems/Elevation.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/AutonomousCommand.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/TrackTarget.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_dn.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_st.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Commands/move_up.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/OI.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Robot.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/RobotMap.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/Robot4/Subsystems/Elevation.d
+DEP_FILES := CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive1.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive2.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/drive3.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_dn.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_st.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_up.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/square.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/stop.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/OI.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Robot.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/RobotMap.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/driver.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/gate.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive1.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive2.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive3.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_dn.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_st.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_up.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/square.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/stop.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/OI.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Robot.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/driver.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/gate.d
 -include $(DEP_FILES)
 
 

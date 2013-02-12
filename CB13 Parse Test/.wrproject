@@ -246,12 +246,12 @@
     <buildtargets>
         <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
             <contents>
-                <folder name="/CB2013" recursive="true"/>
+                <folder name="/CB13ParserTest" recursive="true"/>
             </contents>
         </buildtarget>
         <buildtarget buildtool="Partial Image Linker" name="CommandBassedRobotTemplate_partialImage" passed="true" targetname="CommandBassedRobotTemplate_partialImage">
             <contents>
-                <folder name="/CB2013" recursive="true"/>
+                <folder name="/CB13ParserTest" recursive="true"/>
             </contents>
         </buildtarget>
     </buildtargets>
