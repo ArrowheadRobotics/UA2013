@@ -4,7 +4,6 @@
  * Parses autonomous functions read from file that
  * exists within the cRIO's filesystem. 
  * 
- * TODO Check to see if filesystem clears on reboot.
  */
 
 #ifndef MASTACHOLI

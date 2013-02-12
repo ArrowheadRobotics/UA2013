@@ -19,8 +19,6 @@ std::map<std::string,float> ConstParser::getConstants() const {  //return ouput
  * Names cannot have spaces.
  * Values will always be floats.
  * 
- * todo actually write this
- * 
  */
 
 int ConstParser::parseFromFile(const char *filename) {

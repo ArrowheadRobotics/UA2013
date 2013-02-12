@@ -5,15 +5,16 @@
  * file. Use the respective Autonomous.cpp and Teleop.cpp
  * for implementations.
  * 
- * In fact, don't implement anything here.
- * 
- * The only other functions that should be in this file
+
+
+
+
  * should either be shared between teleop and autonomous
  * 
  */
 
-#ifndef RAVIOLI
-#define RAVIOLI
+#ifndef RAVIOLIISVERYYUMMY
+#define RAVIOLIISVERYYUMMY
 
 #include "WPILib.h"
 #include "alec/AutoParser.h"
@@ -23,7 +24,7 @@
 #include "alec/Threading.h"
 
 class Cyberhawk : public SimpleRobot {
-	
+	NetworkTable *server;
 public:
 	Cyberhawk(void);
 	~Cyberhawk(void);

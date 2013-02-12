@@ -2,6 +2,7 @@
  * TCP Socket functionality for intersystemic communication.
  * 
  * TODO Stress test this to hell.
+ * TODO See if we're using this at all.
  */
 
 #ifndef TORTELLINI
