@@ -25,5 +25,7 @@ public:
 	void Down(float);
 	void Stop();
 	void FindBottom();
+	void ShootLoop();
+	void StopShootLoop();
 };
 #endif

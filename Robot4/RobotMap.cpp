@@ -5,6 +5,7 @@ SpeedController* RobotMap::elevationSpd1 = NULL;
 SpeedController* RobotMap::shooterSpd1 = NULL;
 Encoder* RobotMap::elevationqenc = NULL;
 DigitalInput* RobotMap::bottomLimit = NULL;
+DigitalInput* RobotMap::OpticalShoot =NULL;
 
 Solenoid* RobotMap::gatesol1 = NULL;
 Solenoid* RobotMap::gatesol2 = NULL;
@@ -18,18 +19,26 @@ Gyro* RobotMap::drivergyro1 = NULL;
 
 void RobotMap::init() {
 
+	
 	LiveWindow* lw = LiveWindow::GetInstance();
-	elevationSpd1 = new Talon(1, 1);
+	
+	//Elevation *************************
+	elevationSpd1 = new Talon(1, 3);
 	lw->AddActuator("Elevation", "Spd1", (Talon*) elevationSpd1);
 
 	elevationqenc = new Encoder(1, 1, 1, 2, false, Encoder::k4X);
 	lw->AddSensor("Elevation", "qenc", elevationqenc);
 	bottomLimit = new DigitalInput(1, 3);
 	lw->AddSensor("BottomLimit", "bottomLimit", bottomLimit);
+	OpticalShoot = new DigitalInput(1, 10);
+	lw->AddSensor("OpticalShoot", "OpticalShoot", OpticalShoot);
 	elevationqenc->SetDistancePerPulse(1.0);
 	elevationqenc->SetPIDSourceParameter(Encoder::kRate);
 	elevationqenc->Start();
+	shooterSpd1 = new Victor(1,1);
 
+	
+	//Drive ****************************
 	driveren1 = new Encoder(1, 1, 1, 2, true, Encoder::k4X);
 	lw->AddSensor("driver", "en1", driveren1);
 	driveren1->SetDistancePerPulse(1.0);

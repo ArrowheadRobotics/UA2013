@@ -64,3 +64,10 @@ void Elevation::FindBottom() {
 	spd1->Set(0.0f);//Stop the motor
 
 }
+
+void Elevation::ShootLoop(){
+	shooterSpd->Set(1.0f);
+}
+void Elevation::StopShootLoop(){
+	shooterSpd->Set(0.0f);
+}
