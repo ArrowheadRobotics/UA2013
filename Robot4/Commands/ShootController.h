@@ -1,7 +1,7 @@
 
 
-#ifndef DRIVE1_H
-#define DRIVE1_H
+#ifndef SHOOT_H
+#define SHOOT_H
 
 
 #include "Commands/Subsystem.h"
@@ -17,6 +17,7 @@ private:
 	
 	
 public:
+	
 	ShootController();
 	virtual void Initialize();
 	virtual void Execute();

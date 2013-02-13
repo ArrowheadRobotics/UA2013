@@ -5,7 +5,7 @@ SpeedController* RobotMap::elevationSpd1 = NULL;
 SpeedController* RobotMap::shooterSpd1 = NULL;
 Encoder* RobotMap::elevationqenc = NULL;
 DigitalInput* RobotMap::bottomLimit = NULL;
-DigitalInput* RobotMap::OpticalShoot =NULL;
+Counter* RobotMap::OpticalShoot =NULL;
 
 Solenoid* RobotMap::gatesol1 = NULL;
 Solenoid* RobotMap::gatesol2 = NULL;
@@ -28,9 +28,11 @@ void RobotMap::init() {
 
 	elevationqenc = new Encoder(1, 1, 1, 2, false, Encoder::k4X);
 	lw->AddSensor("Elevation", "qenc", elevationqenc);
-	bottomLimit = new DigitalInput(1, 3);
+	bottomLimit = new DigitalInput(1, 7);
 	lw->AddSensor("BottomLimit", "bottomLimit", bottomLimit);
-	OpticalShoot = new DigitalInput(1, 10);
+	OpticalShoot = new Counter(1,10);
+	OpticalShoot->Start();
+	OpticalShoot->Reset();
 	lw->AddSensor("OpticalShoot", "OpticalShoot", OpticalShoot);
 	elevationqenc->SetDistancePerPulse(1.0);
 	elevationqenc->SetPIDSourceParameter(Encoder::kRate);
@@ -39,7 +41,7 @@ void RobotMap::init() {
 
 	
 	//Drive ****************************
-	driveren1 = new Encoder(1, 1, 1, 2, true, Encoder::k4X);
+	driveren1 = new Encoder(1, 4, 1, 8, true, Encoder::k4X);
 	lw->AddSensor("driver", "en1", driveren1);
 	driveren1->SetDistancePerPulse(1.0);
 	driveren1->SetPIDSourceParameter(Encoder::kRate);
@@ -52,7 +54,7 @@ void RobotMap::init() {
 	driverspd2 = new Victor(1, 2);
 	lw->AddActuator("driver", "spd2", (Victor*) driverspd2);
 
-	driverspd1 = new Victor(1, 1);
+	driverspd1 = new Victor(1, 9);//TODO fix
 	lw->AddActuator("driver", "spd1", (Victor*) driverspd1);
 
 	driverdriveTrain = new RobotDrive(driverspd1, driverspd2);

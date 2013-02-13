@@ -20,6 +20,7 @@
 #include "Commands/drive3.h"
 #include "Commands/square.h"
 #include "Commands/stop.h"
+#include "Commands/ShootController.h"
 
 OI::OI() {
 	// Joysticks *****************************************************
@@ -40,6 +41,8 @@ OI::OI() {
 	SmartDashboard::PutData("move_dn", new move_dn());
 	SmartDashboard::PutData("stop", new move_st());
 	SmartDashboard::PutData("TrackTarget", new TrackTarget());
+	SmartDashboard::PutData("Go",new ShootController());
+
 
 	//Drivebase commands
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());

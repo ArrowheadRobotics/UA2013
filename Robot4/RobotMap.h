@@ -15,7 +15,7 @@ public:
 	static SpeedController* elevationSpd1;
 	static Encoder* elevationqenc;
 	static DigitalInput* bottomLimit;
-	static DigitalInput* OpticalShoot;
+	static Counter* OpticalShoot;
 	static SpeedController* shooterSpd1;
 	
 	// Gate *****************************************************

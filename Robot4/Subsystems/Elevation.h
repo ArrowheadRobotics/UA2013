@@ -18,7 +18,13 @@ public:
 	SpeedController* shooterSpd;
 	Encoder* qenc;
 	DigitalInput* bottomLimit;
-
+	Counter* OpticalShoot;
+	double error;             //Proportional (P)
+	double previousError;
+	double errorSum;          //Integral     (I)
+	double errorRateOfChange; //Derivative   (D)
+	double pidCalc(double desiredRPM);
+	void InitPID(double desiredRPM);
 	Elevation();
 	void InitDefaultCommand();
 	void Up(float);

@@ -13,7 +13,7 @@ void Robot::RobotInit() {
 
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
-
+	lw->AddSensor("Elevation","OpticalShoot",Robot::elevation->OpticalShoot);
 	autonomousCommand = new AutonomousCommand();
 
 	elevation->qenc->Reset();
@@ -41,7 +41,7 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	printf("%d\n", elevation->bottomLimit->Get());
+	printf("%f\n", 60.0f/(elevation->OpticalShoot->GetPeriod()));
 }
 void Robot::TestPeriodic() {
 	lw->Run();

@@ -6,6 +6,11 @@
 #include "../OI.h"
 #include "WPILib.h"
 #include "../Robot.h"
+#define CONTROL_LOOP_TIME 0.040 //20 Millisecond loop time
+#define KP 1.0
+#define KI 0.00000
+#define KD 0.00000
+
 Elevation::Elevation() :
 	Subsystem("Elevation") {
 
@@ -13,6 +18,8 @@ Elevation::Elevation() :
 	qenc = RobotMap::elevationqenc;
 	bottomLimit = RobotMap::bottomLimit;
 	shooterSpd = RobotMap::shooterSpd1;
+	OpticalShoot = RobotMap::OpticalShoot;
+	
 }
 
 void Elevation::InitDefaultCommand() {
@@ -51,7 +58,7 @@ void Elevation::Down(float value) {
 }
 void Elevation::Stop() {
 	spd1->Set(0.0);
-	printf("%d\n", Robot::elevation->qenc->Get());
+	//printf("%d\n", Robot::elevation->qenc->Get());
 }
 void Elevation::FindBottom() {
 	/*
@@ -66,8 +73,26 @@ void Elevation::FindBottom() {
 }
 
 void Elevation::ShootLoop(){
-	shooterSpd->Set(1.0f);
+	if(60.0f/(OpticalShoot->GetPeriod())>6000.0f)shooterSpd->Set(0.0f);
+	else shooterSpd->Set(1.0f);
+	
 }
 void Elevation::StopShootLoop(){
 	shooterSpd->Set(0.0f);
+}
+
+void Elevation::InitPID(double desiredRPM){
+	 previousError = desiredRPM - 60.0f/(OpticalShoot->GetPeriod());
+	 errorSum = 0;
+}
+
+double Elevation::pidCalc(double desiredRPM){
+    error = desiredRPM - 60.0f/(OpticalShoot->GetPeriod());
+    errorSum = errorSum + (error*CONTROL_LOOP_TIME);
+    errorRateOfChange = (error - previousError)/CONTROL_LOOP_TIME;
+    previousError = error;
+    double output = 0;
+    output += ((KP*error)+(KI*errorSum)+(KD*errorRateOfChange));
+    if (output < 0.0f) output = 0.0f;//shouldn't ever really happen
+    return output;
 }
