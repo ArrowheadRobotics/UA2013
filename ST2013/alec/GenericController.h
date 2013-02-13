@@ -32,4 +32,21 @@ public:
 	T* operator[](int) const;
 };
 
+template <class T>
+class GenericController2Arg {
+	T **objects;
+	int count;
+public:
+	GenericController2Arg(){};
+	GenericController2Arg(int, ...);
+	
+	~GenericController2Arg();
+
+	void initController(int, ...);
+	
+	int getCount() const;
+	T* getObject(int) const;
+	T* operator[](int) const;
+};
+
 #endif

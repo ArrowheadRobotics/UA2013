@@ -5,11 +5,8 @@
  * file. Use the respective Autonomous.cpp and Teleop.cpp
  * for implementations.
  * 
-
-
-
-
  * should either be shared between teleop and autonomous
+ * 
  * 
  */
 
@@ -26,15 +23,24 @@
 class Cyberhawk : public SimpleRobot {
 	NetworkTable *server;
 	
-	GenericController<Jaguar> 	*drive;
-	GenericController<Victor> 	*vics;
-	GenericController<Solenoid>	*noids;
-	GenericController<Relay> 	*spikes;
+	GenericController<Jaguar> 		drive; // todo replace with talon
+	GenericController<Victor> 		vics;
+	GenericController<Solenoid>		noids;
+	GenericController<Relay> 		spikes;
+	GenericController<DigitalInput>	switches;
 	
-	enum kDrive 	{DR_BACKLEFT, DR_BACKRIGHT, DR_FRONTLEFT, DR_FRONTRIGHT};
-	enum kVictors 	{VI_SHOOTER, VI_ANGLER, VI_UNKNOWN1, VI_UNKNOWN2}; // todo figure out unknowns
-	enum kSolenoids	{SO_SHAFT, /* todo see right */ SO_INTAKEARMS, SO_INTAKEPUSH /* todo figure out if one or two */, SO_SHOOTARM, SO_LIFTARM, SO_TRAYBOT, SO_TRAYTOP};
-	enum kSpikes 	{SP_INTAKE, SP_COMPRESS};
+	GenericController2Arg<Encoder>	encoders;
+	
+	Compressor						compressor;
+	Counter							shootercounter;
+	
+	// todo verify all of these enums
+	enum kDrive			{DR_FRONTRIGHT, DR_FRONTLEFT, DR_BACKRIGHT, DR_BACKLEFT};
+	enum kVictors		{VI_SHOOTER, VI_ANGLER, VI_UNKNOWN1, VI_UNKNOWN2};
+	enum kSolenoids		{SO_SHAFT, SO_INTAKEARMS, SO_INTAKEPUSH, SO_SHOOTARM, SO_LIFTARM, SO_TRAYBOT, SO_TRAYTOP};
+	enum kSpikes		{SP_INTAKE, SP_COMPRESS};
+	enum kSwitches		{DI_INTAKE};
+	enum kEncoders		{EN_RAISER, EN_DRIVELEFT, EN_DRIVERIGHT};
 public:
 	Cyberhawk(void);
 	~Cyberhawk(void);
