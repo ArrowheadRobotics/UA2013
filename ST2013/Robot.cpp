@@ -5,7 +5,7 @@
 
 #include "Robot.h"
 
-Cyberhawk::Cyberhawk() : server() {
+Cyberhawk::Cyberhawk() {
 	server = NetworkTable::GetTable("SmartDashboard");
 }
 
