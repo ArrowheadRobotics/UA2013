@@ -7,6 +7,10 @@ CB2013 is the command based version
 Moebo is dead.  Marked for Potential Deletion
 Robot4 is vision tests project.  Files will be incorperated into CB2013
 
+Important Supporting Documents
+==============================
+IO File: https://docs.google.com/spreadsheet/ccc?key=0Anv6MvTpraCfdC1XT25QcUZ3YTVkUFZ0TmhnUTlfTlE&usp=sharing
+
 Vision
 ======
 Roborealm is used for spatial awareness 
