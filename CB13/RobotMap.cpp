@@ -54,7 +54,7 @@ void RobotMap::init() {
 	driverspd2 = new Victor(1, 2);
 	lw->AddActuator("driver", "spd2", (Victor*) driverspd2);
 	
-	driverspd1 = new Victor(1, 9);//TODO Corey fix
+	driverspd1 = new Victor(1, 9);//TODO Add Wiremap.h
 	lw->AddActuator("driver", "spd1", (Victor*) driverspd1);
 
 	driverdriveTrain = new RobotDrive(driverspd1, driverspd2);
