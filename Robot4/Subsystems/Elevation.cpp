@@ -6,10 +6,16 @@
 #include "../OI.h"
 #include "WPILib.h"
 #include "../Robot.h"
-#define CONTROL_LOOP_TIME 0.040 //20 Millisecond loop time
-#define KP 1.0
-#define KI 0.00000
-#define KD 0.00000
+#define CONTROL_LOOP_TIME 0.040 //40 Millisecond loop time
+/*#define KP 100
+#define KI 15
+#define KD 25*/
+
+extern "C" { 
+	volatile float KP = 150.0f;
+	volatile float KI = 35.0f;
+	volatile float KD = 15.0f;
+};
 
 Elevation::Elevation() :
 	Subsystem("Elevation") {
@@ -86,7 +92,7 @@ void Elevation::InitPID(double desiredRPM){
 	 errorSum = 0;
 }
 
-double Elevation::pidCalc(double desiredRPM){
+void Elevation::pidCalc(double desiredRPM){
     error = desiredRPM - 60.0f/(OpticalShoot->GetPeriod());
     errorSum = errorSum + (error*CONTROL_LOOP_TIME);
     errorRateOfChange = (error - previousError)/CONTROL_LOOP_TIME;
@@ -94,5 +100,6 @@ double Elevation::pidCalc(double desiredRPM){
     double output = 0;
     output += ((KP*error)+(KI*errorSum)+(KD*errorRateOfChange));
     if (output < 0.0f) output = 0.0f;//shouldn't ever really happen
-    return output;
+    shooterSpd->Set(output);
+   // printf("PID output: %f\n",output);
 }

@@ -23,7 +23,7 @@ public:
 	double previousError;
 	double errorSum;          //Integral     (I)
 	double errorRateOfChange; //Derivative   (D)
-	double pidCalc(double desiredRPM);
+	void pidCalc(double desiredRPM);
 	void InitPID(double desiredRPM);
 	Elevation();
 	void InitDefaultCommand();
