@@ -2,31 +2,31 @@ Subsystems
 ======
 Shooter
 -------
--Control shooting motor
--Elevation of the hood
--Vision
--Firing piston
+-Control shooting motor  
+-Elevation of the hood  
+-Vision  
+-Firing piston  
 
 FrisbeeHandler
 -------
--Drive conveyor
--Forklift Piston 
+-Drive conveyor  
+-Forklift Piston   
 
 Gate
 -------
--Front gate control
+-Front gate control  
 
 Driver
 -------
--Smooth Drive
--Turbo
--Regular
--Encoderbased
+-Smooth Drive  
+-Turbo  
+-Regular  
+-Encoderbased  
 
 Climber
 -------
--Arms
--Winch
+-Arms  
+-Winch  
 
 Chute
 -------
