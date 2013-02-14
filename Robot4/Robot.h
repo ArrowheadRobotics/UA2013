@@ -1,5 +1,3 @@
-//Todo Remove RoboBuilder AUTOGEN from this file
-
 #ifndef _ROBOT_H
 #define _ROBOT_H
 #include "WPILib.h"

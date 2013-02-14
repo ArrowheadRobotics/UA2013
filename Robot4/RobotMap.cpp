@@ -53,8 +53,8 @@ void RobotMap::init() {
 	driveren2->Start();
 	driverspd2 = new Victor(1, 2);
 	lw->AddActuator("driver", "spd2", (Victor*) driverspd2);
-
-	driverspd1 = new Victor(1, 9);//TODO fix
+	
+	driverspd1 = new Victor(1, 9);//TODO Corey fix
 	lw->AddActuator("driver", "spd1", (Victor*) driverspd1);
 
 	driverdriveTrain = new RobotDrive(driverspd1, driverspd2);
@@ -71,7 +71,7 @@ void RobotMap::init() {
 	driveren1->SetDistancePerPulse(
 			39 * 3.1415926535897932384626433832795028841971693993 / 14000);
 	driveren2->SetDistancePerPulse(
-			39 * 3.1415926535897932384626433832795028841971693993 / 14000); //Alex likes pi!
+			39 * 3.1415926535897932384626433832795028841971693993 / 14000); //Alex likes pi!  Yes
 	driveren1->Reset();
 	driveren2->Reset();
 	
