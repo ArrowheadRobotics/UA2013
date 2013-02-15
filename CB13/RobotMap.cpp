@@ -13,6 +13,9 @@ Solenoid* RobotMap::gatesol2 = NULL;
 Solenoid* RobotMap::frisbeeHandlersol1 = NULL;
 Solenoid* RobotMap::frisbeeHandlersol2 = NULL;
 
+Solenoid* RobotMap::climbersol1 = NULL;
+Solenoid* RobotMap::climbersol2 = NULL;
+
 Encoder* RobotMap::driveren1 = NULL;
 Encoder* RobotMap::driveren2 = NULL;
 SpeedController* RobotMap::driverspd2 = NULL;

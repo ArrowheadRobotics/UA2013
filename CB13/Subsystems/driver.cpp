@@ -1,6 +1,6 @@
 #include "driver.h"
 #include "../Robotmap.h"
-#include "../robot.h"
+#include "../Robot.h"
 driver::driver() : Subsystem("driver") {
 	en1 = RobotMap::driveren1;
 	en2 = RobotMap::driveren2;

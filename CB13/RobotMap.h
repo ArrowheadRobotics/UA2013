@@ -18,13 +18,17 @@ public:
 	static Counter* OpticalShoot;
 	static SpeedController* shooterSpd1;
 	
-	// Gate *****************************************************
+	// Gate ******************************************************
 	static Solenoid* gatesol1;
 	static Solenoid* gatesol2;
 	
-	// FrisbeeHandler*********************************************
+	// FrisbeeHandler ********************************************
 	static Solenoid* frisbeeHandlersol1;
 	static Solenoid* frisbeeHandlersol2;
+	
+	// Climber ***************************************************
+	static Solenoid* climbersol1;
+	static Solenoid* climbersol2;
 	
 	// Drive *****************************************************
 	static Encoder* driveren1;

@@ -9,6 +9,7 @@
 #include "Subsystems/Elevation.h"
 #include "Subsystems/driver.h"
 #include "Subsystems/frisbeeHandler.h"
+#include "Subsystems/climber.h"
 #include "OI.h"
 class Robot : public IterativeRobot {
 public:
@@ -19,6 +20,7 @@ public:
 	static ::Elevation* elevation;
 	static ::driver* driver;
 	static ::frisbeeHandler* frisbeeHandler;
+	static ::climber* climber;
 	virtual void RobotInit();
 	virtual void AutonomousInit();
 	virtual void AutonomousPeriodic();
