@@ -22,6 +22,10 @@ public:
 	static Solenoid* gatesol1;
 	static Solenoid* gatesol2;
 	
+	// FrisbeeHandler*********************************************
+	static Solenoid* frisbeeHandlersol1;
+	static Solenoid* frisbeeHandlersol2;
+	
 	// Drive *****************************************************
 	static Encoder* driveren1;
 	static Encoder* driveren2;

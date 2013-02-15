@@ -9,8 +9,7 @@ gate::gate() : Subsystem("gate") {
 void gate::InitDefaultCommand() {
 
 }
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+
 void gate::toggle(){
 	if(Robot::gate->sol1->Get()==true){
 		Robot::gate->sol1->Set(false);

@@ -4,12 +4,14 @@ Elevation* Robot::elevation = 0;
 gate* Robot::gate = 0;
 OI* Robot::oi = 0;
 driver* Robot::driver = 0;
+frisbeeHandler* Robot::frisbeeHandler = 0;
 
 void Robot::RobotInit() {
 	RobotMap::init();
 
 	driver = new ::driver();
 	elevation = new Elevation();
+	frisbeeHandler = new ::frisbeeHandler();
 
 	oi = new OI();
 	lw = LiveWindow::GetInstance();

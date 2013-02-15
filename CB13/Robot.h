@@ -8,6 +8,7 @@
 #include "Commands/AutonomousCommand.h"
 #include "Subsystems/Elevation.h"
 #include "Subsystems/driver.h"
+#include "Subsystems/frisbeeHandler.h"
 #include "OI.h"
 class Robot : public IterativeRobot {
 public:
@@ -15,8 +16,9 @@ public:
 	static ::gate* gate;
 	static OI *oi;
 	LiveWindow *lw;
-	static Elevation* elevation;
+	static ::Elevation* elevation;
 	static ::driver* driver;
+	static ::frisbeeHandler* frisbeeHandler;
 	virtual void RobotInit();
 	virtual void AutonomousInit();
 	virtual void AutonomousPeriodic();
