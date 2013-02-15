@@ -28,6 +28,7 @@ class Cyberhawk : public SimpleRobot {
 	GenericController<Solenoid>		noids;
 	GenericController<Relay> 		spikes;
 	GenericController<DigitalInput>	switches;
+	GenericController<Joystick>		sticks;
 	
 	GenericController2Arg<Encoder>	encoders;
 	
@@ -35,12 +36,13 @@ class Cyberhawk : public SimpleRobot {
 	Counter							shootercounter;
 	
 	// todo verify all of these enums
-	enum kDrive			{DR_FRONTRIGHT, DR_FRONTLEFT, DR_BACKRIGHT, DR_BACKLEFT};
+	enum kDrive			{DR_RIGHT, DR_LEFT};
 	enum kVictors		{VI_SHOOTER, VI_ANGLER, VI_UNKNOWN1, VI_UNKNOWN2};
-	enum kSolenoids		{SO_SHAFT, SO_INTAKEARMS, SO_INTAKEPUSH, SO_SHOOTARM, SO_LIFTARM, SO_TRAYBOT, SO_TRAYTOP};
+	enum kSolenoids		{SO_CHUTE_LOW, SO_CHUTE_HI, SO_FIRING, SO_GATE, SO_FORK, SO_ARMS};
 	enum kSpikes		{SP_INTAKE, SP_COMPRESS};
-	enum kSwitches		{DI_INTAKE};
-	enum kEncoders		{EN_RAISER, EN_DRIVELEFT, EN_DRIVERIGHT};
+	enum kSwitches		{SPEED_SO, FORKLIFT_SO, ELEVATION_SO, COMP_PRESSURE };
+	enum KJoysticks		{RIGHT_JOY, LEFT_JOY, ACTIVE_JOY};
+	enum kEncoders		{EN_RAISER_A, EN_RAISER_B, EN_DRIVELEFT_A, EN_DRIVELEFT_B, EN_DRIVERIGHT_A, EN_DRIVERIGHT_B};
 public:
 	Cyberhawk(void);
 	~Cyberhawk(void);
