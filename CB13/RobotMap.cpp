@@ -1,5 +1,6 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
+#include "Wire.h"
 // NULL Inits *********************************
 SpeedController* RobotMap::elevationSpd1 = NULL;
 SpeedController* RobotMap::shooterSpd1 = NULL;
@@ -30,7 +31,7 @@ void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 	
 	//Climber ***************************
-	climberspd1 = new Victor(1, 9);//TODO Add Wiremap.h
+	climberspd1 = new Victor(moduleONE, 9);//TODO Add Wiremap.h
 	lw->AddActuator("climber", "spd1", (Victor*) climberspd1);
 	
 	//Elevation *************************
