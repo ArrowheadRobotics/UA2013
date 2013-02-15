@@ -1,7 +1,3 @@
-/*
- * TODO RN or DEL drive3.cpp
- * This file needs to be renamed so it is more descriptive or deleted from the project
- */
 #include "drive3.h"
 #include "../robot.h"
 drive3::drive3() {

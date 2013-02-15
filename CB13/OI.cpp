@@ -21,6 +21,9 @@
 #include "Commands/square.h"
 #include "Commands/stop.h"
 #include "Commands/ShootController.h"
+#include "Commands/frisbeeToggle.h"
+#include "Commands/climberMove.h"
+#include "Commands/climberToggle.h"
 
 OI::OI() {
 	// Joysticks *****************************************************
@@ -35,6 +38,16 @@ OI::OI() {
 	trButton->WhileHeld(new TrackTarget());
 
 	// SmartDashboard Buttons ***************************************
+	
+	//Frisbee commands
+	SmartDashboard::PutData("frisbeeToggle", new frisbeeToggle());
+	
+	
+	//Climber commands
+	SmartDashboard::PutData("climberMove", new climberMove());
+	SmartDashboard::PutData("climberToggle", new climberToggle());
+	
+	
 	//Shooter elevation commands
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 	SmartDashboard::PutData("move_up", new move_up());
