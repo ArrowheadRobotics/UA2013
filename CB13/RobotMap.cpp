@@ -15,6 +15,7 @@ Solenoid* RobotMap::frisbeeHandlersol2 = NULL;
 
 Solenoid* RobotMap::climbersol1 = NULL;
 Solenoid* RobotMap::climbersol2 = NULL;
+SpeedController* RobotMap::climberspd1 = NULL;
 
 Encoder* RobotMap::driveren1 = NULL;
 Encoder* RobotMap::driveren2 = NULL;
@@ -27,6 +28,10 @@ void RobotMap::init() {
 
 	
 	LiveWindow* lw = LiveWindow::GetInstance();
+	
+	//Climber ***************************
+	climberspd1 = new Victor(1, 9);//TODO Add Wiremap.h
+	lw->AddActuator("climber", "spd1", (Victor*) climberspd1);
 	
 	//Elevation *************************
 	elevationSpd1 = new Talon(1, 3);

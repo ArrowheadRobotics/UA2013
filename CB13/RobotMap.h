@@ -18,6 +18,9 @@ public:
 	static Counter* OpticalShoot;
 	static SpeedController* shooterSpd1;
 	
+	// Climber ***************************************************
+	static SpeedController* climberspd1;
+	
 	// Gate ******************************************************
 	static Solenoid* gatesol1;
 	static Solenoid* gatesol2;

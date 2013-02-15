@@ -15,8 +15,11 @@ private:
 public:
 	Solenoid* sol1;
 	Solenoid* sol2;
+	SpeedController* spd1;
 	climber();
 	void InitDefaultCommand();
 	void toggle();
+	void move(float);
+	void stop();
 };
 #endif
