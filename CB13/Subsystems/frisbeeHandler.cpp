@@ -39,6 +39,6 @@ void frisbeeHandler::conveyorDown(){
 	conveyor->Set(Relay::kReverse);
 }
 void frisbeeHandler::conveyorStaaaaaaahp(){
-	conveyor->Set(Relay::kBothDirections);
+	conveyor->Set(Relay::kOff);
 }
 
