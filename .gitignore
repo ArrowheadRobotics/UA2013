@@ -28,6 +28,8 @@ local.properties
 #WPI ignores
 #####
 CB13/PPC603gnu/**/* 
+/CB13/PPC603gnu/*
+Makefile.*
 
 #################
 ## Visual Studio

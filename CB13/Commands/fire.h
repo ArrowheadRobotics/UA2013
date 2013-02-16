@@ -7,9 +7,9 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class Blank: public Command {
+class Fire: public Command {
 public:
-	Blank();
+	Fire();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
