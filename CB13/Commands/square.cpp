@@ -4,9 +4,9 @@ square::square() {
 }
 // Called just before this Command runs the first time
 void square::Initialize() {
-	Robot::driver->gyro1->Reset();
 	Robot::driver->en1->Reset();
 	Robot::driver->en2->Reset();
+	Robot::driver->gyro1->Reset();
 	while(Robot::driver->en1->GetDistance()<2 || Robot::driver->en2->GetDistance()<2){
 		if(Robot::driver->en1->GetDistance()<2){
 			Robot::driver->spd1->Set(-.2);
