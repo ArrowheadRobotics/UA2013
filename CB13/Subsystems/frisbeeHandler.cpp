@@ -2,11 +2,13 @@
 #include "../Robotmap.h"
 #include "../robot.h"
 #include "WPILib.h"
+#include "../Commands/conveyorDefault.h"
 frisbeeHandler::frisbeeHandler() : Subsystem("frisbeeHandler") {
 	forkUp = RobotMap::frisbeeHandlersol1;
 	forkDown = RobotMap::frisbeeHandlersol2;
 	dump = RobotMap::frisbeeServo;
 	conveyor = RobotMap::conveyor;
+	SetDefaultCommand(new ConveyorDefault());
 }
     
 void frisbeeHandler::InitDefaultCommand() {
@@ -35,5 +37,8 @@ void frisbeeHandler::conveyorUp(){
 }
 void frisbeeHandler::conveyorDown(){
 	conveyor->Set(Relay::kReverse);
+}
+void frisbeeHandler::conveyorStaaaaaaahp(){
+	conveyor->Set(Relay::kBothDirections);
 }
 

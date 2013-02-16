@@ -1,7 +1,10 @@
 #include "Dump.h"
+#include "WPILib.h"
+#include "../Robot.h"
+
 Dump::Dump() {
-	// Use requires() here to declare subsystem dependencies
-	requires(frisbeeHandler);
+	// Use Requires() here to declare subsystem dependencies
+	Requires(Robot::frisbeeHandler);
 }
 // Called just before this Command runs the first time
 void Dump::Initialize() {
