@@ -17,11 +17,11 @@ void frisbeeHandler::InitDefaultCommand() {
 
 void frisbeeHandler::toggle(){
 	if(Robot::frisbeeHandler->forkUp->Get()==true){
-		Robot::frisbeeHandler->forkUp->Set(false);
-		Robot::frisbeeHandler->forkDown->Set(true);
+		RobotMap::frisbeeHandlersol1->Set(false);
+		RobotMap::frisbeeHandlersol2->Set(true);
 	}else{
-		Robot::frisbeeHandler->forkUp->Set(true);
-		Robot::frisbeeHandler->forkDown->Set(false);
+		RobotMap::frisbeeHandlersol1->Set(true);
+		RobotMap::frisbeeHandlersol2->Set(false);
 	}
 }
 

@@ -12,10 +12,10 @@ void gate::InitDefaultCommand() {
 
 void gate::toggle(){
 	if(Robot::gate->sol1->Get()==true){
-		Robot::gate->sol1->Set(false);
-		Robot::gate->sol2->Set(true);
+		RobotMap::gatesol1->Set(false);
+		RobotMap::gatesol2->Set(true);
 	}else{
-		Robot::gate->sol1->Set(true);
-		Robot::gate->sol2->Set(false);
+		RobotMap::gatesol1->Set(true);
+		RobotMap::gatesol2->Set(false);
 	}
 }

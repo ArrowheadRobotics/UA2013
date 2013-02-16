@@ -13,11 +13,11 @@ void climber::InitDefaultCommand() {
 
 void climber::toggle(){
 	if(Robot::climber->sol1->Get()==true){
-		Robot::climber->sol1->Set(false);
-		Robot::climber->sol2->Set(true);
+		RobotMap::climbersol1->Set(false);
+		RobotMap::climbersol2->Set(true);
 	}else{
-		Robot::climber->sol1->Set(true);
-		Robot::climber->sol2->Set(false);
+		RobotMap::climbersol1->Set(true);
+		RobotMap::climbersol2->Set(false);
 	}
 }
 
