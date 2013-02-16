@@ -33,15 +33,16 @@
  
 OI::OI() {
 	// Joysticks *****************************************************
-	gamepad1 = new Joystick(1);
-	gamepad2 = new Joystick(2);
-	upButton = new JoystickButton(gamepad1, 1);
+	gamepad = new Joystick(1);
+	joy1 = new Joystick(2);
+	joy2 = new Joystick(3);
+	upButton = new JoystickButton(gamepad, 1);
 	upButton->WhileHeld(new move_up());
-	dnButton = new JoystickButton(gamepad1, 2);
+	dnButton = new JoystickButton(gamepad, 2);
 	dnButton->WhileHeld(new move_dn());
-	stButton = new JoystickButton(gamepad1, 3);
+	stButton = new JoystickButton(gamepad, 3);
 	stButton->WhileHeld(new move_st());
-	trButton = new JoystickButton(gamepad1, 4);
+	trButton = new JoystickButton(gamepad, 4);
 	trButton->WhileHeld(new TrackTarget());
 
 	// SmartDashboard Buttons ***************************************
@@ -94,9 +95,9 @@ OI::OI() {
 	server2 = NetworkTable::GetTable("");
 
 }
-Joystick* OI::getgamepad1() {
-	return gamepad1;
+Joystick* OI::getjoy1() {
+	return joy1;
 }
-Joystick* OI::getgamepad2() {
-	return gamepad2;
+Joystick* OI::getjoy2() {
+	return joy2;
 }
