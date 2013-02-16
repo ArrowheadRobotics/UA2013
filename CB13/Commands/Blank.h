@@ -7,9 +7,9 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class AutonomousCommand: public Command {
+class Blank: public Command {
 public:
-	AutonomousCommand();
+	Blank();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
