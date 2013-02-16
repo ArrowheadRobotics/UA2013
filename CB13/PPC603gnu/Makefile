@@ -189,6 +189,10 @@ CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/RobotMap.o : $(PRJ_ROOT_DIR)/
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
+CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Chute.o : $(PRJ_ROOT_DIR)/Subsystems/Chute.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o : $(PRJ_ROOT_DIR)/Subsystems/Elevation.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
@@ -231,6 +235,7 @@ OBJECTS_CommandBasedRobotTemplate = CommandBasedRobotTemplate/$(MODE_DIR)/Object
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/OI.o \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Robot.o \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/RobotMap.o \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Chute.o \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/climber.o \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/driver.o \
@@ -353,6 +358,10 @@ CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.o : $(
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
+CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Chute.o : $(PRJ_ROOT_DIR)/Subsystems/Chute.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o : $(PRJ_ROOT_DIR)/Subsystems/Elevation.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
@@ -395,6 +404,7 @@ OBJECTS_CommandBassedRobotTemplate_partialImage = CommandBassedRobotTemplate_par
 	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/OI.o \
 	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Robot.o \
 	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.o \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Chute.o \
 	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.o \
 	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/climber.o \
 	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/driver.o \
@@ -420,16 +430,17 @@ DEP_FILES := CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/Autonom
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_dn.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_st.d \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/move_up.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/square.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Commands/stop.d \
 	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/OI.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Robot.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/RobotMap.d \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/climber.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/driver.d \
-	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/frisbeeHandler.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/gate.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Todo.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/ShootController.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/climberMove.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/climberToggle.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive1.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive2.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive3.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/frisbeeToggle.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_dn.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_st.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_up.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/square.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/stop.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/OI.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Robot.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/climber.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/driver.d \
-	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/frisbeeHandler.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/gate.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Todo.d
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Chute.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/climber.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/driver.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/frisbeeHandler.d CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Subsystems/gate.d \
+	 CommandBasedRobotTemplate/$(MODE_DIR)/Objects/CB13/Todo.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/AutonomousCommand.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/ShootController.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/TrackTarget.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/climberMove.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/climberToggle.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive1.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive2.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/drive3.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/frisbeeToggle.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_dn.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_st.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/move_up.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/square.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Commands/stop.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/OI.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Robot.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/RobotMap.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Chute.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/Elevation.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/climber.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/driver.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/frisbeeHandler.d \
+	 CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Subsystems/gate.d CommandBassedRobotTemplate_partialImage/$(MODE_DIR)/Objects/CB13/Todo.d
 -include $(DEP_FILES)
 
 

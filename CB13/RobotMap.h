@@ -17,6 +17,15 @@ public:
 	static DigitalInput* bottomLimit;
 	static Counter* OpticalShoot;
 	static SpeedController* shooterSpd1;
+	static Solenoid* firingpinIn;
+	static Solenoid* firingpinOut;
+
+	
+	// Climber ***************************************************
+	static Solenoid* chutelowextend;
+	static Solenoid* chutelowretract;
+	static Solenoid* chutehighextend;
+	static Solenoid* chutehighretract;
 	
 	// Climber ***************************************************
 	static SpeedController* climberspd1;

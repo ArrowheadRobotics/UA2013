@@ -25,6 +25,8 @@ Elevation::Elevation() :
 	bottomLimit = RobotMap::bottomLimit;
 	shooterSpd = RobotMap::shooterSpd1;
 	OpticalShoot = RobotMap::OpticalShoot;
+	firingpinIn = RobotMap::firingpinIn;
+	firingpinOut = RobotMap::firingpinOut;
 	
 }
 
@@ -102,4 +104,13 @@ void Elevation::pidCalc(double desiredRPM){
     if (output < 0.0f) output = 0.0f;//shouldn't ever really happen
     shooterSpd->Set(output);
    // printf("PID output: %f\n",output);
+}
+
+void Elevation::fire(){
+	RobotMap::firingpinIn->Set(true);
+	RobotMap::firingpinOut->Set(false);
+}
+void Elevation::recoil(){
+	RobotMap::firingpinIn->Set(false);
+	RobotMap::firingpinOut->Set(true);
 }

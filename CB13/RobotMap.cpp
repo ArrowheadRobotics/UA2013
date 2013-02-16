@@ -27,6 +27,15 @@ SpeedController* RobotMap::driverspd1 = NULL;
 RobotDrive* RobotMap::driverdriveTrain = NULL;
 Gyro* RobotMap::drivergyro1 = NULL;
 
+
+ Solenoid* RobotMap::chutelowextend = NULL;
+ Solenoid* RobotMap::chutelowretract = NULL;
+ Solenoid* RobotMap::chutehighextend = NULL;
+ Solenoid* RobotMap::chutehighretract = NULL;
+
+ Solenoid* RobotMap::firingpinIn = NULL;
+ Solenoid* RobotMap::firingpinOut = NULL;
+ 
 Compressor* compressor = NULL;
 void RobotMap::init() {
 
@@ -53,7 +62,9 @@ void RobotMap::init() {
 	elevationqenc->SetPIDSourceParameter(Encoder::kRate);
 	elevationqenc->Start();
 	shooterSpd1 = new Victor(moduleONE, portSHOOTER);
-
+	firingpinIn = new Solenoid(moduleONE,portFIRINGPININ);
+	firingpinOut = new Solenoid(moduleONE,portFIRINGPINOUT);
+	
 	//Frisbee Hanlder ******************
 	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKUP);
 	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKDOWN);
@@ -65,6 +76,14 @@ void RobotMap::init() {
 	//Compressor ****************************
 	compressor = new Compressor(ioCOMPPRESSURESW,portCOMPRESSOR);
 	compressor->Start();
+	
+	
+	//Chute ****************************
+	chutelowextend = new Solenoid(moduleONE,portCHUTELOWEXTEND);
+	chutelowretract = new Solenoid(moduleONE,portCHUTELOWRETRACT);
+	chutehighextend = new Solenoid(moduleONE,portCHUTEHIGHEXTEND);
+	chutehighretract = new Solenoid(moduleONE,portCHUTEHIGHRETRACT);
+	
 	//Drive ****************************
 	driveren1 = new Encoder(moduleONE, ioDRIVEENCODERLEFTA, moduleONE,
 			ioDRIVEENCODERLEFTB, true, Encoder::k4X);

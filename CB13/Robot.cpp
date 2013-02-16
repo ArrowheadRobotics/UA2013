@@ -6,6 +6,7 @@ OI* Robot::oi = 0;
 driver* Robot::driver = 0;
 frisbeeHandler* Robot::frisbeeHandler = 0;
 climber* Robot::climber = 0;
+Chute* Robot::chute =0;
 
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -14,6 +15,7 @@ void Robot::RobotInit() {
 	elevation = new Elevation();
 	frisbeeHandler = new ::frisbeeHandler();
 	climber = new ::climber();
+	chute = new ::Chute();
 
 	oi = new OI();
 	lw = LiveWindow::GetInstance();

@@ -10,6 +10,7 @@
 #include "Subsystems/driver.h"
 #include "Subsystems/frisbeeHandler.h"
 #include "Subsystems/climber.h"
+#include "Subsystems/Chute.h"
 #include "OI.h"
 class Robot : public IterativeRobot {
 public:
@@ -21,6 +22,7 @@ public:
 	static ::driver* driver;
 	static ::frisbeeHandler* frisbeeHandler;
 	static ::climber* climber;
+	static ::Chute* chute;
 	virtual void RobotInit();
 	virtual void AutonomousInit();
 	virtual void AutonomousPeriodic();

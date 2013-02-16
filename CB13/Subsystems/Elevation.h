@@ -19,6 +19,9 @@ public:
 	Encoder* qenc;
 	DigitalInput* bottomLimit;
 	Counter* OpticalShoot;
+	Solenoid* firingpinIn;
+	Solenoid* firingpinOut;
+	
 	double error;             //Proportional (P)
 	double previousError;
 	double errorSum;          //Integral     (I)
@@ -33,5 +36,7 @@ public:
 	void FindBottom();
 	void ShootLoop();
 	void StopShootLoop();
+	void fire();
+	void recoil();
 };
 #endif
