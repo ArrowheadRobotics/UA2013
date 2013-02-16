@@ -37,7 +37,7 @@ class Cyberhawk : public SimpleRobot {
 	
 	// todo verify all of these enums
 	enum kDrive		{DR_RIGHT, DR_LEFT};
-	enum kVictors		{VI_SHOOTER, VI_ANGLER, VI_UNKNOWN1, VI_UNKNOWN2};
+	enum kVictors		{VI_ELEVATION, VI_SHOOTER, VI_WINCH, VI_DUMP};
 	enum kSolenoids		{SO_CHUTE_LOW, SO_CHUTE_HI, SO_FIRING, SO_GATE, SO_FORK, SO_ARMS};
 	enum kSwitches		{SPEED_SO, FORKLIFT_SO, ELEVATION_SO, COMP_PRESSURE };
 	enum KJoysticks		{RIGHT_JOY, LEFT_JOY, ACTIVE_JOY};
