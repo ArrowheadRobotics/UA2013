@@ -8,7 +8,7 @@ frisbeeHandler::frisbeeHandler() : Subsystem("frisbeeHandler") {
 	forkDown = RobotMap::frisbeeHandlersol2;
 	dump = RobotMap::frisbeeServo;
 	conveyor = RobotMap::conveyor;
-	SetDefaultCommand(new ConveyorDefault());
+	//SetDefaultCommand(new ConveyorDefault());
 }
     
 void frisbeeHandler::InitDefaultCommand() {

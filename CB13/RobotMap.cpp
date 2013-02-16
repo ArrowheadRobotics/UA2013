@@ -36,7 +36,7 @@ Gyro* RobotMap::drivergyro1 = NULL;
  Solenoid* RobotMap::firingpinIn = NULL;
  Solenoid* RobotMap::firingpinOut = NULL;
  
-Compressor* compressor = NULL;
+Compressor* RobotMap::compressor = NULL;
 void RobotMap::init() {
 
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -113,7 +113,7 @@ void RobotMap::init() {
 	driverdriveTrain->SetSensitivity(0.5);
 	driverdriveTrain->SetMaxOutput(1.0);
 
-	drivergyro1 = new Gyro(moduleONE, 9);//TODO create port for gyro
+	drivergyro1 = new Gyro(moduleONE, 1);//TODO create port for gyro
 	drivergyro1->SetSensitivity(.75);
 	lw->AddSensor("driver", "gyro1", drivergyro1);
 
