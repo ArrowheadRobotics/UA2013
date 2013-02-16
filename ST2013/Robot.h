@@ -66,7 +66,7 @@ public:
 	void OperatorControl(void);
 	
 	void Drive(float, float);
-	virtual void Dump(){}; // implement this eventually and remove virtual
+	virtual void Dump(); // implement this eventually and remove virtual
 };
 
 #endif
