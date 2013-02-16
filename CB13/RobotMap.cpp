@@ -75,7 +75,7 @@ void RobotMap::init() {
 	
 	//Compressor ****************************
 	compressor = new Compressor(ioCOMPPRESSURESW,portCOMPRESSOR);
-	compressor->Start();
+
 	
 	
 	//Chute ****************************
