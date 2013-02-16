@@ -24,6 +24,7 @@ void Robot::RobotInit() {
 
 	elevation->qenc->Reset();
 	elevation->qenc->Start();
+	RobotMap::compressor->Start();
 }
 
 void Robot::AutonomousInit() {
