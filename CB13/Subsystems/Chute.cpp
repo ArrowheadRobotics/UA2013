@@ -13,6 +13,11 @@ void Chute::InitDefaultCommand() {
 
 }
 
+void Chute::lowExtend(){}
+void Chute::lowRetract(){}
+void Chute::highExtend(){}
+void Chute::highRetract(){}
+
 void allOn(){
 	Robot::chute->chutehighextend->Set(true);
 	Robot::chute->chutelowextend->Set(true);
