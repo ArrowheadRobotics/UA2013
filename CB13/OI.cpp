@@ -24,6 +24,7 @@
 #include "Commands/frisbeeToggle.h"
 #include "Commands/climberMove.h"
 #include "Commands/climberToggle.h"
+#include "Commands/Dump.h"
 
 OI::OI() {
 	// Joysticks *****************************************************
@@ -39,8 +40,10 @@ OI::OI() {
 
 	// SmartDashboard Buttons ***************************************
 	
-	//Frisbee commands
+	//FrisbeeHandler commands
 	SmartDashboard::PutData("frisbeeToggle", new frisbeeToggle());
+	SmartDashboard::PutData("Dump", new Dump());
+	
 	
 	
 	//Climber commands
