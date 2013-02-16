@@ -56,7 +56,7 @@ GenericController2Arg<T>::GenericController2Arg(int count, ...) {
 	va_list args;
 	va_start(args, count);
 	
-	for(int i = 0; i < count*2; i++)
+	for(int i = 0; i < count*2; i+=2
 		objects[i] = new T(va_arg(args,int), va_arg(args,int));
 	
 	va_end(args);
@@ -75,7 +75,7 @@ void GenericController2Arg<T>::initController(int count, ...) {
 	va_list args;
 	va_start(args, count);
 
-	for(int i = 0; i < count*2; i++)
+	for(int i = 0; i < count*2; i+=2
 		objects[i] = new T(va_arg(args,int), va_arg(args,int));
 	
 	va_end(args);
