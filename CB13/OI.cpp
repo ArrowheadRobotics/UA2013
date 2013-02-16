@@ -24,18 +24,13 @@
 #include "Commands/frisbeeToggle.h"
 #include "Commands/climberMove.h"
 #include "Commands/climberToggle.h"
-<<<<<<< HEAD
-#include "Commands/Dump.h"
-=======
 #include "Commands/gateToggle.h"
 #include "Commands/highExtend.h"
 #include "Commands/highRetract.h"
 #include "Commands/lowExtend.h"
 #include "Commands/lowRetract.h"
 #include "Commands/fire.h"
-#include "Commands/fire.h"
->>>>>>> Added commands to smartDashboard
-
+ 
 OI::OI() {
 	// Joysticks *****************************************************
 	gamepad1 = new Joystick(1);
@@ -51,10 +46,8 @@ OI::OI() {
 
 	// SmartDashboard Buttons ***************************************
 	
-	//FrisbeeHandler commands
+	//Frisbee commands
 	SmartDashboard::PutData("frisbeeToggle", new frisbeeToggle());
-	SmartDashboard::PutData("Dump", new Dump());
-	
 	
 	
 	//Climber commands
@@ -93,8 +86,7 @@ OI::OI() {
 
 	
 	//Firing Pin commands
-	SmartDashboard::PutData("fire", new fire());
-	SmartDashboard::PutData("recoil", new recoil());
+	SmartDashboard::PutData("fire", new Fire());
 	
 	
 	// Network Tables *************************************************
