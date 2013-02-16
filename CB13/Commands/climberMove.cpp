@@ -1,7 +1,7 @@
 #include "climberMove.h"
 #include "../robot.h"
 climberMove::climberMove() {
-	//& Requires(Robot::climber);
+	 Requires(Robot::climber);
 }
 
 void climberMove::Initialize() {

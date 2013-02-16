@@ -4,7 +4,7 @@
 
 Dump::Dump() {
 	// Use Requires() here to declare subsystem dependencies
-	//& Requires(Robot::frisbeeHandler);
+	Requires(Robot::frisbeeHandler);
 }
 // Called just before this Command runs the first time
 void Dump::Initialize() {

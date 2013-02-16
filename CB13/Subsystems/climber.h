@@ -21,5 +21,6 @@ public:
 	void toggle();
 	void move(float);
 	void stop();
+	bool toggle1;
 };
 #endif

@@ -1,7 +1,7 @@
 #include "move_up.h"
 #include "../Subsystems/Elevation.h"
 move_up::move_up() {
-	//*Requires(Robot::elevation);
+	Requires(Robot::elevation);
 	//SetTimeout(0.5);
 }
 // Called just before this Command runs the first time

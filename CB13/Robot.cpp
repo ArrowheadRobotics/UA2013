@@ -12,7 +12,7 @@ void Robot::RobotInit() {
 	RobotMap::init();
 
 	driver = new ::driver();
-	elevation = new Elevation();
+	elevation = new ::Elevation();
 	frisbeeHandler = new ::frisbeeHandler();
 	climber = new ::climber();
 	chute = new ::Chute();

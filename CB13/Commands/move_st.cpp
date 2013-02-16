@@ -1,6 +1,6 @@
 #include "move_st.h"
 move_st::move_st() {
-	//*Requires(Robot::elevation);
+	Requires(Robot::elevation);
 	SetTimeout(.5);
 }
 // Called just before this Command runs the first time
