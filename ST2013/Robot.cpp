@@ -7,16 +7,17 @@
 
 Cyberhawk::Cyberhawk() :	drive(2, 2, 1),  //good
 							vics(4, 4, 3, 8, 9),  //good
-							noids(6,1.1,1.3,1.5,2.1,2.3,2.5),  //good
-							spikes(2, 1, 2),  //good
+							noids(6,1,1,1,3,1,5,2,1,2,3,2,5),  //good
 							switches(4,1,8,9,10),  //good
 							sticks(3, 1, 2, 3),  //good
-							encoders(6, 2, 3, 4 ,5 ,6, 7),  //good
+							encoders(3, 2, 3, 4 ,5 ,6, 7),  //good
 							// todo make sure these match the enums
+							conveyor(1,1),  //good
 							compressor(1,2)  //good
 {
 	server = NetworkTable::GetTable("SmartDashboard");
 	compressor.Start();
+	ugly();
 }
 
 Cyberhawk::~Cyberhawk() {
@@ -25,9 +26,10 @@ Cyberhawk::~Cyberhawk() {
 	delete &drive;
 	delete &vics;
 	delete &noids;
-	delete &spikes;
 	delete &switches;
+	delete &encoders;
 	delete &compressor;
+	delete &conveyor;
 }
 
 START_ROBOT_CLASS(Cyberhawk);
