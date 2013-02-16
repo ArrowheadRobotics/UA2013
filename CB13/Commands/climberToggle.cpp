@@ -1,7 +1,7 @@
 #include "climberToggle.h"
 #include "../robot.h"
 climberToggle::climberToggle() {
-	Requires(Robot::driver);
+	Requires(Robot::climber);
 }
 
 void climberToggle::Initialize() {
