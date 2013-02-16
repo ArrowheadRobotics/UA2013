@@ -1,7 +1,6 @@
-#ifndef UGLYH
-#define UGLYH
+#include "ugly.h"
 
-void ugly() {
+void Ugly::Uglify() {
 	printf("LA STATUA\n");
 	printf("Don Giovanni, a cenar teco\n");
 	printf("M'invitasti e son venuto!\n");
@@ -143,5 +142,3 @@ void ugly() {
 	printf("\n");
 	printf("Cresce il fuoco, compariscono diverse furie, s'impossessano di Don Giovanni e seco lui sprofondano.\n");
 }
-
-#endif
