@@ -10,7 +10,7 @@ void drive3::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void drive3::Execute() {
 	//TODO Update joystiq Here or see note above
-	//Robot::driver->M_drive(Robot::oi->getjoy1(), Robot::oi->getjoy2());
+	Robot::driver->M_drive(Robot::oi->getgamepad1(), Robot::oi->getgamepad2());
 }
 // Make this return true when this Command no longer needs to run execute()
 bool drive3::IsFinished() {

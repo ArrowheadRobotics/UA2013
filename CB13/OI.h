@@ -3,7 +3,8 @@
 #include "WPILib.h"
 class OI {
 private:
-	Joystick* gamepad;
+	Joystick* gamepad1;
+	Joystick* gamepad2;
 	JoystickButton* upButton;
 	JoystickButton* dnButton;
 	JoystickButton* stButton;
@@ -13,6 +14,7 @@ public:
 	OI();
 	NetworkTable* server;
 	NetworkTable* server2;
-	Joystick* getJoy1();
+	Joystick* getgamepad1();
+	Joystick* getgamepad2();
 };
 #endif

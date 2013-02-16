@@ -24,18 +24,29 @@
 #include "Commands/frisbeeToggle.h"
 #include "Commands/climberMove.h"
 #include "Commands/climberToggle.h"
+<<<<<<< HEAD
 #include "Commands/Dump.h"
+=======
+#include "Commands/gateToggle.h"
+#include "Commands/highExtend.h"
+#include "Commands/highRetract.h"
+#include "Commands/lowExtend.h"
+#include "Commands/lowRetract.h"
+#include "Commands/fire.h"
+#include "Commands/fire.h"
+>>>>>>> Added commands to smartDashboard
 
 OI::OI() {
 	// Joysticks *****************************************************
-	gamepad = new Joystick(1);
-	upButton = new JoystickButton(gamepad, 1);
+	gamepad1 = new Joystick(1);
+	gamepad2 = new Joystick(2);
+	upButton = new JoystickButton(gamepad1, 1);
 	upButton->WhileHeld(new move_up());
-	dnButton = new JoystickButton(gamepad, 2);
+	dnButton = new JoystickButton(gamepad1, 2);
 	dnButton->WhileHeld(new move_dn());
-	stButton = new JoystickButton(gamepad, 3);
+	stButton = new JoystickButton(gamepad1, 3);
 	stButton->WhileHeld(new move_st());
-	trButton = new JoystickButton(gamepad, 4);
+	trButton = new JoystickButton(gamepad1, 4);
 	trButton->WhileHeld(new TrackTarget());
 
 	// SmartDashboard Buttons ***************************************
@@ -49,9 +60,21 @@ OI::OI() {
 	//Climber commands
 	SmartDashboard::PutData("climberMove", new climberMove());
 	SmartDashboard::PutData("climberToggle", new climberToggle());
+
 	
 	
-	//Shooter elevation commands
+	//Gate commands
+	SmartDashboard::PutData("gateToggle", new gateToggle());
+	
+	
+	//Solenoid commands
+	SmartDashboard::PutData("highExtend", new highExtend());
+	SmartDashboard::PutData("highRetract", new highRetract());
+	SmartDashboard::PutData("lowExtend", new lowExtend());
+	SmartDashboard::PutData("lowRetract", new lowRetract());
+	
+	
+	//Shooter commands
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 	SmartDashboard::PutData("move_up", new move_up());
 	SmartDashboard::PutData("move_dn", new move_dn());
@@ -64,15 +87,24 @@ OI::OI() {
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 	SmartDashboard::PutData("drive1", new drive1());
 	SmartDashboard::PutData("drive2", new drive2());
-	SmartDashboard::PutData("drive3", new drive3());
+	SmartDashboard::PutData("Tank Drive (drive3)", new drive3());
 	SmartDashboard::PutData("stop", new stop());
 	SmartDashboard::PutData("square", new square());
 
+	
+	//Firing Pin commands
+	SmartDashboard::PutData("fire", new fire());
+	SmartDashboard::PutData("recoil", new recoil());
+	
+	
 	// Network Tables *************************************************
 	server = NetworkTable::GetTable("SmartDashboard");
 	server2 = NetworkTable::GetTable("");
 
 }
-Joystick* OI::getJoy1() {
-	return gamepad;
+Joystick* OI::getgamepad1() {
+	return gamepad1;
+}
+Joystick* OI::getgamepad2() {
+	return gamepad2;
 }
