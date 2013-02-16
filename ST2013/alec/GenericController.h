@@ -54,17 +54,17 @@ public:
 };
 
 template <class T>
-class GeenericControllernArg { //GenericController with generic argument number
+class GenericControllernArg { //GenericController with generic argument number
 	T **objects;
 	int count;
 	int n;  //number of arguments
 public:
-	GenericControllernArg(){};
+//	GenericControllernArg(){};
 	GenericControllernArg(int, int, ...);  //number of objectz, number of arguments per object, objects
 	
 	//same as above
 	
-	~GenericControllernArg();
+//	~GenericControllernArg();
 	
 	void initController(int, int, ...);
 	

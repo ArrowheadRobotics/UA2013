@@ -105,6 +105,7 @@ GenericControllernArg<T>::GenericControllernArg(int count, int n, ...){
 	va_list args;
 	va_start(args, n);
 	
-	for(int i = 0; i < count*n; i+=n)
-		objects[i] = new T(
+	for(int i = 0; i < count*n; i+=n){
+		objects[i] = new T();
+	}
 }
