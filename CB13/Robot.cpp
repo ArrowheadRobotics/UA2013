@@ -16,7 +16,8 @@ void Robot::RobotInit() {
 	frisbeeHandler = new ::frisbeeHandler();
 	climber = new ::climber();
 	chute = new ::Chute();
-
+	gate = new ::gate();
+	
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	lw->AddSensor("Elevation","OpticalShoot",Robot::elevation->OpticalShoot);

@@ -12,14 +12,14 @@ void gate::InitDefaultCommand() {
 }
 
 void gate::toggle(){
-//	if(toggleState){
+	if(toggleState){
 		sol1->Set(false);
 		sol2->Set(true);
-//		
-//	}else{
-//		sol1->Set(true);
-//		sol2->Set(false);
-//		
-//	}
-//	toggleState = !toggleState;
+		
+	}else{
+		sol1->Set(true);
+		sol2->Set(false);
+		
+	}
+	toggleState = !toggleState;
 }

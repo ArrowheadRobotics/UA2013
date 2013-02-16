@@ -1,7 +1,7 @@
 #include "highExtend.h"
 #include "../robot.h"
 highExtend::highExtend() {
-	//*Requires(Robot::chute);
+	Requires(Robot::chute);
 }
 
 void highExtend::Initialize() {
