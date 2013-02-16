@@ -13,8 +13,11 @@ public:
 	Solenoid* chutehighextend;
 	Solenoid* chutehighretract;
 	Chute();
-	void allOn();
-	void allOff();
+	void lowExtend();
+	void lowRetract();
+	void highExtend();
+	void highRetract();
+	
 	void InitDefaultCommand();
 	
 };
