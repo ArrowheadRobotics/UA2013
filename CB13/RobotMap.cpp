@@ -49,8 +49,7 @@ void RobotMap::init() {
 	//Elevation *************************
 	elevationSpd1 = new Talon(moduleONE, portELEVATION);
 	lw->AddActuator("Elevation", "Spd1", (Talon*) elevationSpd1);
-	elevationqenc = new Encoder(moduleONE, ioELEVATIONENCODERA, moduleONE,
-			ioELEVATIONENCODERB, false, Encoder::k4X);
+	elevationqenc = new Encoder(moduleONE, ioELEVATIONENCODERA, moduleONE, ioELEVATIONENCODERB, false, Encoder::k4X);
 	lw->AddSensor("Elevation", "qenc", elevationqenc);
 	bottomLimit = new DigitalInput(moduleONE, ioELEVATIONSWNC);
 	lw->AddSensor("BottomLimit", "bottomLimit", bottomLimit);
@@ -83,6 +82,10 @@ void RobotMap::init() {
 	chutelowretract = new Solenoid(moduleONE,portCHUTELOWRETRACT);
 	chutehighextend = new Solenoid(moduleONE,portCHUTEHIGHEXTEND);
 	chutehighretract = new Solenoid(moduleONE,portCHUTEHIGHRETRACT);
+//	lw->AddActuator("chute","lowExtend", (Solenoid*) chutelowextend);
+//	lw->AddActuator("chute","lowRetract", (Solenoid*) chutelowretract);
+//	lw->AddActuator("chute","highExtend", (Solenoid*) chutehighextend);
+//	lw->AddActuator("chute","highRetract", (Solenoid*) chutehighretract);
 	
 	//Drive ****************************
 	driveren1 = new Encoder(moduleONE, ioDRIVEENCODERLEFTA, moduleONE,
