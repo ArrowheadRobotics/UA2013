@@ -1,7 +1,7 @@
 #include "highRetract.h"
 #include "../robot.h"
 highRetract::highRetract() {
-	Requires(Robot::chute);
+	//*Requires(Robot::chute);
 }
 
 void highRetract::Initialize() {

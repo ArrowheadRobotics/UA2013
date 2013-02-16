@@ -1,7 +1,7 @@
 #include "drive3.h"
 #include "../robot.h"
 drive3::drive3() {
-	Requires(Robot::driver);
+	  Requires(Robot::driver);
 }
 // Called just before this Command runs the first time
 void drive3::Initialize() {

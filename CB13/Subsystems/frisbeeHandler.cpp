@@ -16,12 +16,13 @@ void frisbeeHandler::InitDefaultCommand() {
 
 
 void frisbeeHandler::toggle(){
+	Robot::chute->chutelowextend->Set(false);
 	if(Robot::frisbeeHandler->forkUp->Get()==true){
-		RobotMap::frisbeeHandlersol1->Set(false);
-		RobotMap::frisbeeHandlersol2->Set(true);
+		Robot::frisbeeHandler->forkUp->Set(false);
+		Robot::frisbeeHandler->forkDown->Set(true);
 	}else{
-		RobotMap::frisbeeHandlersol1->Set(true);
-		RobotMap::frisbeeHandlersol2->Set(false);
+		Robot::frisbeeHandler->forkUp->Set(true);
+		Robot::frisbeeHandler->forkDown->Set(false);
 	}
 }
 

@@ -6,7 +6,7 @@ void drive1::Initialize() {
 	Robot::driver->en1->Reset();
 	Robot::driver->en2->Reset();
 	printf("driveInit  ");
-	///*
+	/*
 	drive1::accelerate(.3,5);
 	while(Robot::driver->en1->GetDistance()<5 || Robot::driver->en2->GetDistance()<5){
 		if(Robot::driver->en1->GetDistance()<5){
@@ -76,7 +76,7 @@ void drive1::Initialize() {
 	printf("%f  %d  %f  %d\n", Robot::driver->en1->GetDistance(), Robot::driver->en1->Get(), Robot::driver->en2->GetDistance(), Robot::driver->en2->Get());
 	Robot::driver->en1->Reset();
 	Robot::driver->en2->Reset();
-	//*/
+	*/
 }
 // Called repeatedly when this Command is scheduled to run
 void drive1::Execute() {

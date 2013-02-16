@@ -1,7 +1,7 @@
 #include "gateToggle.h"
 #include "../robot.h"
 gateToggle::gateToggle() {
-	Requires(Robot::gate);
+	//& Requires(Robot::gate);
 }
 
 void gateToggle::Initialize() {

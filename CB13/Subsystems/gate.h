@@ -13,5 +13,6 @@ public:
 	gate();
 	void InitDefaultCommand();
 	void toggle();
+	bool toggleState;
 };
 #endif

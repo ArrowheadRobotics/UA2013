@@ -12,19 +12,19 @@ void climber::InitDefaultCommand() {
 
 
 void climber::toggle(){
-	if(Robot::climber->sol1->Get()==true){
-		RobotMap::climbersol1->Set(false);
-		RobotMap::climbersol2->Set(true);
+	if(sol1->Get()==true){
+		sol1->Set(false);
+		sol2->Set(true);
 	}else{
-		RobotMap::climbersol1->Set(true);
-		RobotMap::climbersol2->Set(false);
+		sol1->Set(true);
+		sol2->Set(false);
 	}
 }
 
 void climber::move(float spd){
-	Robot::climber->spd1->Set(spd);
+	spd1->Set(spd);
 }
 
 void climber::stop(){
-	Robot::climber->spd1->Set(0);
+	spd1->Set(0);
 }

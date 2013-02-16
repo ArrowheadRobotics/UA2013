@@ -1,6 +1,6 @@
 #include "TrackTarget.h"
 TrackTarget::TrackTarget() {
-	Requires(Robot::elevation);
+	//*Requires(Robot::elevation);
 }
 // Called just before this Command runs the first time
 void TrackTarget::Initialize() {

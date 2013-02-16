@@ -72,6 +72,10 @@ void RobotMap::init() {
 	
 
 	
+	//Gate ****************************
+	gatesol1 = new Solenoid(moduleTWO,portGATEEXTEND);
+	gatesol2 = new Solenoid(moduleTWO,portGATERETRACT);
+	
 	//Compressor ****************************
 	compressor = new Compressor(ioCOMPPRESSURESW,portCOMPRESSOR);
 

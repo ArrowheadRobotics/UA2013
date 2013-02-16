@@ -1,6 +1,6 @@
 #include "move_dn.h"
 move_dn::move_dn() {
-	Requires(Robot::elevation);
+	//*Requires(Robot::elevation);
 	SetTimeout(.5);
 }
 // Called just before this Command runs the first time

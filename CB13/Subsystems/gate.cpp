@@ -4,6 +4,7 @@
 gate::gate() : Subsystem("gate") {
 	sol1 = RobotMap::gatesol1;
 	sol2 = RobotMap::gatesol2;
+	toggleState = true;
 }
     
 void gate::InitDefaultCommand() {
@@ -11,11 +12,14 @@ void gate::InitDefaultCommand() {
 }
 
 void gate::toggle(){
-	if(Robot::gate->sol1->Get()==true){
-		RobotMap::gatesol1->Set(false);
-		RobotMap::gatesol2->Set(true);
-	}else{
-		RobotMap::gatesol1->Set(true);
-		RobotMap::gatesol2->Set(false);
-	}
+//	if(toggleState){
+		sol1->Set(false);
+		sol2->Set(true);
+//		
+//	}else{
+//		sol1->Set(true);
+//		sol2->Set(false);
+//		
+//	}
+//	toggleState = !toggleState;
 }
