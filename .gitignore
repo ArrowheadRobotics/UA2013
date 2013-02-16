@@ -24,6 +24,10 @@ local.properties
 # PDT-specific
 .buildpath
 
+#######
+#WPI ignores
+#####
+CB13/PPC603gnu/*.*
 
 #################
 ## Visual Studio
