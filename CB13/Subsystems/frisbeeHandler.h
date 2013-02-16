@@ -24,6 +24,6 @@ public:
 	void dumpDown();
 	void conveyorUp();
 	void conveyorDown();
-	void conveyorStop();
+	void conveyorStaaaaaaahp();
 };
 #endif
