@@ -26,6 +26,8 @@ void GenericController<T>::initController(int count, ...) {
 	
 	va_list args;
 	va_start(args, count);
+	
+	int argcount;
 
 	for(int i = 0; i < count; i++)
 		objects[i] = new T(va_arg(args,int));
