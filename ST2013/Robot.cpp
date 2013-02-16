@@ -6,7 +6,7 @@
 #include "Robot.h"
 
 Cyberhawk::Cyberhawk() :	drive(2, 2, 1),  //good
-							vics(4, 4, 3, 8, 9),  //good
+							vics(3, 3, 4, 5),  //good
 							noids(6,1,1,1,3,1,5,2,1,2,3,2,5),  //good
 							switches(4,1,8,9,10),  //good
 							sticks(3, 1, 2, 3),  //good
@@ -14,6 +14,7 @@ Cyberhawk::Cyberhawk() :	drive(2, 2, 1),  //good
 							// todo make sure these match the enums
 							conveyor(1,1),  //good
 							compressor(1,2)  //good
+							servo(6);  //good
 {
 	server = NetworkTable::GetTable("SmartDashboard");
 	compressor.Start();
