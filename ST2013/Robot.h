@@ -19,16 +19,17 @@
 #include "alec/GenericController.h"
 #include "alec/RoboSock.h"
 #include "alec/Threading.h"
+#include "ugly.h"
 
 class Cyberhawk : public SimpleRobot {
 	NetworkTable *server;
 	
-	GenericController<Jaguar> 		rive; // todo replace with talon
+	GenericController<Jaguar> 		drive; // todo replace with talon
 	GenericController<Victor> 		vics;
 	GenericController2Arg<Solenoid>		noids;
 	GenericController<DigitalInput>		switches;
 	GenericController<Joystick>		sticks;
-	GenericController2Arg<Encoder>		ncoders;
+	GenericController2Arg<Encoder>		encoders;
 	
 	Compressor				compressor;
 	Counter					shootercounter;
