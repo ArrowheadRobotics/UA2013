@@ -95,17 +95,3 @@ template <class T>
 T* GenericController2Arg<T>::operator[](int index) const {
 	return objects[index];
 }
-
-template <class T>
-GenericControllernArg<T>::GenericControllernArg(int count, int n, ...){
-	objects = new T*[count];
-	this->count = count;
-	this->n = n;
-	
-	va_list args;
-	va_start(args, n);
-	
-	for(int i = 0; i < count*n; i+=n){
-		objects[i] = new T();
-	}
-}

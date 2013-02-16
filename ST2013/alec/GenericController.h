@@ -53,26 +53,4 @@ public:
 	T* operator[](int) const;
 };
 
-template <class T>
-class GenericControllernArg { //GenericController with generic argument number
-	T **objects;
-	int count;
-	int n;  //number of arguments
-public:
-//	GenericControllernArg(){};
-	GenericControllernArg(int, int, ...);  //number of objectz, number of arguments per object, objects
-	
-	//same as above
-	
-//	~GenericControllernArg();
-	
-	void initController(int, int, ...);
-	
-	int getCount() const;
-	int getn() const;
-	T* getObject(int) const;
-	T*operator[](int) const;
-};
-	
-
 #endif
