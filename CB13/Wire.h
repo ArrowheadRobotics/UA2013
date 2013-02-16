@@ -22,7 +22,7 @@
 
 //MODULES
 #define moduleONE 1
-#define moduleOTWO 2
+#define moduleTWO 2
 
 //SOLENOID OBJECTS
 #define portCHUTELOWEXTEND 1

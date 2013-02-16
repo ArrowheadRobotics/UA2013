@@ -13,10 +13,16 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	Solenoid* sol1;
-	Solenoid* sol2;
+	Solenoid* forkUp;
+	Solenoid* forkDown;
+	Servo* dump;
+	Relay* conveyor;
 	frisbeeHandler();
 	void InitDefaultCommand();
 	void toggle();
+	void dumpUp();
+	void dumpDown();
+	void conveyorUp();
+	void conveyorDown();
 };
 #endif

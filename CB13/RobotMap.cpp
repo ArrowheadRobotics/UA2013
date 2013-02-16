@@ -6,13 +6,15 @@ SpeedController* RobotMap::elevationSpd1 = NULL;
 SpeedController* RobotMap::shooterSpd1 = NULL;
 Encoder* RobotMap::elevationqenc = NULL;
 DigitalInput* RobotMap::bottomLimit = NULL;
-Counter* RobotMap::OpticalShoot =NULL;
+Counter* RobotMap::OpticalShoot = NULL;
 
 Solenoid* RobotMap::gatesol1 = NULL;
 Solenoid* RobotMap::gatesol2 = NULL;
 
 Solenoid* RobotMap::frisbeeHandlersol1 = NULL;
 Solenoid* RobotMap::frisbeeHandlersol2 = NULL;
+Servo* RobotMap::frisbeeServo = NULL;
+Relay* RobotMap::conveyor = NULL;
 
 Solenoid* RobotMap::climbersol1 = NULL;
 Solenoid* RobotMap::climbersol2 = NULL;
@@ -25,20 +27,21 @@ SpeedController* RobotMap::driverspd1 = NULL;
 RobotDrive* RobotMap::driverdriveTrain = NULL;
 Gyro* RobotMap::drivergyro1 = NULL;
 
+Compressor* compressor = NULL;
 void RobotMap::init() {
 
-	
 	LiveWindow* lw = LiveWindow::GetInstance();
 	
+
 	//Climber ***************************
 	climberspd1 = new Victor(moduleONE, portWINCH);//TODO Add Wiremap.h
 	lw->AddActuator("climber", "spd1", (Victor*) climberspd1);
-	
+
 	//Elevation *************************
 	elevationSpd1 = new Talon(moduleONE, portELEVATION);
 	lw->AddActuator("Elevation", "Spd1", (Talon*) elevationSpd1);
-
-	elevationqenc = new Encoder(moduleONE, ioELEVATIONENCODERA, moduleONE, ioELEVATIONENCODERB, false, Encoder::k4X);
+	elevationqenc = new Encoder(moduleONE, ioELEVATIONENCODERA, moduleONE,
+			ioELEVATIONENCODERB, false, Encoder::k4X);
 	lw->AddSensor("Elevation", "qenc", elevationqenc);
 	bottomLimit = new DigitalInput(moduleONE, ioELEVATIONSWNC);
 	lw->AddSensor("BottomLimit", "bottomLimit", bottomLimit);
@@ -49,23 +52,35 @@ void RobotMap::init() {
 	elevationqenc->SetDistancePerPulse(1.0);
 	elevationqenc->SetPIDSourceParameter(Encoder::kRate);
 	elevationqenc->Start();
-	shooterSpd1 = new Victor(moduleONE,portSHOOTER);
+	shooterSpd1 = new Victor(moduleONE, portSHOOTER);
+
+	//Frisbee Hanlder ******************
+	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKUP);
+	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKDOWN);
+	frisbeeServo = new Servo(moduleONE,portDUMP);
+	conveyor = new Relay(moduleONE,portCONVEYOR);
+	
 
 	
+	//Compressor ****************************
+	compressor = new Compressor(ioCOMPPRESSURESW,portCOMPRESSOR);
+	compressor->Start();
 	//Drive ****************************
-	driveren1 = new Encoder(moduleONE, ioDRIVEENCODERLEFTA, moduleONE, ioDRIVEENCODERLEFTB, true, Encoder::k4X);
+	driveren1 = new Encoder(moduleONE, ioDRIVEENCODERLEFTA, moduleONE,
+			ioDRIVEENCODERLEFTB, true, Encoder::k4X);
 	lw->AddSensor("driver", "en1", driveren1);
 	driveren1->SetDistancePerPulse(1.0);
 	driveren1->SetPIDSourceParameter(Encoder::kRate);
 	driveren1->Start();
-	driveren2 = new Encoder(moduleONE, ioDRIVEENCODERRIGHTA, moduleONE, ioDRIVEENCODERRIGHTB, false, Encoder::k4X);
+	driveren2 = new Encoder(moduleONE, ioDRIVEENCODERRIGHTA, moduleONE,
+			ioDRIVEENCODERRIGHTB, false, Encoder::k4X);
 	lw->AddSensor("driver", "en2", driveren2);
 	driveren2->SetDistancePerPulse(1.0);
 	driveren2->SetPIDSourceParameter(Encoder::kRate);
 	driveren2->Start();
 	driverspd2 = new Victor(moduleONE, portRIGHTDRIVE);
 	lw->AddActuator("driver", "spd2", (Victor*) driverspd2);
-	
+
 	driverspd1 = new Victor(moduleONE, portLEFTDRIVE);
 	lw->AddActuator("driver", "spd1", (Victor*) driverspd1);
 
@@ -83,8 +98,8 @@ void RobotMap::init() {
 	driveren1->SetDistancePerPulse(
 			39 * 3.1415926535897932384626433832795028841971693993 / 14000);
 	driveren2->SetDistancePerPulse(
-			39 * 3.1415926535897932384626433832795028841971693993 / 14000); 
+			39 * 3.1415926535897932384626433832795028841971693993 / 14000);
 	driveren1->Reset();
 	driveren2->Reset();
-	
+
 }

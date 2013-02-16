@@ -1,9 +1,12 @@
 #include "frisbeeHandler.h"
 #include "../Robotmap.h"
 #include "../robot.h"
+#include "WPILib.h"
 frisbeeHandler::frisbeeHandler() : Subsystem("frisbeeHandler") {
-	sol1 = RobotMap::frisbeeHandlersol1;
-	sol2 = RobotMap::frisbeeHandlersol2;
+	forkUp = RobotMap::frisbeeHandlersol1;
+	forkDown = RobotMap::frisbeeHandlersol2;
+	dump = RobotMap::frisbeeServo;
+	conveyor = RobotMap::conveyor;
 }
     
 void frisbeeHandler::InitDefaultCommand() {
@@ -11,11 +14,26 @@ void frisbeeHandler::InitDefaultCommand() {
 
 
 void frisbeeHandler::toggle(){
-	if(Robot::frisbeeHandler->sol1->Get()==true){
-		Robot::frisbeeHandler->sol1->Set(false);
-		Robot::frisbeeHandler->sol2->Set(true);
+	if(Robot::frisbeeHandler->forkUp->Get()==true){
+		Robot::frisbeeHandler->forkUp->Set(false);
+		Robot::frisbeeHandler->forkDown->Set(true);
 	}else{
-		Robot::frisbeeHandler->sol1->Set(true);
-		Robot::frisbeeHandler->sol2->Set(false);
+		Robot::frisbeeHandler->forkUp->Set(true);
+		Robot::frisbeeHandler->forkDown->Set(false);
 	}
 }
+
+void frisbeeHandler::dumpUp(){
+	dump->Set(1.0f);
+}
+void frisbeeHandler::dumpDown(){
+	dump->Set(0.0f);
+}
+
+void frisbeeHandler::conveyorUp(){
+	conveyor->Set(Relay::kForward);
+}
+void frisbeeHandler::conveyorDown(){
+	conveyor->Set(Relay::kReverse);
+}
+

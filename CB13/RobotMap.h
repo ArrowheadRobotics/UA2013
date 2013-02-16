@@ -28,6 +28,8 @@ public:
 	// FrisbeeHandler ********************************************
 	static Solenoid* frisbeeHandlersol1;
 	static Solenoid* frisbeeHandlersol2;
+	static Servo* frisbeeServo;
+	static Relay* conveyor;
 	
 	// Climber ***************************************************
 	static Solenoid* climbersol1;
@@ -42,6 +44,7 @@ public:
 	static Gyro* drivergyro1;
 
 	// Robot *****************************************************
+	static Compressor* compressor;
 	static void init();
 };
 #endif
