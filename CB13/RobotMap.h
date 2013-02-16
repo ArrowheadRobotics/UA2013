@@ -21,6 +21,8 @@ public:
 	static Solenoid* firingpinOut;
 
 	
+	
+	
 	// Climber ***************************************************
 	static Solenoid* chutelowextend;
 	static Solenoid* chutelowretract;
@@ -38,7 +40,7 @@ public:
 	static Solenoid* frisbeeHandlersol1;
 	static Solenoid* frisbeeHandlersol2;
 	static Servo* frisbeeServo;
-	static Relay* conveyor;
+	static Relay* conveyorRelay;
 	
 	// Climber ***************************************************
 	static Solenoid* climbersol1;

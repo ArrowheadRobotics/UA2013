@@ -4,13 +4,12 @@
 
 Dump::Dump() {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(Robot::frisbeeHandler);
+//	Requires(Robot::conveyor);
 }
 // Called just before this Command runs the first time
 void Dump::Initialize() {
 	SetTimeout(5.0f);
-	Robot::frisbeeHandler->dumpUp();
-	Robot::frisbeeHandler->conveyorDown();
+
 }
 // Called repeatedly when this Command is scheduled to run
 void Dump::Execute() {
@@ -22,12 +21,10 @@ bool Dump::IsFinished() {
 }
 // Called once after isFinished returns true
 void Dump::End() {
-	Robot::frisbeeHandler->dumpDown();
-	Robot::frisbeeHandler->conveyorUp();
+
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void Dump::Interrupted() {
-	Robot::frisbeeHandler->dumpDown();
-	Robot::frisbeeHandler->conveyorUp();
+
 }

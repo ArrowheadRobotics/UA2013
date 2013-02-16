@@ -30,6 +30,7 @@
 #include "Commands/lowExtend.h"
 #include "Commands/lowRetract.h"
 #include "Commands/fire.h"
+#include "Commands/Dump.h"
  
 OI::OI() {
 	// Joysticks *****************************************************
@@ -59,6 +60,7 @@ OI::OI() {
 	
 	//Gate commands
 	SmartDashboard::PutData("gateToggle", new gateToggle());
+	SmartDashboard::PutData("Dump", new Dump());
 	
 	
 	//Solenoid commands

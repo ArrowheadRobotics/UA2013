@@ -20,10 +20,5 @@ public:
 	frisbeeHandler();
 	void InitDefaultCommand();
 	void toggle();
-	void dumpUp();
-	void dumpDown();
-	void conveyorUp();
-	void conveyorDown();
-	void conveyorStaaaaaaahp();
 };
 #endif
