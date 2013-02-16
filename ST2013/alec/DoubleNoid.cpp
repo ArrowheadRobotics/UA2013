@@ -7,6 +7,7 @@ DoubleNoid::DoubleNoid(Solenoid *sa, Solenoid *sb, bool def) {
 void DoubleNoid::setNoids(Solenoid *sa, Solenoid *sb, bool def) {
 	a = sa;
 	b = sb;
+	defval = def;
 	setValue(def);
 }
 
@@ -28,6 +29,10 @@ void DoubleNoid::setValue(bool noidvalue) {
 	}
 	
 	value = noidvalue;
+}
+
+void DoubleNoid::setToDefaultValue() {
+	setValue(defval);
 }
 
 bool DoubleNoid::getValue() {

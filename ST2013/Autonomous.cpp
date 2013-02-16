@@ -1,7 +1,6 @@
 #include "Robot.h"
 
 void Cyberhawk::Autonomous() {
-	resetStates();
-	
+	setRobotState(RS_DEFAULT);
 	
 }

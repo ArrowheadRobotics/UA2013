@@ -23,8 +23,8 @@
  * Also: heed warning below.
  */
 
-#ifndef THREADINGH
-#define THREADINGH
+#ifndef RIGATONI
+#define RIGATONI
 
 #include <pthread.h>
 

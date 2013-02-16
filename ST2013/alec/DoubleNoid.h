@@ -12,7 +12,7 @@
 
 class DoubleNoid {
 	Solenoid *a, *b;
-	bool value;
+	bool value, defval;
 public:
 	DoubleNoid(){};
 	DoubleNoid(Solenoid*,Solenoid*,bool=false);
@@ -20,8 +20,9 @@ public:
 	void setNoids(Solenoid*,Solenoid*,bool=false);
 	Solenoid* getNoid(bool); // 0 = a, 1 = b
 	Solenoid* operator[](bool);
-	
+
 	void setValue(bool);
+	void setToDefaultValue();
 	bool getValue();
 };
 

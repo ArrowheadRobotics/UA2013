@@ -202,6 +202,10 @@ RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/Threading.o : $(PRJ_R
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
+RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/stderr.o : $(PRJ_ROOT_DIR)/alec/stderr.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/ugly.o : $(PRJ_ROOT_DIR)/alec/ugly.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
@@ -216,6 +220,7 @@ OBJECTS_RobotCode2013_partialImage = RobotCode2013_partialImage/$(MODE_DIR)/Obje
 	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/PID.o \
 	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/RoboSock.o \
 	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/Threading.o \
+	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/stderr.o \
 	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/ugly.o
 
 RobotCode2013_partialImage/$(MODE_DIR)/RobotCode2013_partialImage.o : $(OBJECTS_RobotCode2013_partialImage)
@@ -233,7 +238,7 @@ force :
 DEP_FILES := RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Autonomous.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Robot.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/Teleop.d \
 	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/AutoParser.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/ConstParser.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/DoubleNoid.d \
 	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/GenericController.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/PID.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/RoboSock.d \
-	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/Threading.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/ugly.d
+	 RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/Threading.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/stderr.d RobotCode2013_partialImage/$(MODE_DIR)/Objects/ST2013/alec/ugly.d
 -include $(DEP_FILES)
 
 
