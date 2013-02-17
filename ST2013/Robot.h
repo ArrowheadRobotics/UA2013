@@ -22,21 +22,22 @@
 #include "alec/DoubleNoid.h"
 #include "alec/stderr.h"
 #include "alec/ugly.h"
+#include <vector>
 
 class Cyberhawk : public SimpleRobot {
+public:
 	NetworkTable *server;
 	
-	GenericController<Jaguar> 			drive; // todo replace with talon
-	GenericController<Victor> 			vics;
-	GenericController2Arg<Solenoid>		noids;
-	GenericController<DigitalInput>		switches;
-	GenericController<Joystick>			sticks;
-	GenericController<Relay>			spikes;
-	GenericController2Arg<Encoder>		encoders;
+	std::vector<Talon*>			drive;
+	std::vector<Victor*> 		vics;
+	std::vector<Solenoid*>		noids;
+	std::vector<DigitalInput*>	switches;
+	std::vector<Joystick*>		sticks;
+	std::vector<Relay*>			spikes;
+	std::vector<Encoder*>		encoders;
 	
 	Compressor							compressor;
 	Counter								cshooter;
-	Servo								elevator;
 	
 	DoubleNoid							*dnoids;
 	
@@ -47,7 +48,7 @@ class Cyberhawk : public SimpleRobot {
 	enum kAdjustableStates	{AS_GATE, AS_FORK, AS_FIRINGPIN, AS_ELEVATOR};
 	
 	enum kDrive				{DR_LEFT, DR_RIGHT};
-	enum kVictors			{VI_SHOOTER, VI_WINCH};
+	enum kVictors			{VI_ELEVATOR, VI_SHOOTER, VI_WINCH};
 	
 	enum kSolenoids			{SO_LOFAN_EXTEND	, SO_LOFAN_RETRACT,
 							 SO_HIFAN_EXTEND	, SO_HIFAN_RETRACT,
@@ -58,7 +59,7 @@ class Cyberhawk : public SimpleRobot {
 
 	enum kDoubleNoids		{DSO_LOFAN, DSO_HIFAN, DSO_FIRINGPIN, DSO_GATE, DSO_FORK, DSO_ARMS};
 	
-	enum kSwitches			{SW_FORK, SW_ELEVATOR, SW_CPRESSURE};
+	enum kSwitches			{SW_FORK, SW_ELEVATOR};
 	enum KJoysticks			{JS_GAMEPAD, JS_LEFT, JS_RIGHT};
 	enum kEncoders			{EN_ELEVATOR, EN_DRIVELEFT, EN_DRIVERIGHT};
 	enum kSpikes			{SP_CONVEYOR}; // todo figure out if dump is used
@@ -67,11 +68,15 @@ class Cyberhawk : public SimpleRobot {
 	kFanPos fanPosition;
 	
 	enum kRobotStates		{RS_DRIVING_OFF, RS_DRIVING_DEF, RS_SHOOTING, RS_LOADING, RS_DEFAULT};
-public:
+	kRobotStates currentRobotState;
+	
+// BELOW BE FUNCTIONS
+	
 	Cyberhawk(void);
 	~Cyberhawk(void);
 	
 	void setRobotState(kRobotStates);
+	int getRobotState();
 	void setAdjustableStates(bool,bool,bool,bool);
 	
 	void Autonomous(void);
@@ -81,7 +86,7 @@ public:
 	int getFanPosition();
 	
 	void Drive(float, float);
-	virtual void Dump(); // implement this eventually and remove virtual
+	void Dump(); // implement this eventually and remove virtual
 };
 
 #endif
