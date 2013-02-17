@@ -17,6 +17,17 @@ void driver::InitDefaultCommand() {
 void driver::M_drive(Joystick* stick1, Joystick* stick2){
 	driveTrain->TankDrive(stick1, stick2);
 }
+void driver::drive2(Joystick* stick1, Joystick* stick2){
+	float s1, s2;
+	s1=stick1->GetY();
+	s2=stick2->GetY();
+	if(s1<.2 && s1>-.2)
+		s1=0;
+	if(s2<.2 && s2>-.2)
+		s2=0;
+	spd1->Set(s1);
+	spd2->Set(s2);
+}
 void driver::read(){
 	printf("Encoder 1 Raw: %d ",Robot::driver->en1->GetRaw());
 	printf("Encoder 1: %d ",Robot::driver->en1->Get());

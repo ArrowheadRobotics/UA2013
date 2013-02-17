@@ -22,6 +22,7 @@ public:
 	driver();
 	void InitDefaultCommand();
 	void M_drive(Joystick* stick1, Joystick* stick2);
+	void drive2(Joystick* stick1, Joystick* stick2);
 	void read();
 	void reset();
 };
