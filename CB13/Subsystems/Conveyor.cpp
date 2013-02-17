@@ -5,6 +5,7 @@
 #include "../Robotmap.h"
 #include "../OI.h"
 #include "WPILib.h"
+#include "../Commands/ConveyorUp.h"
 
 Conveyor::Conveyor() :
 	Subsystem("Conveyor") {
@@ -13,14 +14,18 @@ Conveyor::Conveyor() :
 
 void Conveyor::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new ConveyorUp);
 
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Conveyor::Move(){
-	conv->Set(Relay::kForward);
-	if(RobotMap::forkLiftSW->Get()){
+	
+
+	if(!RobotMap::forkLiftSW->Get()){
 		conv->Set(Relay::kOff);
+	}
+	else{
+		conv->Set(Relay::kForward);
 	}
 }
