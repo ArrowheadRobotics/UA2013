@@ -5,9 +5,6 @@
  * file. Use the respective Autonomous.cpp and Teleop.cpp
  * for implementations.
  * 
- * should either be shared between teleop and autonomous
- * 
- * 
  */
 
 #ifndef RAVIOLI
@@ -21,11 +18,11 @@
 #include "alec/Threading.h"
 #include "alec/DoubleNoid.h"
 #include "alec/stderr.h"
+#include "alec/PID.h"
 #include "alec/ugly.h"
 #include <vector>
 
 class Cyberhawk : public SimpleRobot {
-public:
 	NetworkTable *server;
 	
 	std::vector<Talon*>			drive;
@@ -70,7 +67,7 @@ public:
 	enum kRobotStates		{RS_DRIVING_OFF, RS_DRIVING_DEF, RS_SHOOTING, RS_LOADING, RS_DEFAULT};
 	kRobotStates currentRobotState;
 	
-// BELOW BE FUNCTIONS
+public:
 	
 	Cyberhawk(void);
 	~Cyberhawk(void);

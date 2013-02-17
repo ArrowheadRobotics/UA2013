@@ -5,54 +5,28 @@
 
 #include "Robot.h"
 
-Cyberhawk::Cyberhawk() :	//drive(2, 1, 2),
-							/*vics(2, 4, 5),
-							noids(12,	1,1, 1,2, 1,3, 1,4, 1,5, 1,6,
-										2,1, 2,2, 2,3, 2,4, 2,5, 2,6),
-							switches(4, 1, 8, 9, 10),
-							sticks(3, 1, 2, 3),
-							spikes(1, 1),
-							encoders(3, 2, 3, 4 ,5 ,6, 7),*/
-							compressor(10, 2),
+Cyberhawk::Cyberhawk() :	compressor(10, 2),
 							cshooter(1),
-							//elevator(3),
 							cerr("stderr.txt")
 {
 	server = NetworkTable::GetTable("SmartDashboard");
 	compressor.Start();
 
-	drive.push_back(new Talon(1));
-	drive.push_back(new Talon(2));
-
-	vics.push_back(new Victor(3));
-	vics.push_back(new Victor(4));
-	vics.push_back(new Victor(5));
-	
-	noids.push_back(new Solenoid(1,1));
-	noids.push_back(new Solenoid(1,2));
-	noids.push_back(new Solenoid(1,3));
-	noids.push_back(new Solenoid(1,4));
-	noids.push_back(new Solenoid(1,5));
-	noids.push_back(new Solenoid(1,6));
-	noids.push_back(new Solenoid(2,1));
-	noids.push_back(new Solenoid(2,2));
-	noids.push_back(new Solenoid(2,3));
-	noids.push_back(new Solenoid(2,4));
-	noids.push_back(new Solenoid(2,5));
-	noids.push_back(new Solenoid(2,6));
-	
-	switches.push_back(new DigitalInput(8));
-	switches.push_back(new DigitalInput(9));
-	
-	sticks.push_back(new Joystick(1));
-	sticks.push_back(new Joystick(2));
-	sticks.push_back(new Joystick(3));
-	
+	for(int i = 1; i <= 2; i++)
+		drive.push_back(new Talon(i));
+	for(int i = 3; i <= 5; i++)
+		vics.push_back(new Victor(i));
+	for(int i = 8; i <= 9; i++)
+		switches.push_back(new DigitalInput(i));
+	for(int i = 1; i <= 3; i++)
+		sticks.push_back(new Joystick(i));
 	spikes.push_back(new Relay(1));
-	
-	encoders.push_back(new Encoder(2, 3));
-	encoders.push_back(new Encoder(4, 5));
-	encoders.push_back(new Encoder(6, 7));
+	for(int i = 2; i <= 7; i+=2)
+		encoders.push_back(new Encoder(i, i+1));
+	for(int i = 1; i <= 2; i++) {
+		for(int j = 1; j <= 6; j++)
+			noids.push_back(new Solenoid(i,j));
+	}
 	
 	for(int i = 0; i < 4; i++)
 		canAdjustState[i] = true;
@@ -81,49 +55,62 @@ void Cyberhawk::setRobotState(kRobotStates state) {
 		vics[VI_ELEVATOR]->Set(.3);
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
+		
 		setAdjustableStates(true, true, true, true);
+		
 		for(int i = 2; i < 6; i++) dnoids[i].setToDefaultValue();
 		for(unsigned int i = 0; i < vics.size(); i++) vics[i]->Set(0);
 		for(unsigned int i = 0; i < drive.size(); i++) drive[i]->Set(0);
 		for(unsigned int i = 0; i < spikes.size(); i++) spikes[i]->Set(Relay::kOff);
-		//for(unsigned int i = 0; i < encoders.size(); i++) encoders[i]->Reset();
-		setFan(FAN_UP);
+		for(unsigned int i = 0; i < encoders.size(); i++) encoders[i]->Reset();
+		setFan(FAN_DOWN);
 		cshooter.Reset();
 		break;
+		
 	case RS_DRIVING_OFF: // offensive driving state
 		vics[VI_ELEVATOR]->Set(.3);
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
+		
 		setAdjustableStates(true, true, false, false);
 		setFan(FAN_DOWN);
 		dnoids[DSO_FIRINGPIN].setValue(false);
 		break;
+		
 	case RS_DRIVING_DEF: // defensive driving state
 		vics[VI_ELEVATOR]->Set(.3);
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
+		
 		setAdjustableStates(false, false, false, false);
 		setFan(FAN_UP);
+		
 		dnoids[DSO_GATE].setValue(false);
 		dnoids[DSO_FORK].setValue(false);
 		dnoids[DSO_FIRINGPIN].setValue(false);
 		break;
+		
 	case RS_SHOOTING: // shooting state
 		setAdjustableStates(false, false, true, true);
 		setFan(FAN_DOWN);
+		
 		dnoids[DSO_GATE].setValue(false);
 		dnoids[DSO_FORK].setValue(false);
 		break;
+		
 	case RS_LOADING: // loading state
 		vics[VI_ELEVATOR]->Set(.3);
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
+		
 		setAdjustableStates(false, false, false, false);
 		setFan(FAN_MIDDLE);
+		
 		dnoids[DSO_GATE].setValue(false);
 		dnoids[DSO_FORK].setValue(false);
 		dnoids[DSO_FIRINGPIN].setValue(true);
 		break;
+		
 	default:
 		cerr.write("FATAL ERROR IN STATE SHIFTING\n");
 		break;

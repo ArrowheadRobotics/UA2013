@@ -52,7 +52,9 @@ int ConstParser::parseFromFile(const char *filename) {
 		state = !state;  //inverte state
 	} while((buf2 = strtok(NULL, "=;")) != NULL);  //while the next character is not null
 	
-	delete buf, buf2, key;  //delete temporary stuff
+	delete buf;
+	delete buf2;
+	delete key;  //delete temporary stuff
 	
 	return 0;  //return 0;
 }
