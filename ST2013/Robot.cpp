@@ -5,7 +5,7 @@
 
 #include "Robot.h"
 
-Cyberhawk::Cyberhawk() :	compressor(10, 2),
+Cyberhawk::Cyberhawk() :	compressor(10, 2),  //initilize shit
 							cshooter(1),
 							cerr("stderr.txt")
 {
@@ -50,75 +50,77 @@ void Cyberhawk::setAdjustableStates(bool gate, bool fork, bool firingpin, bool e
 }
 
 void Cyberhawk::setRobotState(kRobotStates state) {
+	printf("Changing state to %i ...", state);
 	switch(state) {
 	case RS_DEFAULT: // allows for a smooth transition between autonomous and teleop, should not be needed anywhere else
-		vics[VI_ELEVATOR]->Set(.3);
+		vics[VI_ELEVATOR]->Set(.3);  //puts elevator at bottom
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
-		setAdjustableStates(true, true, true, true);
+		setAdjustableStates(true, true, true, true);  //resets shit
 		
-		for(int i = 2; i < 6; i++) dnoids[i].setToDefaultValue();
-		for(unsigned int i = 0; i < vics.size(); i++) vics[i]->Set(0);
+		for(int i = 2; i < 6; i++) dnoids[i].setToDefaultValue();  //reset noids
+		for(unsigned int i = 0; i < vics.size(); i++) vics[i]->Set(0);  //reset more shit
 		for(unsigned int i = 0; i < drive.size(); i++) drive[i]->Set(0);
 		for(unsigned int i = 0; i < spikes.size(); i++) spikes[i]->Set(Relay::kOff);
 		for(unsigned int i = 0; i < encoders.size(); i++) encoders[i]->Reset();
-		setFan(FAN_DOWN);
-		cshooter.Reset();
+		setFan(FAN_DOWN);  //put fan down
+		cshooter.Reset();  //reset shooter counter
 		break;
 		
 	case RS_DRIVING_OFF: // offensive driving state
-		vics[VI_ELEVATOR]->Set(.3);
+		vics[VI_ELEVATOR]->Set(.3);  //lower elevator
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
-		setAdjustableStates(true, true, false, false);
+		setAdjustableStates(true, true, false, false);  //gate, fork, firing pin, elevator
 		setFan(FAN_DOWN);
-		dnoids[DSO_FIRINGPIN].setValue(false);
+		dnoids[DSO_FIRINGPIN].setValue(false);  //turn off firing pin
 		break;
 		
 	case RS_DRIVING_DEF: // defensive driving state
-		vics[VI_ELEVATOR]->Set(.3);
+		vics[VI_ELEVATOR]->Set(.3);  //lower elevator (again)
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
-		setAdjustableStates(false, false, false, false);
+		setAdjustableStates(false, false, false, false);  //you cant do shit
 		setFan(FAN_UP);
 		
-		dnoids[DSO_GATE].setValue(false);
+		dnoids[DSO_GATE].setValue(false);  //nothing works
 		dnoids[DSO_FORK].setValue(false);
 		dnoids[DSO_FIRINGPIN].setValue(false);
 		break;
 		
 	case RS_SHOOTING: // shooting state
-		setAdjustableStates(false, false, true, true);
-		setFan(FAN_DOWN);
+		setAdjustableStates(false, false, true, true);  //cant control gate or fork
+		setFan(FAN_DOWN);  //lower fan
 		
-		dnoids[DSO_GATE].setValue(false);
-		dnoids[DSO_FORK].setValue(false);
+		dnoids[DSO_GATE].setValue(false);  //turn off gate
+		dnoids[DSO_FORK].setValue(false);  //turn off fork
 		break;
 		
 	case RS_LOADING: // loading state
-		vics[VI_ELEVATOR]->Set(.3);
+		vics[VI_ELEVATOR]->Set(.3);  //drop elevator
 		while(switches[SW_ELEVATOR] == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
-		setAdjustableStates(false, false, false, false);
-		setFan(FAN_MIDDLE);
+		setAdjustableStates(false, false, false, false);  //cant do shit
+		setFan(FAN_MIDDLE);  //OMG ITS IN THE MIDDLE
 		
-		dnoids[DSO_GATE].setValue(false);
-		dnoids[DSO_FORK].setValue(false);
-		dnoids[DSO_FIRINGPIN].setValue(true);
+		dnoids[DSO_GATE].setValue(false);  //boring
+		dnoids[DSO_FORK].setValue(false);  //boring
+		dnoids[DSO_FIRINGPIN].setValue(true);  //keeps from falling down
 		break;
 		
 	default:
-		cerr.write("FATAL ERROR IN STATE SHIFTING\n");
+		cerr.write("FATAL ERROR IN STATE SHIFTING\n");  //YOU REALLY FUCKED UP
 		break;
 	}
 	currentRobotState = state;
+	printf("Finished changing state.\n");
 }
 
-int Cyberhawk::getRobotState() {
+int Cyberhawk::getRobotState() {	
 	return currentRobotState;
 }
 
@@ -145,8 +147,8 @@ int Cyberhawk::getFanPosition() {
 }
 
 void Cyberhawk::Drive(float left, float right) {
-	drive[DR_LEFT]->Set(left);
-	drive[DR_RIGHT]->Set(right);
+	drive[DR_LEFT]->Set(left/2.f);
+	drive[DR_RIGHT]->Set(-right/2.f);
 }
 
 Cyberhawk::~Cyberhawk() {

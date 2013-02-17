@@ -23,6 +23,7 @@
 #include <vector>
 
 class Cyberhawk : public SimpleRobot {
+public:
 	NetworkTable *server;
 	
 	std::vector<Talon*>			drive;
@@ -34,13 +35,13 @@ class Cyberhawk : public SimpleRobot {
 	std::vector<Encoder*>		encoders;
 	
 	Compressor							compressor;
-	Counter								cshooter;
+	Counter								cshooter;  //counter for the shooter PID Loop
 	
 	DoubleNoid							*dnoids;
 	
-	ErrorContext						cerr;
+	ErrorContext						cerr;  //writes errors to file
 	
-	bool canAdjustState[4];
+	bool canAdjustState[4];  //ability to adjust states
 	
 	enum kAdjustableStates	{AS_GATE, AS_FORK, AS_FIRINGPIN, AS_ELEVATOR};
 	
@@ -67,7 +68,7 @@ class Cyberhawk : public SimpleRobot {
 	enum kRobotStates		{RS_DRIVING_OFF, RS_DRIVING_DEF, RS_SHOOTING, RS_LOADING, RS_DEFAULT};
 	kRobotStates currentRobotState;
 	
-public:
+// HERE BE FUNCTIONS
 	
 	Cyberhawk(void);
 	~Cyberhawk(void);

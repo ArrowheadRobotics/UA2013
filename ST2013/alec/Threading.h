@@ -23,7 +23,7 @@
  * Also: heed warning below.
  */
 
-#ifndef RIGATONI
+#ifndef RIGATONI  //pasta
 #define RIGATONI
 
 #include <pthread.h>
