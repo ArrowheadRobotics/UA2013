@@ -31,6 +31,7 @@
 #include "Commands/lowRetract.h"
 #include "Commands/fire.h"
 #include "Commands/Dump.h"
+#include "Commands/ConveyorUp.h"
  
 OI::OI() {
 	// Joysticks *****************************************************
@@ -55,6 +56,7 @@ OI::OI() {
 	//Climber commands
 	SmartDashboard::PutData("climberMove", new climberMove());
 	SmartDashboard::PutData("climberToggle", new climberToggle());
+	SmartDashboard::PutData("Convey", new ConveyorUp());
 
 	
 	

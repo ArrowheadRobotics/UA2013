@@ -7,10 +7,12 @@ driver* Robot::driver = 0;
 frisbeeHandler* Robot::frisbeeHandler = 0;
 climber* Robot::climber = 0;
 Chute* Robot::chute =0;
-
+Conveyor* Robot::conveyor = 0;
 void Robot::RobotInit() {
 	RobotMap::init();
 
+	
+	conveyor = new ::Conveyor();
 	driver = new ::driver();
 	elevation = new ::Elevation();
 	frisbeeHandler = new ::frisbeeHandler();

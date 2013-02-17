@@ -11,7 +11,7 @@
 #include "Subsystems/frisbeeHandler.h"
 #include "Subsystems/climber.h"
 #include "Subsystems/Chute.h"
-
+#include "Subsystems/Conveyor.h"
 #include "OI.h"
 class Robot : public IterativeRobot {
 public:
@@ -20,6 +20,7 @@ public:
 	static OI *oi;
 	LiveWindow *lw;
 	static ::Elevation* elevation;
+	static ::Conveyor* conveyor;
 	static ::driver* driver;
 	static ::frisbeeHandler* frisbeeHandler;
 	static ::climber* climber;
