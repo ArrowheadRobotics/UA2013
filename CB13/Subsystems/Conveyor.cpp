@@ -20,4 +20,5 @@ void Conveyor::InitDefaultCommand() {
 // here. Call these from Commands.
 void Conveyor::Move(){
 	conv->Set(Relay::kForward);
+	if(RobotMap::forkLiftSW);
 }

@@ -40,7 +40,10 @@ public:
 	static Solenoid* frisbeeHandlersol1;
 	static Solenoid* frisbeeHandlersol2;
 	static Servo* frisbeeServo;
+	
+	
 	static Relay* conveyorRelay;
+	static DigitalInput* forkLiftSW;
 	
 	// Climber ***************************************************
 	static Solenoid* climbersol1;

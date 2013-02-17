@@ -6,6 +6,7 @@ SpeedController* RobotMap::elevationSpd1 = NULL;
 SpeedController* RobotMap::shooterSpd1 = NULL;
 Encoder* RobotMap::elevationqenc = NULL;
 DigitalInput* RobotMap::bottomLimit = NULL;
+DigitalInput* RobotMap::forkLiftSW = NULL;
 Counter* RobotMap::OpticalShoot = NULL;
 
 Solenoid* RobotMap::gatesol1 = NULL;
@@ -68,8 +69,10 @@ void RobotMap::init() {
 	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKUP);
 	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKDOWN);
 	frisbeeServo = new Servo(moduleONE,portDUMP);
-	conveyorRelay = new Relay(moduleONE,portCONVEYOR);
 	
+	//Conveyor
+	conveyorRelay = new Relay(moduleONE,portCONVEYOR);
+	forkLiftSW = new DigitalInput(moduleONE,ioFORKLIFTSWNO);//Todo rename forklife
 
 	
 	//Gate ****************************
