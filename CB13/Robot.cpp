@@ -4,10 +4,10 @@ Elevation* Robot::elevation = 0;
 gate* Robot::gate = 0;
 OI* Robot::oi = 0;
 driver* Robot::driver = 0;
-frisbeeHandler* Robot::frisbeeHandler = 0;
 climber* Robot::climber = 0;
 Chute* Robot::chute =0;
 Conveyor* Robot::conveyor = 0;
+frisbee* Robot::frisbee = 0;
 void Robot::RobotInit() {
 	RobotMap::init();
 
@@ -15,11 +15,10 @@ void Robot::RobotInit() {
 	conveyor = new ::Conveyor();
 	driver = new ::driver();
 	elevation = new ::Elevation();
-	frisbeeHandler = new ::frisbeeHandler();
 	climber = new ::climber();
 	chute = new ::Chute();
 	gate = new ::gate();
-	
+	frisbee = new ::frisbee();
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	lw->AddSensor("Elevation","OpticalShoot",Robot::elevation->OpticalShoot);

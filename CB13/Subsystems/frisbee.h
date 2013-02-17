@@ -1,24 +1,18 @@
-
-#ifndef FRISBEEHANDLER_H
-#define FRISBEEHANDLER_H
+#ifndef FRISBEE_H
+#define FRISBEE_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-/**
- *
- *
- * @author ExampleAuthor
- */
-class frisbeeHandler: public Subsystem {
+
+class frisbee: public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	Solenoid* forkUp;
-	Solenoid* forkDown;
-	Servo* dump;
-	Relay* conveyor;
-	frisbeeHandler();
+	Solenoid* sol1;
+	Solenoid* sol2;
+	frisbee();
 	void InitDefaultCommand();
 	void toggle();
+	bool toggleState;
 };
 #endif

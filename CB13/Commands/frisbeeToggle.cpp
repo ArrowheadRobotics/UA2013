@@ -1,12 +1,11 @@
-
 #include "frisbeeToggle.h"
 #include "../robot.h"
 frisbeeToggle::frisbeeToggle() {
-	Requires(Robot::frisbeeHandler);
+	 Requires(Robot::frisbee);
 }
 
 void frisbeeToggle::Initialize() {
-	Robot::frisbeeHandler->toggle();
+	Robot::frisbee->toggle();
 }
 
 void frisbeeToggle::Execute() {

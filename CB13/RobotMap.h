@@ -37,8 +37,8 @@ public:
 	static Solenoid* gatesol2;
 	
 	// FrisbeeHandler ********************************************
-	static Solenoid* frisbeeHandlersol1;
-	static Solenoid* frisbeeHandlersol2;
+	static Solenoid* frisbeesol1;
+	static Solenoid* frisbeesol2;
 	static Servo* frisbeeServo;
 	
 	

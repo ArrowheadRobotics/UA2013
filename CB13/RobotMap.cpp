@@ -12,8 +12,8 @@ Counter* RobotMap::OpticalShoot = NULL;
 Solenoid* RobotMap::gatesol1 = NULL;
 Solenoid* RobotMap::gatesol2 = NULL;
 
-Solenoid* RobotMap::frisbeeHandlersol1 = NULL;
-Solenoid* RobotMap::frisbeeHandlersol2 = NULL;
+Solenoid* RobotMap::frisbeesol1 = NULL;
+Solenoid* RobotMap::frisbeesol2 = NULL;
 Servo* RobotMap::frisbeeServo = NULL;
 Relay* RobotMap::conveyorRelay = NULL;
 
@@ -66,8 +66,8 @@ void RobotMap::init() {
 	firingpinOut = new Solenoid(moduleONE,portFIRINGPINOUT);
 	
 	//Frisbee Hanlder ******************
-	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKUP);
-	 frisbeeHandlersol1 = new Solenoid(moduleTWO,portFORKDOWN);
+	 frisbeesol1 = new Solenoid(moduleTWO,portFORKUP);
+	 frisbeesol1 = new Solenoid(moduleTWO,portFORKDOWN);
 	frisbeeServo = new Servo(moduleONE,portDUMP);
 	
 	//Conveyor
