@@ -71,7 +71,7 @@ void RobotMap::init() {
 	frisbeeServo = new Servo(moduleONE,portDUMP);
 	
 	//Conveyor
-	conveyorRelay = new Relay(moduleONE,portCONVEYOR);
+	conveyorRelay = new Relay(moduleONE,portCONVEYOR,Relay::kBothDirections);
 	forkLiftSW = new DigitalInput(moduleONE,ioFORKLIFTSWNO);//Todo rename forklife
 
 	
