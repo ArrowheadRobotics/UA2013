@@ -54,7 +54,7 @@ void Cyberhawk::setRobotState(kRobotStates state) {
 	switch(state) {
 	case RS_DEFAULT: // allows for a smooth transition between autonomous and teleop, should not be needed anywhere else
 		vics[VI_ELEVATOR]->Set(.3);  //puts elevator at bottom
-		while(switches[SW_ELEVATOR] == 0);
+		while(switches[SW_ELEVATOR]->Get() == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
 		setAdjustableStates(true, true, true, true);  //resets shit
@@ -70,7 +70,7 @@ void Cyberhawk::setRobotState(kRobotStates state) {
 		
 	case RS_DRIVING_OFF: // offensive driving state
 		vics[VI_ELEVATOR]->Set(.3);  //lower elevator
-		while(switches[SW_ELEVATOR] == 0);
+		while(switches[SW_ELEVATOR]->Get() == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
 		setAdjustableStates(true, true, false, false);  //gate, fork, firing pin, elevator
@@ -80,7 +80,7 @@ void Cyberhawk::setRobotState(kRobotStates state) {
 		
 	case RS_DRIVING_DEF: // defensive driving state
 		vics[VI_ELEVATOR]->Set(.3);  //lower elevator (again)
-		while(switches[SW_ELEVATOR] == 0);
+		while(switches[SW_ELEVATOR]->Get() == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
 		setAdjustableStates(false, false, false, false);  //you cant do shit
@@ -101,7 +101,7 @@ void Cyberhawk::setRobotState(kRobotStates state) {
 		
 	case RS_LOADING: // loading state
 		vics[VI_ELEVATOR]->Set(.3);  //drop elevator
-		while(switches[SW_ELEVATOR] == 0);
+		while(switches[SW_ELEVATOR]->Get() == 0);
 		vics[VI_ELEVATOR]->Set(0);
 		
 		setAdjustableStates(false, false, false, false);  //cant do shit
@@ -147,8 +147,42 @@ int Cyberhawk::getFanPosition() {
 }
 
 void Cyberhawk::Drive(float left, float right) {
-	drive[DR_LEFT]->Set(left/2.f);
-	drive[DR_RIGHT]->Set(-right/2.f);
+	left = left;
+	right = -right;
+	/*float l = sqrt(x*x+y*y)/sqrt(2);
+	drive[DR_LEFT]->Set(-(((y<0)?-1:1)*l*((1-x)/2)));
+	drive[DR_RIGHT]->Set((((y<0)?-1:1)*l*((x+1)/2)));
+	printf("%f %f %f\n", (((y<0)?-1:1)*l*((1-x)/2)), ((((y<0)?-1:1)*l*((x+1)/2))), l);*/
+	static float left_old = 0;
+	static float right_old = 0;
+	float leftvalue = 0;
+	float rightvalue = 0;
+
+	const float k0 = .25, k1 = -.5, k2 = 2, k3 = 2; //k2=forward base, k3=backward base
+
+	if (left < 0) {//forward
+	if (abs(left_old - left) > k0)
+	leftvalue = k1 * left;
+	else
+	leftvalue = ((2 / k2) * (pow(k2, left) - 1));//both must be equal
+
+	} else
+	leftvalue = ((1 / k3) * (pow(k3, left) - 1));
+
+	if (right < 0) {//forward
+	if (abs(right_old - right) > k0)
+	rightvalue = k1 * right;
+	else
+	rightvalue = ((2 / k2) * (pow(k2, right) - 1));//both must equal
+
+	} else
+	rightvalue = ((1 / k3) * (pow(k3, right) - 1));
+
+	left_old = left;
+	right_old = right;
+
+	drive[DR_LEFT]->Set(leftvalue); // sets first canjaguar on left to passed left value
+	drive[DR_RIGHT]->Set(rightvalue); // sets first canjaguar on right to passed right value
 }
 
 Cyberhawk::~Cyberhawk() {

@@ -4,7 +4,7 @@ void* hDrive(void*);
 
 void Cyberhawk::OperatorControl() {
 	setRobotState(RS_DEFAULT); // reset robot
-	setRobotState(RS_DRIVING_DEF); // set to default state for teleop (driving defensive)
+	setRobotState(RS_DRIVING_OFF); // set to default state for teleop (driving defensive)
 	
 	bool buttonBuffer[] = {false, false, false, false, false};  //holds current button values -- used so button presses only register once per press
 	bool defense = true;  //if in defense mode
@@ -13,7 +13,6 @@ void Cyberhawk::OperatorControl() {
 	Thread driving(hDrive, true, (void*)this);  //driving thread -- function to run, run on init, parameters (passing robot object)
 	
 	while(IsEnabled()) {
-		printf("%i %i %i %i %i\n", buttonBuffer[0], buttonBuffer[1], buttonBuffer[2], buttonBuffer[3], buttonBuffer[4]);
 		if(dnoids[DSO_GATE].getValue() == false)
 			spikes[SP_CONVEYOR]->Set(Relay::kOff);
 		
@@ -41,9 +40,9 @@ void Cyberhawk::OperatorControl() {
 			if(getRobotState() == RS_SHOOTING) {  //if your allowed to shoot
 				if(canAdjustState[AS_FIRINGPIN]) {  //if your allowed to shoot (again)
 					vics[VI_SHOOTER]->Set(.5f);  //power up shooting
-					Wait(500);
+					Wait(.5f);
 					dnoids[DSO_FIRINGPIN].setValue(true);  //LAUNCH!!
-					Wait(500);
+					Wait(.5f);
 					dnoids[DSO_FIRINGPIN].setValue(false);  //reset pin
 					vics[VI_SHOOTER]->Set(0.f);  //kill motor
 				}
@@ -62,12 +61,12 @@ void Cyberhawk::OperatorControl() {
 				setRobotState(RS_LOADING);
 		}
 		
-		if(switches[SW_FORK] == 0) {  //if the fork is not at the bottom
+		if(switches[SW_FORK]->Get() == 0) {  //if the fork is not at the bottom
 			spikes[SP_CONVEYOR]->Set(Relay::kOff);  //turn off conveyor
 			if(canAdjustState[AS_FORK]) {  //if you can modify fork
-				Wait(500);
+				Wait(.5f);
 				dnoids[DSO_FORK].setValue(true);  //set fork  up
-				Wait(500);
+				Wait(.5f);
 				dnoids[DSO_FORK].setValue(false);  //set fork down
 			}
 		} else {
@@ -96,7 +95,7 @@ void Cyberhawk::OperatorControl() {
 void* hDrive(void *args) {   //drives  -- used in a separate driving thread
 	Cyberhawk *hawk = (Cyberhawk*)args;
 	while(hawk->IsEnabled()) {
-		hawk->Drive(hawk->sticks[hawk->JS_LEFT]->GetY(), hawk->sticks[hawk->JS_RIGHT]->GetY());
+		hawk->Drive(hawk->sticks[hawk->JS_GAMEPAD]->GetRawAxis(2), hawk->sticks[hawk->JS_GAMEPAD]->GetRawAxis(5));
 	}
 	return 0;
 }  

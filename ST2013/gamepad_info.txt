@@ -1,0 +1,40 @@
+--- AXES ---
+
+	RawAxis 1 - Left Analog Stick X
+		Left is negative
+		Right is positive
+	RawAxis 2 - Left Analog Stick Y
+		Up is negative
+		Down is positive
+	
+	RawAxis 3 - Triggers 
+		Right trigger is negative
+		Left trigger is positive
+		Value is intensity of push
+		When both are pressed simultaneously, the values are summed
+			This is dumb
+		
+	RawAxis 4 - Right Analog Stick X
+		Left is negative
+		Right is positive
+	RawAxis 5 - Right Analog Stick Y
+		Up is negative
+		Down is positive
+		
+	RawAxis 6 - D-Pad
+		Left is negative
+		Right is positive
+		Unsure how up and down behave.
+		
+--- BUTTONS ---
+
+	RawButton 1 - A Button
+	RawButton 2 - B Button
+	RawButton 3 - X Button
+	RawButton 4 - Y Button
+	RawButton 5 - Left Bumper
+	RawButton 6 - Right Bumper
+	RawButton 7 - Back Button
+	RawButton 8 - Start Button
+	RawButton 9 - Left Analog Stick Button
+	RawButton 10 - Right Analog Stick Button

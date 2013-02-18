@@ -21,6 +21,7 @@
 #include "alec/PID.h"
 #include "alec/ugly.h"
 #include <vector>
+#include <math.h>
 
 class Cyberhawk : public SimpleRobot {
 public:
@@ -82,6 +83,8 @@ public:
 
 	void setFan(kFanPos);
 	int getFanPosition();
+	
+	float abs(float in){return ((in<0)?-in:in);};
 	
 	void Drive(float, float);
 	void Dump(); // implement this eventually and remove virtual

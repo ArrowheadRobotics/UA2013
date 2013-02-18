@@ -31,7 +31,7 @@ else
 MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
-WS_ROOT_DIR := C:/Users/Pete/Documents/GitHub/2013UA
+WS_ROOT_DIR := C:/Users/SERVER/Documents/GitHub/2013UA
 PRJ_ROOT_DIR := $(WS_ROOT_DIR)/ST2013
 
 
