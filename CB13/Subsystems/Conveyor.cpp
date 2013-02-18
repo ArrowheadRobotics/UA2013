@@ -24,10 +24,9 @@ void Conveyor::InitDefaultCommand() {
 void Conveyor::Move(){
 	
 
-	if(!RobotMap::forkLiftSW->Get()||!RobotMap::bottomLimit->Get()){
+	if(!RobotMap::forkLiftSW->Get()){
 		conv->Set(Relay::kOff);
-		RobotMap::gatesol1->Set(false);
-		RobotMap::gatesol2->Set(true);
+
 		
 	}
 	else{

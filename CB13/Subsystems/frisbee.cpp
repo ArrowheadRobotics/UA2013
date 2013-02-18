@@ -32,6 +32,10 @@ void Frisbee::toggle() {
 
 void Frisbee::AutoState() {
 //	printf("Timer: %f", t->Get());
+	if(!RobotMap::bottomLimit->Get()){
+		RobotMap::gatesol1->Set(false);
+		RobotMap::gatesol2->Set(true);
+	}
 	if (!RobotMap::forkLiftSW->Get()) {
 		sol1->Set(true);
 		sol2->Set(false);
