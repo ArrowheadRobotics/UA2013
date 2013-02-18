@@ -35,6 +35,7 @@
 #include "Commands/RetractFire.h"
 #include "Commands/LoadFire.h"
 #include "Commands/Dump.h"
+#include "Commands/ClimberStop.h"
 
 
  
@@ -77,8 +78,9 @@ OI::OI() {
 	
 	
 	//Climber commands
-	SmartDashboard::PutData("climberMove", new climberMove());
-	SmartDashboard::PutData("climberToggle", new ClimberToggle());
+	SmartDashboard::PutData("ClimberMove", new ClimberMove());
+	SmartDashboard::PutData("ClimberStop", new ClimberStop());
+	SmartDashboard::PutData("ClimberToggle", new ClimberToggle());
 	SmartDashboard::PutData("Convey", new ConveyorUp());
 
 	

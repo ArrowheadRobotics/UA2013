@@ -1,5 +1,5 @@
-#ifndef CLIMBERMOVE_H
-#define CLIMBERMOVE_H
+#ifndef CLIMBERSTOP_H
+#define CLIMBERSTOP_H
 
 
 #include "Commands/Subsystem.h"
@@ -10,9 +10,9 @@
  *
  * @author ExampleAuthor
  */
-class ClimberMove: public Command {
+class ClimberStop: public Command {
 public:
-	ClimberMove();
+	ClimberStop();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

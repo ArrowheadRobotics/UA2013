@@ -1,24 +1,24 @@
-#include "climberMove.h"
+#include "ClimberMove.h"
 #include "../robot.h"
-climberMove::climberMove() {
+ClimberMove::ClimberMove() {
 	 Requires(Robot::climber);
 }
 
-void climberMove::Initialize() {
-	Robot::climber->move(0.0f);
-}
-
-void climberMove::Execute() {
+void ClimberMove::Initialize() {
 	
 }
 
-bool climberMove::IsFinished() {
+void ClimberMove::Execute() {
+	Robot::climber->move(0.2f);
+}
+
+bool ClimberMove::IsFinished() {
 	return false;
 }
 
-void climberMove::End() {
+void ClimberMove::End() {
 	
 }
 
-void climberMove::Interrupted() {
+void ClimberMove::Interrupted() {
 }
