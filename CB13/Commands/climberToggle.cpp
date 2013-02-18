@@ -1,24 +1,28 @@
-#include "climberToggle.h"
+#include "ClimberToggle.h"
 #include "../robot.h"
-climberToggle::climberToggle() {
+ClimberToggle::ClimberToggle() {
 	Requires(Robot::climber);
 }
 
-void climberToggle::Initialize() {
-	Robot::climber->toggle();
+void ClimberToggle::Initialize() {
+	try {
+		Robot::climber->toggle();
+	} catch (...) {
+		printf("Alex needs to buy a c++ book\n");
+	}
 }
 
-void climberToggle::Execute() {
-	
+void ClimberToggle::Execute() {
+
 }
 
-bool climberToggle::IsFinished() {
+bool ClimberToggle::IsFinished() {
 	return false;
 }
 
-void climberToggle::End() {
-	
+void ClimberToggle::End() {
+
 }
 
-void climberToggle::Interrupted() {
+void ClimberToggle::Interrupted() {
 }

@@ -11,6 +11,12 @@ private:
 	JoystickButton* stButton;
 	JoystickButton* trButton;
 	JoystickButton* rsButton;
+	JoystickButton* gateButton;
+	JoystickButton*	shootButton;
+	JoystickButton* highExtendButton;
+	JoystickButton* highRetractButton;
+	JoystickButton* lowExtendButton;
+	JoystickButton* lowRetractButton;
 public:
 	OI();
 	NetworkTable* server;

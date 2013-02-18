@@ -52,12 +52,12 @@ void Elevation::Down(float value) {
 	 */
 	printf("Down %d", bottomLimit->Get());
 	float setval = 0.0f;
-	if (Robot::elevation->qenc->Get() > 250) {
+	if (Robot::elevation->qenc->Get() > 100) {
 		setval = value;
 	} else {
-		setval = 0.1f;
+		setval = 0.2f;
 	}
-	if (bottomLimit->Get() == 0) {
+	if (bottomLimit->Get() == 1) {
 		Robot::elevation->qenc->Reset();
 		setval = 0.0f;
 
@@ -81,8 +81,7 @@ void Elevation::FindBottom() {
 }
 
 void Elevation::ShootLoop(){
-	if(60.0f/(OpticalShoot->GetPeriod())>6000.0f)shooterSpd->Set(0.0f);
-	else shooterSpd->Set(1.0f);
+	shooterSpd->Set(1.0f);
 	
 }
 void Elevation::StopShootLoop(){

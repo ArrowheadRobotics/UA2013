@@ -8,7 +8,7 @@
  *
  * @author ExampleAuthor
  */
-class climber: public Subsystem {
+class Climber: public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -16,7 +16,7 @@ public:
 	Solenoid* sol1;
 	Solenoid* sol2;
 	SpeedController* spd1;
-	climber();
+	Climber();
 	void InitDefaultCommand();
 	void toggle();
 	void move(float);

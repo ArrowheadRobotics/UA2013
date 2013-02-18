@@ -10,9 +10,9 @@
  *
  * @author ExampleAuthor
  */
-class frisbeeToggle: public Command {
+class FrisbeeToggle: public Command {
 public:
-	frisbeeToggle();
+	FrisbeeToggle();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

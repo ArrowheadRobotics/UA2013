@@ -1,30 +1,28 @@
-#include "AutonomousCommand.h"
-#include "fire.h"
-AutonomousCommand::AutonomousCommand() {
+#include "RetractFire.h"
+
+RetractFire::RetractFire() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 // Called just before this Command runs the first time
-void AutonomousCommand::Initialize() {
-	Robot::elevation->InitPID(6000.0f);
-	Robot::chute->highRetract();
-	Robot::chute->lowRetract();
+void RetractFire::Initialize() {
+	Robot::elevation->recoil();
 	
 }
 // Called repeatedly when this Command is scheduled to run
-void AutonomousCommand::Execute() {
-	Robot::elevation->pidCalc(6000.0f);
-
+void RetractFire::Execute() {
+	
 }
 // Make this return true when this Command no longer needs to run execute()
-bool AutonomousCommand::IsFinished() {
-	return false;
+bool RetractFire::IsFinished() {
+	return true;
 }
 // Called once after isFinished returns true
-void AutonomousCommand::End() {
-	
+void RetractFire::End() {
+
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AutonomousCommand::Interrupted() {
+void RetractFire::Interrupted() {
+	
 }

@@ -46,9 +46,11 @@ void RobotMap::init() {
 	//Climber ***************************
 	climberspd1 = new Victor(moduleONE, portWINCH);//TODO Add Wiremap.h
 	lw->AddActuator("climber", "spd1", (Victor*) climberspd1);
+	climbersol1 = new Solenoid(moduleTWO,portARMSUP);
+	climbersol2 = new Solenoid(moduleTWO,portARMSDOWN);
 
 	//Elevation *************************
-	elevationSpd1 = new Talon(moduleONE, portELEVATION);
+	elevationSpd1 = new Victor(moduleONE, portELEVATION);
 	lw->AddActuator("Elevation", "Spd1", (Talon*) elevationSpd1);
 	elevationqenc = new Encoder(moduleONE, ioELEVATIONENCODERA, moduleONE, ioELEVATIONENCODERB, false, Encoder::k4X);
 	lw->AddSensor("Elevation", "qenc", elevationqenc);
@@ -67,9 +69,9 @@ void RobotMap::init() {
 	
 	//Frisbee Hanlder ******************
 	 frisbeesol1 = new Solenoid(moduleTWO,portFORKUP);
-	 frisbeesol1 = new Solenoid(moduleTWO,portFORKDOWN);
+	 frisbeesol2 = new Solenoid(moduleTWO,portFORKDOWN);
 	frisbeeServo = new Servo(moduleONE,portDUMP);
-	
+
 	//Conveyor
 	conveyorRelay = new Relay(moduleONE,portCONVEYOR,Relay::kBothDirections);
 	forkLiftSW = new DigitalInput(moduleONE,ioFORKLIFTSWNO);//Todo rename forklife

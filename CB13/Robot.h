@@ -9,7 +9,7 @@
 #include "Subsystems/Elevation.h"
 #include "Subsystems/driver.h"
 #include "Subsystems/frisbee.h"
-#include "Subsystems/climber.h"
+#include "Subsystems/Climber.h"
 #include "Subsystems/Chute.h"
 #include "Subsystems/Conveyor.h"
 #include "OI.h"
@@ -22,8 +22,8 @@ public:
 	static ::Elevation* elevation;
 	static ::Conveyor* conveyor;
 	static ::driver* driver;
-	static ::frisbee* frisbee;
-	static ::climber* climber;
+	static ::Frisbee* frisbee;
+	static ::Climber* climber;
 	static ::Chute* chute;
 	virtual void RobotInit();
 	virtual void AutonomousInit();

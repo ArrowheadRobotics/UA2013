@@ -22,8 +22,8 @@
 #include "Commands/stop.h"
 #include "Commands/ShootController.h"
 #include "Commands/frisbeeToggle.h"
-#include "Commands/climberMove.h"
-#include "Commands/climberToggle.h"
+#include "Commands/ClimberMove.h"
+#include "Commands/ClimberToggle.h"
 #include "Commands/gateToggle.h"
 #include "Commands/highExtend.h"
 #include "Commands/highRetract.h"
@@ -32,6 +32,11 @@
 #include "Commands/fire.h"
 #include "Commands/Dump.h"
 #include "Commands/ConveyorUp.h"
+#include "Commands/RetractFire.h"
+#include "Commands/LoadFire.h"
+#include "Commands/Dump.h"
+
+
  
 OI::OI() {
 	// Joysticks *****************************************************
@@ -46,16 +51,34 @@ OI::OI() {
 	stButton->WhileHeld(new move_st());
 	trButton = new JoystickButton(gamepad, 4);
 	trButton->WhileHeld(new TrackTarget());
+	highExtendButton = new JoystickButton(gamepad, 5);
+	highExtendButton->WhileHeld(new highExtend);
+	highRetractButton = new JoystickButton(gamepad, 6);
+	highRetractButton->WhileHeld(new highRetract());
+	lowExtendButton= new JoystickButton(gamepad, 7);
+	lowExtendButton->WhileHeld(new lowExtend());
+	lowRetractButton = new JoystickButton(gamepad, 8);
+	lowRetractButton->WhileHeld(new lowRetract());
+	
+	gateButton = new JoystickButton(joy1, 1);
+	gateButton->WhenPressed(new gateToggle());
+	
+	gateButton = new JoystickButton(joy1, 1);
+	gateButton->WhenPressed(new gateToggle());
+	
+	shootButton = new JoystickButton(joy2, 1);
+	shootButton->WhenPressed(new Fire());
 
 	// SmartDashboard Buttons ***************************************
 	
 	//Frisbee commands
-	SmartDashboard::PutData("frisbeeToggle", new frisbeeToggle());
+	SmartDashboard::PutData("frisbeeToggle", new FrisbeeToggle());
+	SmartDashboard::PutData("Dump", new Dump());
 	
 	
 	//Climber commands
 	SmartDashboard::PutData("climberMove", new climberMove());
-	SmartDashboard::PutData("climberToggle", new climberToggle());
+	SmartDashboard::PutData("climberToggle", new ClimberToggle());
 	SmartDashboard::PutData("Convey", new ConveyorUp());
 
 	
@@ -92,6 +115,8 @@ OI::OI() {
 	
 	//Firing Pin commands
 	SmartDashboard::PutData("fire", new Fire());
+	SmartDashboard::PutData("LoadFire", new LoadFire());
+	SmartDashboard::PutData("RetractFire", new RetractFire());
 	
 	
 	// Network Tables *************************************************

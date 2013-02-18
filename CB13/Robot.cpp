@@ -4,10 +4,10 @@ Elevation* Robot::elevation = 0;
 gate* Robot::gate = 0;
 OI* Robot::oi = 0;
 driver* Robot::driver = 0;
-climber* Robot::climber = 0;
+Climber* Robot::climber = 0;
 Chute* Robot::chute =0;
 Conveyor* Robot::conveyor = 0;
-frisbee* Robot::frisbee = 0;
+Frisbee* Robot::frisbee = 0;
 void Robot::RobotInit() {
 	RobotMap::init();
 
@@ -15,10 +15,10 @@ void Robot::RobotInit() {
 	conveyor = new ::Conveyor();
 	driver = new ::driver();
 	elevation = new ::Elevation();
-	climber = new ::climber();
+	climber = new ::Climber();
 	chute = new ::Chute();
 	gate = new ::gate();
-	frisbee = new ::frisbee();
+	frisbee = new ::Frisbee();
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	lw->AddSensor("Elevation","OpticalShoot",Robot::elevation->OpticalShoot);
@@ -36,6 +36,8 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+	Robot::elevation->fire();
+	Robot::elevation->recoil();
 }
 
 void Robot::TeleopInit() {
@@ -50,7 +52,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	printf("%f\n", 60.0f/(elevation->OpticalShoot->GetPeriod()));
+//printf("%f\n", elevation->qenc->Get());
+	Robot::elevation->ShootLoop();
 }
 void Robot::TestPeriodic() {
 	lw->Run();

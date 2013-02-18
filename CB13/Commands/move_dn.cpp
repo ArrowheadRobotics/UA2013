@@ -24,7 +24,7 @@ void move_dn::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void move_dn::Execute() {
-	Robot::elevation->Down(-.3f);
+	Robot::elevation->Down(.3f);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool move_dn::IsFinished() {

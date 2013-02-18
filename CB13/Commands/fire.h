@@ -1,7 +1,7 @@
 
 
-#ifndef BLANK_H
-#define BLANK_H
+#ifndef FIRE_H
+#define FIRE_H
 
 
 #include "Commands/Subsystem.h"

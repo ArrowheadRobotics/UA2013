@@ -1,18 +1,15 @@
-#ifndef CLIMBERTOGGLE_H
-#define CLIMBERTOGGLE_H
+
+
+#ifndef CLIMBERUP_H
+#define CLIMBERUP_H
 
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-/**
- *
- *
- * @author ExampleAuthor
- */
-class ClimberToggle: public Command {
+class ClimberUp: public Command {
 public:
-	ClimberToggle();
+	ClimberUp();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

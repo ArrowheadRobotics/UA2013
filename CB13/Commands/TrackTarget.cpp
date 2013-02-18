@@ -18,10 +18,10 @@ void TrackTarget::Execute() {
 			printf("FAILBLOG.ORG\n");
 			}
 	if(height>125) {
-		Robot::elevation->Up(.7*(height-120.0f)/120);
+		Robot::elevation->Up(-.7*(height-120.0f)/120);
 		printf(" %f\n",height);
 	}else if (height<115){
-		Robot::elevation->Down(.7*(height-120.0f)/120);
+		Robot::elevation->Down(-.7*(height-120.0f)/120);
 		printf("Up %f\n",height);
 	}
 	else{

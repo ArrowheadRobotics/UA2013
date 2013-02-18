@@ -13,7 +13,7 @@ void gateToggle::Execute() {
 }
 
 bool gateToggle::IsFinished() {
-	return false;
+	return true;
 }
 
 void gateToggle::End() {

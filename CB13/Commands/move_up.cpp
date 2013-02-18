@@ -13,7 +13,7 @@ void move_up::Initialize() {
 void move_up::Execute() {
 	//Robot::elevation->spd1->Set(Robot::oi->getJoy1()->GetY());
 	//printf("encoder %d\n",Robot::elevation->qenc->Get());
-	Robot::elevation->Up(.3f);
+	Robot::elevation->Up(-.3f);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool move_up::IsFinished() {

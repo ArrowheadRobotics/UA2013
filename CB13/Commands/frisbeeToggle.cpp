@@ -1,24 +1,26 @@
-#include "frisbeeToggle.h"
+#include "FrisbeeToggle.h"
 #include "../robot.h"
-frisbeeToggle::frisbeeToggle() {
+FrisbeeToggle::FrisbeeToggle() {
 	 //Requires(Robot::frisbee);
+	SetTimeout(1.0f);
 }
 
-void frisbeeToggle::Initialize() {
-	Robot::gate->toggle();
+void FrisbeeToggle::Initialize() {
+	Robot::frisbee->toggle();
 }
 
-void frisbeeToggle::Execute() {
+void FrisbeeToggle::Execute() {
 	
 }
 
-bool frisbeeToggle::IsFinished() {
-	return false;
+bool FrisbeeToggle::IsFinished() {
+	return IsTimedOut();
 }
 
-void frisbeeToggle::End() {
-	
+void FrisbeeToggle::End() {
+	Robot::frisbee->toggle();
 }
 
-void frisbeeToggle::Interrupted() {
+void FrisbeeToggle::Interrupted() {
+	Robot::frisbee->toggle();
 }

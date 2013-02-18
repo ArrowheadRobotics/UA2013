@@ -1,6 +1,7 @@
 #include "driver.h"
 #include "../Robotmap.h"
 #include "../Robot.h"
+#include "../Commands/drive3.h"
 driver::driver() : Subsystem("driver") {
 	en1 = RobotMap::driveren1;
 	en2 = RobotMap::driveren2;
@@ -11,6 +12,7 @@ driver::driver() : Subsystem("driver") {
 }
     
 void driver::InitDefaultCommand() {
+	SetDefaultCommand(new drive3);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

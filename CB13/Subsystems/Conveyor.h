@@ -1,4 +1,5 @@
 
+
 #ifndef CONVEYOR_H
 #define CONVEYOR_H
 #include "Commands/Subsystem.h"
@@ -17,5 +18,9 @@ public:
 	void InitDefaultCommand();
 	void Move();
 	Relay* conv;
+	Servo* dumpsty;
+	void Purge();
+	void UnPurge();
+	bool cycled;
 };
 #endif
