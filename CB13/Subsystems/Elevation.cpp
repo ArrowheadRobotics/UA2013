@@ -68,6 +68,10 @@ void Elevation::Stop() {
 	spd1->Set(0.0);
 	//printf("%d\n", Robot::elevation->qenc->Get());
 }
+void Elevation::ShooterStop() {
+	shooterSpd->Set(0.0);
+	//printf("%d\n", Robot::elevation->qenc->Get());
+}
 void Elevation::FindBottom() {
 	/*
 	 * Finds the bottom and resets the encoder

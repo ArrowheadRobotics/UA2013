@@ -11,6 +11,7 @@ void ForkLiftDefault::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ForkLiftDefault::Execute() {
 	Robot::frisbee->AutoState();
+	
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ForkLiftDefault::IsFinished() {

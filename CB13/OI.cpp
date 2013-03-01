@@ -68,7 +68,7 @@ OI::OI() {
 	gateButton->WhenPressed(new gateToggle());
 	
 	shootButton = new JoystickButton(joy2, 1);
-	shootButton->WhenPressed(new Fire());
+	shootButton->WhileHeld(new Fire());
 
 	// SmartDashboard Buttons ***************************************
 	

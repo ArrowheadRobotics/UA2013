@@ -10,6 +10,7 @@
 class Fire: public Command {
 public:
 	Fire();
+	Timer* t;
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

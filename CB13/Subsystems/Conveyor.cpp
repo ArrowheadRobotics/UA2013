@@ -25,24 +25,22 @@ void Conveyor::Move(){
 	
 
 	if(!RobotMap::forkLiftSW->Get()){
-		conv->Set(Relay::kOff);
-
-		
+		conv->Set(Relay::kOff);		
 	}
 	else{
 		conv->Set(Relay::kForward);
 	
 	}
-	dumpsty->Set(0.0f);
+	dumpsty->Set(1.0f);
 	
 }
 
 void Conveyor::Purge(){
 	conv->Set(Relay::kReverse);
-	dumpsty->Set(1.0f);
+	dumpsty->Set(0.0f);
 }
 void Conveyor::UnPurge(){
-	dumpsty->Set(0.0f);
+	dumpsty->Set(1.0f);
 }
 
 

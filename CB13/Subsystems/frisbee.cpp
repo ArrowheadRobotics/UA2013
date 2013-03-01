@@ -31,31 +31,33 @@ void Frisbee::toggle() {
 }
 
 void Frisbee::AutoState() {
-//	printf("Timer: %f", t->Get());
-	if(!RobotMap::bottomLimit->Get()){
+	//	printf("Timer: %f", t->Get());
+	if (!RobotMap::bottomLimit->Get()) {
 		RobotMap::gatesol1->Set(false);
 		RobotMap::gatesol2->Set(true);
+		Robot::elevation->ShootLoop();
+	} else {
+		Robot::elevation->ShooterStop();		
 	}
 	if (!RobotMap::forkLiftSW->Get()) {
 		sol1->Set(true);
 		sol2->Set(false);
 
 		t->Start();
-		isNormal =false;
+		isNormal = false;
 	} else {
 
-		if(isNormal){
+		if (isNormal) {
 			sol1->Set(false);
 			sol2->Set(true);
-		}
-		else if (t->Get() < 1.0f)
+		} else if (t->Get() < 1.0f)
 			;
 		else {
 			sol1->Set(false);
 			sol2->Set(true);
 			t->Reset();
 			t->Stop();
-			isNormal=true;
+			isNormal = true;
 		}
 
 	}

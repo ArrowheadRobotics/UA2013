@@ -33,6 +33,7 @@ public:
 	void Up(float);
 	void Down(float);
 	void Stop();
+	void ShooterStop();
 	void FindBottom();
 	void ShootLoop();
 	void StopShootLoop();

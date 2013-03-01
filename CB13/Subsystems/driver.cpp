@@ -17,7 +17,7 @@ void driver::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void driver::M_drive(Joystick* stick1, Joystick* stick2){
-	driveTrain->TankDrive(stick1, stick2);
+	driveTrain->TankDrive(stick1, stick2,true);
 }
 void driver::drive2(Joystick* stick1, Joystick* stick2){
 	float s1, s2;
