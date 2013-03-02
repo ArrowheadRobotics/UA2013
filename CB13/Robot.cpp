@@ -51,7 +51,7 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	printf("Shoot %f\n", elevation->shooterSpd->Get());
+	//printf("Shoot %f\n", elevation->shooterSpd->Get());
 
 }
 void Robot::TestPeriodic() {

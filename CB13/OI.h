@@ -23,5 +23,6 @@ public:
 	NetworkTable* server2;
 	Joystick* getjoy1();
 	Joystick* getjoy2();
+	Joystick* getgamepad();
 };
 #endif

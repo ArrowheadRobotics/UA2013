@@ -12,6 +12,7 @@ Conveyor::Conveyor() :
 	Subsystem("Conveyor") {
 	conv = RobotMap::conveyorRelay;
 	dumpsty = RobotMap::frisbeeServo;
+	
 }
 
 void Conveyor::InitDefaultCommand() {
@@ -36,6 +37,8 @@ void Conveyor::Move(){
 }
 
 void Conveyor::Purge(){
+	RobotMap::gatesol1->Set(true);
+	RobotMap::gatesol2->Set(false);	
 	conv->Set(Relay::kReverse);
 	dumpsty->Set(0.0f);
 }

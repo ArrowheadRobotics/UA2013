@@ -19,6 +19,7 @@ public:
 	void Move();
 	Relay* conv;
 	Servo* dumpsty;
+	
 	void Purge();
 	void UnPurge();
 	bool cycled;

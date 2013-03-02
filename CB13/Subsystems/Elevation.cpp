@@ -6,7 +6,9 @@
 #include "../OI.h"
 #include "WPILib.h"
 #include "../Robot.h"
+#include "../Commands/move_up.h"
 #define CONTROL_LOOP_TIME 0.040 //40 Millisecond loop time
+
 /*#define KP 100
 #define KI 15
 #define KD 25*/
@@ -32,13 +34,13 @@ Elevation::Elevation() :
 
 void Elevation::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	//SetDefaultCommand(new move_up);
 
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Elevation::Up(float value) {
-	if (Robot::elevation->qenc->Get() < 4000) {
+	if (Robot::elevation->qenc->Get() < 4200) {
 		spd1->Set(value);
 	} else {
 		spd1->Set(0.0f);

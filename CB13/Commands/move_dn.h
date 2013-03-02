@@ -8,6 +8,7 @@
 
 class move_dn: public Command {
 public:
+	Timer* t;
 	move_dn();
 	virtual void Initialize();
 	virtual void Execute();

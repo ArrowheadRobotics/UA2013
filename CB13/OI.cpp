@@ -132,3 +132,6 @@ Joystick* OI::getjoy1() {
 Joystick* OI::getjoy2() {
 	return joy2;
 }
+Joystick* OI::getgamepad() {
+	return gamepad;
+}

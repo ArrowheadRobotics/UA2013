@@ -2,10 +2,13 @@
 move_dn::move_dn() {
 	Requires(Robot::elevation);
 	SetTimeout(.5);
+	t = new Timer();
 }
 // Called just before this Command runs the first time
 void move_dn::Initialize() {
 	printf("move_dn - int\n");
+	t->Reset();
+	t->Start();
 	/*
 	Robot::elevation->Stop();
 	try
@@ -24,7 +27,9 @@ void move_dn::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void move_dn::Execute() {
-	Robot::elevation->Down(.3f);
+
+			Robot::elevation->Down(0.5f);
+		
 }
 // Make this return true when this Command no longer needs to run execute()
 bool move_dn::IsFinished() {
