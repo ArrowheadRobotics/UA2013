@@ -1,16 +1,15 @@
 
 
-#ifndef DUMP_H
-#define DUMP_H
+#ifndef INCCHUTE_H
+#define INCHUTE_H
 
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class Dump: public Command {
+class IncChuteState: public Command {
 public:
-	Dump();
-	Timer* t;
+	IncChuteState();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

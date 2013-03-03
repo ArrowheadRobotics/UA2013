@@ -40,7 +40,7 @@ void Elevation::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Elevation::Up(float value) {
-	if (Robot::elevation->qenc->Get() < 4200) {
+	if (Robot::elevation->qenc->Get() < 5360) {
 		spd1->Set(value);
 	} else {
 		spd1->Set(0.0f);
@@ -54,7 +54,7 @@ void Elevation::Down(float value) {
 	 */
 	printf("Down %d", bottomLimit->Get());
 	float setval = 0.0f;
-	if (Robot::elevation->qenc->Get() > 100) {
+	if (Robot::elevation->qenc->Get() > 500) {
 		setval = value;
 	} else {
 		setval = 0.2f;

@@ -36,6 +36,8 @@
 #include "Commands/LoadFire.h"
 #include "Commands/Dump.h"
 #include "Commands/ClimberStop.h"
+#include "Commands/IncChuteState.h"
+#include "Commands/DecChuteState.h"
 
 
  
@@ -52,10 +54,10 @@ OI::OI() {
 	stButton->WhileHeld(new move_st());
 	trButton = new JoystickButton(gamepad, 4);
 	trButton->WhileHeld(new TrackTarget());
-	highExtendButton = new JoystickButton(gamepad, 5);
-	highExtendButton->WhileHeld(new highExtend);
-	highRetractButton = new JoystickButton(gamepad, 6);
-	highRetractButton->WhileHeld(new highRetract());
+	highExtendButton = new JoystickButton(gamepad, 5);//Todo Rename
+	highExtendButton->WhileHeld(new IncChuteState());
+	highRetractButton = new JoystickButton(gamepad, 6);//Todo Rename
+	highRetractButton->WhileHeld(new DecChuteState());
 	lowExtendButton= new JoystickButton(gamepad, 7);
 	lowExtendButton->WhileHeld(new lowExtend());
 	lowRetractButton = new JoystickButton(gamepad, 8);

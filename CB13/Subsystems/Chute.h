@@ -12,12 +12,14 @@ public:
 	Solenoid* chutelowretract;
 	Solenoid* chutehighextend;
 	Solenoid* chutehighretract;
+	int state;
 	Chute();
 	void lowExtend();
 	void lowRetract();
 	void highExtend();
 	void highRetract();
-	
+	void resetState();
+	void gotoState();
 	void InitDefaultCommand();
 	
 };

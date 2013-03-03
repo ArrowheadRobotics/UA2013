@@ -40,7 +40,7 @@ void Conveyor::Purge(){
 	RobotMap::gatesol1->Set(true);
 	RobotMap::gatesol2->Set(false);	
 	conv->Set(Relay::kReverse);
-	dumpsty->Set(0.0f);
+	
 }
 void Conveyor::UnPurge(){
 	dumpsty->Set(1.0f);

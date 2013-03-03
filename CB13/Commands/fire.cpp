@@ -5,7 +5,7 @@ Fire::Fire() {
 	// eg. requires(chassis);
 	t = new Timer();
 
-	SetTimeout(1.0f);
+	SetTimeout(.9f);
 }
 // Called just before this Command runs the first time
 void Fire::Initialize() {
@@ -18,7 +18,7 @@ void Fire::Initialize() {
 void Fire::Execute() {
 	printf("Exec\n");
 
-	if (t->Get() > .5 && RobotMap::bottomLimit->Get() != 1)
+	if (t->Get() > .5f && RobotMap::bottomLimit->Get() != 1)
 		Robot::elevation->recoil();
 }
 // Make this return true when this Command no longer needs to run execute()
