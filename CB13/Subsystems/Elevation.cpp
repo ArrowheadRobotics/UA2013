@@ -66,9 +66,9 @@ void Elevation::Down(float value) {
 	}
 	spd1->Set(setval);
 }
-void Elevation::Stop() {
+void Elevation::Stop() {//stops the elevation
 	spd1->Set(0.0);
-	//printf("%d\n", Robot::elevation->qenc->Get());
+	
 }
 void Elevation::ShooterStop() {
 	shooterSpd->Set(0.0);
@@ -118,4 +118,22 @@ void Elevation::fire(){
 void Elevation::recoil(){
 	RobotMap::firingpinIn->Set(false);
 	RobotMap::firingpinOut->Set(true);
+}
+void Elevation::gotoSetPoint(){
+	printf("Enq %d Setpoint %d\n Motor: %f",qenc->Get(),elevationSetPoint,-.7*(qenc->Get()-elevationSetPoint)/elevationSetPoint);
+	if((-100*(elevationSetPoint-qenc->Get())/elevationSetPoint)<.15&&(-100*(elevationSetPoint-qenc->Get())/elevationSetPoint)>-.15)Robot::elevation->Stop();
+	else if(qenc->Get()<elevationSetPoint-100) {
+		printf("Below\n");
+		Robot::elevation->Up(-100*(elevationSetPoint-qenc->Get())/elevationSetPoint);
+	}else if (qenc->Get()>elevationSetPoint+100){
+		Robot::elevation->Down(-100*(elevationSetPoint-qenc->Get())/elevationSetPoint);
+		printf("Above\n");
+	}
+	else{
+		printf("Else\n");
+		Robot::elevation->Stop();
+	}
+	
+}
+void Elevation::isAtSetPoint(){
 }

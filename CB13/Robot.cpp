@@ -49,7 +49,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	printf("SEnq: %d\n", elevation->qenc->Get());
+//	printf("SEnq: %d\n", elevation->qenc->Get());
+	printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
 
 }
 void Robot::TestPeriodic() {

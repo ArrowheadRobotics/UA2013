@@ -1,22 +1,20 @@
 
 
-#ifndef CONVEYORUP_H
-#define CONVEYORUP_H
+#ifndef ENQELEV_H
+#define ENQELEV_H
 
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class ConveyorUp: public Command {
+class EnqElev: public Command {
 public:
-	ConveyorUp();
+	EnqElev();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	Timer* t;
-	Timer* t2;
 };
 
 #endif

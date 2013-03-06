@@ -21,11 +21,14 @@ public:
 	Counter* OpticalShoot;
 	Solenoid* firingpinIn;
 	Solenoid* firingpinOut;
-	
+	int elevationSetPoint;
+	bool visionEnabled;
 	double error;             //Proportional (P)
 	double previousError;
 	double errorSum;          //Integral     (I)
 	double errorRateOfChange; //Derivative   (D)
+	void gotoSetPoint(void);
+	void isAtSetPoint(void);
 	void pidCalc(double desiredRPM);
 	void InitPID(double desiredRPM);
 	Elevation();
