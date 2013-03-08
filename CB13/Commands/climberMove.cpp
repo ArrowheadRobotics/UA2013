@@ -9,7 +9,7 @@ void ClimberMove::Initialize() {
 }
 
 void ClimberMove::Execute() {
-	Robot::climber->move(0.2f);
+	Robot::climber->move(1.0f);
 }
 
 bool ClimberMove::IsFinished() {
