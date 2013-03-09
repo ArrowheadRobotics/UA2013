@@ -43,6 +43,7 @@
 
  
 OI::OI() {
+	matchTimer = new Timer();
 	// Joysticks *****************************************************
 	gamepad = new Joystick(1);
 	joy1 = new Joystick(2);

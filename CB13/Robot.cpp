@@ -1,5 +1,6 @@
 #include "Robot.h"
-
+#include "OI.h"
+#include "String.h"
 Elevation* Robot::elevation = 0;
 gate* Robot::gate = 0;
 OI* Robot::oi = 0;
@@ -8,9 +9,11 @@ Climber* Robot::climber = 0;
 Chute* Robot::chute = 0;
 Conveyor* Robot::conveyor = 0;
 Frisbee* Robot::frisbee = 0;
+char buffer[128];
 void Robot::RobotInit() {
 	RobotMap::init();
 
+	matchTimerUpdateCounter = 0;
 	conveyor = new ::Conveyor();
 	driver = new ::driver();
 	elevation = new ::Elevation();
@@ -43,14 +46,25 @@ void Robot::TeleopInit() {
 	// continue until interrupted by another command, remove
 	// this line or comment it out.
 	autonomousCommand->Cancel();
-
+	Robot::oi->matchTimer->Reset();
+	Robot::oi->matchTimer->Start();
 }
 
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-//	printf("SEnq: %d\n", elevation->qenc->Get());
-	printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
+		printf("d1: %d\n", driver->en1->Get());
+		printf("d2: %d\n", driver->en2->Get());
+	//	printf("SEnq: %d\n", elevation->qenc->Get());
+	
+	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
+	//printf("m: %d",matchTimerUpdateCounter);
+	if (matchTimerUpdateCounter > 100) {
+		snprintf(buffer, 128, "%g", Robot::oi->matchTimer->Get() - 135 );
+		Robot::oi->server->PutString("timeremaining", buffer);
+		matchTimerUpdateCounter = 0;
+	}
+	matchTimerUpdateCounter++;
 
 }
 void Robot::TestPeriodic() {
