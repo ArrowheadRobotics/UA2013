@@ -87,7 +87,7 @@ void Elevation::FindBottom() {
 }
 
 void Elevation::ShootLoop(){
-	if(60.0f/OpticalShoot->GetPeriod()<5500)	shooterSpd->Set(1.0f);
+	if(60.0f/OpticalShoot->GetPeriod()<5000)	shooterSpd->Set(1.0f);
 	else{
 		shooterSpd->Set(0.0f);
 	}
@@ -100,6 +100,8 @@ void Elevation::StopShootLoop(){
 void Elevation::InitPID(double desiredRPM){
 	 previousError = desiredRPM - 60.0f/(OpticalShoot->GetPeriod());
 	 errorSum = 0;
+	 
+	 
 }
 
 void Elevation::pidCalc(double desiredRPM){
@@ -127,13 +129,16 @@ void Elevation::gotoSetPoint(){
 	if((-100*(elevationSetPoint-qenc->Get())/elevationSetPoint)<.15&&(-100*(elevationSetPoint-qenc->Get())/elevationSetPoint)>-.15)Robot::elevation->Stop();
 	else if(qenc->Get()<elevationSetPoint-100) {
 		printf("Below\n");
+		atSet = false;
 		Robot::elevation->Up(-100*(elevationSetPoint-qenc->Get())/elevationSetPoint);
 	}else if (qenc->Get()>elevationSetPoint+100){
 		Robot::elevation->Down(-100*(elevationSetPoint-qenc->Get())/elevationSetPoint);
 		printf("Above\n");
+		atSet = false;
 	}
 	else{
 		printf("Else\n");
+		atSet = true;
 		Robot::elevation->Stop();
 	}
 	

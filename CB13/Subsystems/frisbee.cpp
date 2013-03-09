@@ -32,14 +32,14 @@ void Frisbee::toggle() {
 
 void Frisbee::AutoState() {
 	//	printf("Timer: %f", t->Get());
-	if (!RobotMap::bottomLimit->Get()) {
+	if (!RobotMap::bottomLimit->Get()) {//the platform is in shooting position
 		RobotMap::gatesol1->Set(false);
 		RobotMap::gatesol2->Set(true);
 		Robot::elevation->ShootLoop();
-	} else {
-		Robot::elevation->ShooterStop();		
+	} else {//down
+		Robot::elevation->ShooterStop();//Conserve energy	
 	}
-	if (!RobotMap::forkLiftSW->Get()) {
+	if (!RobotMap::forkLiftSW->Get()&&RobotMap::bottomLimit->Get()) {//load hopper on switch, only if the thing is at home
 		sol1->Set(true);
 		sol2->Set(false);
 

@@ -6,9 +6,9 @@ Dump::Dump() {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(Robot::conveyor);
 	Requires(Robot::frisbee);
-	t= new Timer();
+	t = new Timer();
 	t->Reset();
-	
+
 }
 // Called just before this Command runs the first time
 void Dump::Initialize() {
@@ -17,20 +17,23 @@ void Dump::Initialize() {
 	RobotMap::frisbeesol1->Set(true);
 	RobotMap::frisbeesol2->Set(false);
 	SetTimeout(5.0f);
-	
+
 }
 // Called repeatedly when this Command is scheduled to run
 void Dump::Execute() {
-	printf("timer: %f\n",t->Get());
+	printf("timer: %f\n", t->Get());
 	RobotMap::frisbeeServo->Set(0.0f);
-	if(t->Get()>.5f	)Robot::conveyor->Purge();
-	RobotMap::frisbeesol1->Set(true);
-	RobotMap::frisbeesol2->Set(false);
+	if (t->Get() > .5f)
+		Robot::conveyor->Purge();
+	if (RobotMap::bottomLimit->Get()) {
+		RobotMap::frisbeesol1->Set(true);
+		RobotMap::frisbeesol2->Set(false);
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool Dump::IsFinished() {
 	return IsTimedOut();
-	
+
 }
 // Called once after isFinished returns true
 void Dump::End() {

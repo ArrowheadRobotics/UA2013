@@ -16,8 +16,9 @@ void driver::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void driver::M_drive(Joystick* stick1, Joystick* stick2){
+void driver::M_drive(Joystick* stick1, Joystick* stick2, Joystick* gamepad){
 	driveTrain->TankDrive(stick1, stick2,true);
+	RobotMap::climberspd1->Set(gamepad->GetRawAxis(1));
 }
 void driver::drive2(Joystick* stick1, Joystick* stick2){
 	float s1, s2;

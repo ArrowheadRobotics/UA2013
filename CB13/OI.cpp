@@ -61,9 +61,9 @@ OI::OI() {
 	highRetractButton = new JoystickButton(gamepad, 6);//Todo Rename
 	highRetractButton->WhileHeld(new DecChuteState());
 	lowExtendButton= new JoystickButton(gamepad, 7);//Todo Rename
-	lowExtendButton->WhenPressed(new Dump());
-	lowRetractButton = new JoystickButton(gamepad, 8);
-	lowRetractButton->WhileHeld(new lowRetract());
+	lowExtendButton->WhenReleased(new Dump());
+	lowRetractButton = new JoystickButton(gamepad,8);
+	lowRetractButton->WhileHeld(new ClimberToggle());
 	
 	gateButton = new JoystickButton(joy1, 1);
 	gateButton->WhenPressed(new gateToggle());

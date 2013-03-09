@@ -34,6 +34,11 @@ void Robot::RobotInit() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Start();
+	Robot::elevation->atSet =false;
+	Robot::driver->en1->Start();
+	Robot::driver->en2->Start();
+	Robot::driver->en1->Reset();
+	Robot::driver->en2->Reset();
 }
 
 void Robot::AutonomousPeriodic() {
@@ -61,7 +66,7 @@ void Robot::TeleopPeriodic() {
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
 	//printf("m: %d",matchTimerUpdateCounter);
 	if (matchTimerUpdateCounter > 100) {
-		snprintf(buffer, 128, "%g", Robot::oi->matchTimer->Get() - 135 );
+		snprintf(buffer, 128, "%g",120- Robot::oi->matchTimer->Get() );
 		Robot::oi->server->PutString("timeremaining", buffer);
 		matchTimerUpdateCounter = 0;
 	}

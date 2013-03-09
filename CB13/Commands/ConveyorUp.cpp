@@ -25,7 +25,7 @@ void ConveyorUp::Execute() {
 	if (RobotMap::gatesol1->Get()) {//Gate is open
 		t2->Stop();
 		t2->Reset();
-		if (t->Get() > 3.25f) {//timer has completed, run conveyor
+		if (t->Get() > 1.25f) {//timer has completed, run conveyor
 			if (!RobotMap::forkLiftSW->Get()) {//the switch was triggered, stop conveyor and reset timer 
 				Robot::conveyor->conv->Set(Relay::kOff);
 				t->Reset();
@@ -37,7 +37,7 @@ void ConveyorUp::Execute() {
 		}
 	} else {//Gate is closed, turn off the conveyor
 		t2->Start();
-		if(t2->Get()>1.0f)Robot::conveyor->conv->Set(Relay::kOff);
+		if(t2->Get()>3.0f)Robot::conveyor->conv->Set(Relay::kOff);//wait for the frisbee to reach the back
 	}
 }
 // Make this return true when this Command no longer needs to run execute()

@@ -1,24 +1,17 @@
 /* Holder for Eclipse's task system
 Priority
-Todo Determine subsystems
+todo finish and close all rename todos. 
 
 Need
-Todo verify Gate extend
-Todo verify Gate retract
-Todo add Fork up
-Todo add Fork down
-Todo add Firing pin in
-Todo add Firing pin out
-Todo add Chute low extend
-Todo add Chute low retract
-Todo add Chute high extend
-Todo add Chute high retract
-Todo add Arms up
-Todo add Arms down
+todo low voltage shooting
+todo io module
+todo leds, flashlight
+
 
 
 Want
-
+todo raise arms at specified time?
+todo hailmary climb
 
 
 Dream

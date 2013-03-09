@@ -22,6 +22,7 @@ public:
 	Solenoid* firingpinIn;
 	Solenoid* firingpinOut;
 	int elevationSetPoint;
+	bool atSet;
 	bool visionEnabled;
 	double error;             //Proportional (P)
 	double previousError;
