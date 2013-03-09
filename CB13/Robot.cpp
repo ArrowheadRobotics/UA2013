@@ -35,10 +35,13 @@ void Robot::AutonomousInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Start();
 	Robot::elevation->atSet =false;
-	Robot::driver->en1->Start();
-	Robot::driver->en2->Start();
-	Robot::driver->en1->Reset();
-	Robot::driver->en2->Reset();
+	RobotMap::driveren1->Start();
+	RobotMap::driveren2->Start();
+	RobotMap::driveren1->Reset();
+	RobotMap::driveren2->Reset();
+	
+
+	
 }
 
 void Robot::AutonomousPeriodic() {

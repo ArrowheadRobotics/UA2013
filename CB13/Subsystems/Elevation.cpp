@@ -87,7 +87,7 @@ void Elevation::FindBottom() {
 }
 
 void Elevation::ShootLoop(){
-	if(60.0f/OpticalShoot->GetPeriod()<5000)	shooterSpd->Set(1.0f);
+	if(60.0f/OpticalShoot->GetPeriod()<5000) shooterSpd->Set(1.0f);
 	else{
 		shooterSpd->Set(0.0f);
 	}

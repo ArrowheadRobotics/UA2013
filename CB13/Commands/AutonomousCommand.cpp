@@ -18,9 +18,10 @@ void AutonomousCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
 //	Robot::elevation->pidCalc(6000.0f);
-	if(t.Get()<2.0f){
+	if(t.Get()<2.0f){	
+	Robot::elevation->recoil();
 	Robot::elevation->ShootLoop();
-	Robot::elevation->elevationSetPoint = 3600;
+	Robot::elevation->elevationSetPoint = 3400;
 	if(!Robot::elevation->atSet)Robot::elevation->gotoSetPoint();
 	}
 	if(t.Get()>2.0f&&t.Get()<2.1f)Robot::elevation->firingpinIn->Set(true);
@@ -49,9 +50,10 @@ void AutonomousCommand::Execute() {
 	if(!Robot::elevation->atSet)Robot::elevation->gotoSetPoint();
 	}
 	if(t.Get()>6.6f&&t.Get()<10.0f){
+			printf("enq %d ",Robot::driver->en1->Get());
 		if(Robot::driver->en1->Get()>-520){
-			Robot::driver->spd1->Set(.7f);
-			Robot::driver->spd2->Set(.7f);
+//			Robot::driver->spd1->Set(.7f);
+//			Robot::driver->spd2->Set(.7f);
 		}
 		else{
 			
