@@ -31,3 +31,8 @@ Climber
 Chute
 -------
 -Both chute postions
+
+
+Auto 
+-------
+Forward encoder count from period is -520

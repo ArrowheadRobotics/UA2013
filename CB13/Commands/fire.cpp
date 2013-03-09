@@ -1,25 +1,36 @@
 #include "fire.h"
+	bool shot;
 
 Fire::Fire() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	t = new Timer();
-
 	SetTimeout(.9f);
 }
 // Called just before this Command runs the first time
 void Fire::Initialize() {
-	Robot::elevation->fire();
+	shot = false;
 	t->Reset();
 	t->Start();
-	printf("Init\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
+	if (RobotMap::bottomLimit->Get() != 1) {//limit not loading, shooting
+		if (60.0f / Robot::elevation->OpticalShoot->GetPeriod() > 5400) {
+			Robot::elevation->fire();
+			printf("Fire\n");
+		} else {
+			Robot::elevation->recoil();
+		}
+	} else {
+		Robot::elevation->fire();
+	}
 	printf("Exec\n");
 
-	if (t->Get() > .5f && RobotMap::bottomLimit->Get() != 1)
-		Robot::elevation->recoil();
+	//	//	if (t->Get() > .5f && RobotMap::bottomLimit->Get() != 1)
+	//	if (60.0f / Robot::elevation->OpticalShoot->GetPeriod() > 5400
+	//			&& RobotMap::bottomLimit->Get() != 1)
+	//		Robot::elevation->recoil();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool Fire::IsFinished() {

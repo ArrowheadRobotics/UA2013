@@ -30,6 +30,7 @@ local.properties
 CB13/PPC603gnu/**/* 
 /CB13/PPC603gnu/*
 Makefile.*
+Makefile
 
 #################
 ## Visual Studio

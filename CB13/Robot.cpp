@@ -53,8 +53,9 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-		printf("d1: %d\n", driver->en1->Get());
-		printf("d2: %d\n", driver->en2->Get());
+//		printf("d1: %d\n", driver->en1->Get());
+//		printf("d1: %d\n", driver->en1->Get());
+		printf("Shoot: %f\n", 60.0f/elevation->OpticalShoot->GetPeriod());
 	//	printf("SEnq: %d\n", elevation->qenc->Get());
 	
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
