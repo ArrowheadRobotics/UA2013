@@ -19,7 +19,6 @@ private:
 	JoystickButton* lowRetractButton;
 public:
 	OI();
-	Timer *matchTimer;
 	NetworkTable* server;
 	NetworkTable* server2;
 	Joystick* getjoy1();

@@ -15,7 +15,6 @@
 #include "OI.h"
 class Robot : public IterativeRobot {
 public:
-	int matchTimerUpdateCounter;
 	Command *autonomousCommand;
 	static ::gate* gate;
 	static OI *oi;
