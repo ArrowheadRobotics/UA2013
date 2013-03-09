@@ -1,32 +1,20 @@
 #include "drive2.h"
 drive2::drive2() {
+	Requires(Robot::driver);
 }
 // Called just before this Command runs the first time
 void drive2::Initialize() {
-	/*Robot::driver->en1->Reset();
-	Robot::driver->en2->Reset();
-	printf("driveInit  ");
-	drive2::accelerate(.2,-1);
-	while(Robot::driver->en1->GetDistance()>-1 || Robot::driver->en2->GetDistance()>-1){
-		if(Robot::driver->en1->GetDistance()>-1){
-			Robot::driver->spd1->Set(-.2);
-		}
-		else{
-			Robot::driver->spd1->Set(0);
-		}
-		if(Robot::driver->en2->GetDistance()>-1){
-			Robot::driver->spd2->Set(.2);
-		}
-		else{
-			Robot::driver->spd2->Set(0);
-		}
-		printf("%f  %f\n", Robot::driver->en1->GetDistance(), Robot::driver->en2->GetDistance());
-	}
+	Robot::driver->reset();
+	//while(Robot::driver->en1->GetDistance()<1)
+	//{
+
+		//Robot::driver->spd1->Set(.3);
+		//Robot::driver->spd2->Set(.3);
+		Wait(10);
+		printf("%f\n",Robot::driver->en1->GetDistance());
+	//}
 	Robot::driver->spd1->Set(0);
 	Robot::driver->spd2->Set(0);
-	printf("%f  %d  %f  %d\n", Robot::driver->en1->GetDistance(), Robot::driver->en1->Get(), Robot::driver->en2->GetDistance(), Robot::driver->en2->Get());
-	Robot::driver->en1->Reset();
-	Robot::driver->en2->Reset();*/
 }
 // Called repeatedly when this Command is scheduled to run
 void drive2::Execute() {
