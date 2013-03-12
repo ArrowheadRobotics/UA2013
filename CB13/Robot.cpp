@@ -56,14 +56,16 @@ void Robot::TeleopInit() {
 	autonomousCommand->Cancel();
 	Robot::oi->matchTimer->Reset();
 	Robot::oi->matchTimer->Start();
+	Robot::driver->en1->Reset();
+	Robot::driver->en2->Reset();
 }
 
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-//		printf("d1: %d\n", driver->en1->Get());
-//		printf("d1: %d\n", driver->en1->Get());
-		printf("Shoot: %f\n", 60.0f/elevation->OpticalShoot->GetPeriod());
+		printf("d1: %d", driver->en1->Get());
+		printf("    d2: %d\n", driver->en2->Get());
+	//	printf("Shoot: %f\n", 60.0f/elevation->OpticalShoot->GetPeriod());
 	//	printf("SEnq: %d\n", elevation->qenc->Get());
 	
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
