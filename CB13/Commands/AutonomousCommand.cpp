@@ -151,6 +151,41 @@ void AutonomousCommand::Execute() {
 		Robot::driver->spd2->Set(0);
 	}
 
+	//TURN
+	if (t.Get() > 17.6 && t.Get() < 20.0f) {
+		Robot::driver->en1->Reset();
+		Robot::driver->en2->Reset();
+		while (Robot::driver->en1->Get() > -156 || Robot::driver->en2->Get()
+				< 156) {
+			if (Robot::driver->en1->Get() > -156)
+				Robot::driver->spd1->Set(-.8f);
+			if (Robot::driver->en2->Get() < 156)
+				Robot::driver->spd2->Set(-.8f);
+			//Wait(10);
+			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+					Robot::driver->en2->Get());
+		}
+		Robot::driver->spd1->Set(0);
+		Robot::driver->spd2->Set(0);
+	}
+
+	//FORWARDS
+	if (t.Get() > 20.1f && t.Get() < 22.5f) {
+		Robot::driver->en1->Reset();
+		Robot::driver->en2->Reset();
+		while (Robot::driver->en1->Get() > -520 || Robot::driver->en2->Get()
+				> -520) {
+			if (Robot::driver->en1->Get() > -520)
+				Robot::driver->spd1->Set(-.8f);
+			if (Robot::driver->en2->Get() > -520)
+				Robot::driver->spd2->Set(.8f);
+			//Wait(10);
+			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+					Robot::driver->en2->Get());
+		}
+		Robot::driver->spd1->Set(0);
+		Robot::driver->spd2->Set(0);
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousCommand::IsFinished() {
