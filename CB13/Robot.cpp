@@ -76,6 +76,22 @@ void Robot::TeleopPeriodic() {
 		matchTimerUpdateCounter = 0;
 	}
 	matchTimerUpdateCounter++;
+	if(Robot::oi->getjoy1()->GetZ()<-.9){
+		printf("JOY1 TOP     ");
+	}else if(Robot::oi->getjoy1()->GetZ()>-.9 && Robot::oi->getjoy1()->GetZ() < .9){
+		printf("JOY1 MID     ");
+	}else{
+		printf("JOY1 DOWN    ");
+	}
+	if (Robot::oi->getjoy2()->GetZ() < -.9) {
+		printf("JOY2 TOP\n");
+	} else if (Robot::oi->getjoy2()->GetZ() > -.9
+			&& Robot::oi->getjoy2()->GetZ() < .9) {
+		printf("JOY2 MID\n");
+	} else {
+		printf("JOY2 DOWN\n");
+	}
+	//printf("JOY1  %f      JOY2  %f\n",Robot::oi->getjoy1()->GetZ(), Robot::oi->getjoy2()->GetZ());
 
 }
 void Robot::TestPeriodic() {
