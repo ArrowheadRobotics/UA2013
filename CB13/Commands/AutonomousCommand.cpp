@@ -17,7 +17,8 @@ void AutonomousCommand::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
-	printf("TIME: %f",t.Get());
+	printf("TIME: %f   ",t.Get());
+	printf("JOY1  %f      JOY2  %f\n",Robot::oi->getjoy1()->GetZ(), Robot::oi->getjoy2()->GetZ());
 	//	Robot::elevation->pidCalc(6000.0f);
 	if (t.Get() < 2.0f) {
 		Robot::elevation->recoil();
@@ -91,7 +92,7 @@ void AutonomousCommand::Execute() {
 			if (Robot::driver->en2->Get() > -520)
 				Robot::driver->spd2->Set(.8f);
 			//Wait(10);
-			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+			printf("d1  %d    d2  %d  Forwards\n", Robot::driver->en1->Get(),
 					Robot::driver->en2->Get());
 		}
 		Robot::driver->spd1->Set(0);
@@ -109,7 +110,7 @@ void AutonomousCommand::Execute() {
 			if (Robot::driver->en2->Get() < 520)
 				Robot::driver->spd2->Set(-.8f);
 			//Wait(10);
-			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+			printf("d1  %d    d2  %d  Backwards\n", Robot::driver->en1->Get(),
 					Robot::driver->en2->Get());
 		}
 		Robot::driver->spd1->Set(0);
@@ -126,7 +127,7 @@ void AutonomousCommand::Execute() {
 			if (Robot::driver->en2->Get() < 156)
 				Robot::driver->spd2->Set(-.8f);
 			//Wait(10);
-			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+			printf("d1  %d    d2  %d  Turn\n", Robot::driver->en1->Get(),
 					Robot::driver->en2->Get());
 		}
 		Robot::driver->spd1->Set(0);
@@ -144,7 +145,7 @@ void AutonomousCommand::Execute() {
 			if (Robot::driver->en2->Get() > -520)
 				Robot::driver->spd2->Set(.8f);
 			//Wait(10);
-			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+			printf("d1  %d    d2  %d  Forwards\n", Robot::driver->en1->Get(),
 					Robot::driver->en2->Get());
 		}
 		Robot::driver->spd1->Set(0);
@@ -162,7 +163,7 @@ void AutonomousCommand::Execute() {
 			if (Robot::driver->en2->Get() < 156)
 				Robot::driver->spd2->Set(-.8f);
 			//Wait(10);
-			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+			printf("d1  %d    d2  %d  Turn\n", Robot::driver->en1->Get(),
 					Robot::driver->en2->Get());
 		}
 		Robot::driver->spd1->Set(0);
@@ -180,9 +181,16 @@ void AutonomousCommand::Execute() {
 			if (Robot::driver->en2->Get() > -520)
 				Robot::driver->spd2->Set(.8f);
 			//Wait(10);
-			printf("d1  %d    d2  %d\n", Robot::driver->en1->Get(),
+			printf("d1  %d    d2  %d  Forwards\n", Robot::driver->en1->Get(),
 					Robot::driver->en2->Get());
 		}
+		Robot::driver->spd1->Set(0);
+		Robot::driver->spd2->Set(0);
+	}
+	
+	
+	if (t.Get() > 22.6f) {
+		printf(" Done\n");
 		Robot::driver->spd1->Set(0);
 		Robot::driver->spd2->Set(0);
 	}
@@ -193,9 +201,12 @@ bool AutonomousCommand::IsFinished() {
 }
 // Called once after isFinished returns true
 void AutonomousCommand::End() {
-
+	Robot::driver->spd1->Set(0);
+	Robot::driver->spd2->Set(0);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutonomousCommand::Interrupted() {
+	Robot::driver->spd1->Set(0);
+	Robot::driver->spd2->Set(0);
 }
