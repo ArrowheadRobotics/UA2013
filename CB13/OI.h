@@ -17,11 +17,15 @@ private:
 	JoystickButton* highRetractButton;
 	JoystickButton* lowExtendButton;
 	JoystickButton* lowRetractButton;
+	JoystickButton* climberups;
 public:
+	JoystickButton* climberdowns;//see driver.cpp
 	OI();
 	Timer *matchTimer;
+#ifdef USE_NETWORK
 	NetworkTable* server;
 	NetworkTable* server2;
+#endif
 	Joystick* getjoy1();
 	Joystick* getjoy2();
 	Joystick* getgamepad();

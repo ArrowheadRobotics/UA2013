@@ -6,8 +6,11 @@
  * DSeIO
  * Networktables
  */
+//#define USE_NETWORK
 #include "OI.h"
-#include "SmartDashboard/SmartDashboard.h"
+#ifdef USE_NETWORK
+	#include "SmartDashboard/SmartDashboard.h"
+#endif
 #include "Commands/AutonomousCommand.h"
 #include "Commands/TrackTarget.h"
 #include "Commands/move_dn.h" 
@@ -41,6 +44,7 @@
 #include "Commands/EnqElev.h"
 
 
+
  
 OI::OI() {
 	matchTimer = new Timer();
@@ -49,22 +53,24 @@ OI::OI() {
 	joy1 = new Joystick(2);
 	joy2 = new Joystick(3);
 	upButton = new JoystickButton(gamepad, 1);
-	upButton->WhileHeld(new move_up());
+	upButton->WhileHeld(new move_dn());
 	dnButton = new JoystickButton(gamepad, 2);
-	dnButton->WhileHeld(new move_dn());
+	dnButton->WhileHeld(new move_up());
 	stButton = new JoystickButton(gamepad, 3);
 	stButton->WhileHeld(new EnqElev());
 	trButton = new JoystickButton(gamepad, 4);//Rename
 	trButton->WhileHeld(new TrackTarget());
 	highExtendButton = new JoystickButton(gamepad, 5);//Todo Rename
-	highExtendButton->WhileHeld(new IncChuteState());
+	highExtendButton->WhileHeld(new DecChuteState());
 	highRetractButton = new JoystickButton(gamepad, 6);//Todo Rename
-	highRetractButton->WhileHeld(new DecChuteState());
+	highRetractButton->WhileHeld(new IncChuteState());
 	lowExtendButton= new JoystickButton(gamepad, 7);//Todo Rename
 	lowExtendButton->WhenReleased(new Dump());
 	lowRetractButton = new JoystickButton(gamepad,8);
 	lowRetractButton->WhileHeld(new ClimberToggle());
-	
+	climberups = new JoystickButton(gamepad, 9);
+	climberups->WhileHeld(new ClimberMove());
+	//look see the driver class for extra winch control
 	gateButton = new JoystickButton(joy1, 1);
 	gateButton->WhenPressed(new gateToggle());
 	
@@ -75,7 +81,7 @@ OI::OI() {
 	shootButton->WhileHeld(new Fire());
 
 	// SmartDashboard Buttons ***************************************
-	
+#ifdef USE_NETWORK
 	//Frisbee commands
 	SmartDashboard::PutData("frisbeeToggle", new FrisbeeToggle());
 	SmartDashboard::PutData("Dump", new Dump());
@@ -128,7 +134,7 @@ OI::OI() {
 	// Network Tables *************************************************
 	server = NetworkTable::GetTable("SmartDashboard");
 	server2 = NetworkTable::GetTable("");
-
+#endif
 }
 Joystick* OI::getjoy1() {
 	return joy1;

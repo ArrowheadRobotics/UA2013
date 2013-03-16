@@ -39,27 +39,37 @@ Gyro* RobotMap::drivergyro1 = NULL;
  
 Compressor* RobotMap::compressor = NULL;
 void RobotMap::init() {
-
+#ifdef USE_NETWORK
 	LiveWindow* lw = LiveWindow::GetInstance();
-	
+#endif
 
 	//Climber ***************************
 	climberspd1 = new Victor(moduleONE, portWINCH);//TODO Add Wiremap.h
+#ifdef USE_NETWORK
 	lw->AddActuator("climber", "spd1", (Victor*) climberspd1);
+#endif	
 	climbersol1 = new Solenoid(moduleTWO,portARMSUP);
 	climbersol2 = new Solenoid(moduleTWO,portARMSDOWN);
 
 	//Elevation *************************
 	elevationSpd1 = new Victor(moduleONE, portELEVATION);
+#ifdef USE_NETWORK
 	lw->AddActuator("Elevation", "Spd1", (Talon*) elevationSpd1);
+#endif	
 	elevationqenc = new Encoder(moduleONE, ioELEVATIONENCODERA, moduleONE, ioELEVATIONENCODERB, false, Encoder::k4X);
+#ifdef USE_NETWORK
 	lw->AddSensor("Elevation", "qenc", elevationqenc);
+#endif
 	bottomLimit = new DigitalInput(moduleONE, ioELEVATIONSWNC);
+#ifdef USE_NETWORK
 	lw->AddSensor("BottomLimit", "bottomLimit", bottomLimit);
+#endif
 	OpticalShoot = new Counter(moduleONE, ioOPTICALSPEEDSENSOR);
 	OpticalShoot->Start();
 	OpticalShoot->Reset();
+#ifdef USE_NETWORK
 	lw->AddSensor("OpticalShoot", "OpticalShoot", OpticalShoot);
+#endif
 	elevationqenc->SetDistancePerPulse(1.0);
 	elevationqenc->SetPIDSourceParameter(Encoder::kRate);
 	elevationqenc->Start();
@@ -99,22 +109,28 @@ void RobotMap::init() {
 	//Drive ****************************
 	driveren1 = new Encoder(moduleONE, ioDRIVEENCODERLEFTA, moduleONE,
 			ioDRIVEENCODERLEFTB, true, Encoder::k4X);
+#ifdef USE_NETWORK
 	lw->AddSensor("driver", "en1", driveren1);
+#endif
 	driveren1->SetDistancePerPulse(1.0);
 	driveren1->SetPIDSourceParameter(Encoder::kRate);
 	driveren1->Start();
 	driveren2 = new Encoder(moduleONE, ioDRIVEENCODERRIGHTA, moduleONE,
 			ioDRIVEENCODERRIGHTB, false, Encoder::k4X);
+#ifdef USE_NETWORK
 	lw->AddSensor("driver", "en2", driveren2);
+#endif
 	driveren2->SetDistancePerPulse(1.0);
 	driveren2->SetPIDSourceParameter(Encoder::kRate);
 	driveren2->Start();
 	driverspd2 = new Victor(moduleONE, portRIGHTDRIVE);
+#ifdef USE_NETWORK
 	lw->AddActuator("driver", "spd2", (Victor*) driverspd2);
-
+#endif
 	driverspd1 = new Victor(moduleONE, portLEFTDRIVE);
+#ifdef USE_NETWORK
 	lw->AddActuator("driver", "spd1", (Victor*) driverspd1);
-
+#endif
 	driverdriveTrain = new RobotDrive(driverspd1, driverspd2);
 
 	driverdriveTrain->SetSafetyEnabled(false);
@@ -124,8 +140,9 @@ void RobotMap::init() {
 
 	drivergyro1 = new Gyro(moduleONE, 1);//TODO create port for gyro
 	drivergyro1->SetSensitivity(.75);
+#ifdef USE_NETWORK
 	lw->AddSensor("driver", "gyro1", drivergyro1);
-
+#endif
 	driveren1->SetDistancePerPulse(
 			39 * 3.1415926535897932384626433832795028841971693993 / 14000);
 	driveren2->SetDistancePerPulse(

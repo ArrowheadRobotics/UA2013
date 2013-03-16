@@ -19,7 +19,9 @@ public:
 	Command *autonomousCommand;
 	static ::gate* gate;
 	static OI *oi;
+#ifdef USE_NETWORK
 	LiveWindow *lw;
+#endif
 	static ::Elevation* elevation;
 	static ::Conveyor* conveyor;
 	static ::driver* driver;

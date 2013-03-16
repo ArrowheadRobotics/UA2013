@@ -22,10 +22,11 @@ void Robot::RobotInit() {
 	gate = new ::gate();
 	frisbee = new ::Frisbee();
 	oi = new OI();
+#ifdef USE_NETWORK
 	lw = LiveWindow::GetInstance();
 	lw->AddSensor("Elevation", "OpticalShoot", Robot::elevation->OpticalShoot);
+#endif
 	autonomousCommand = new AutonomousCommand();
-
 	elevation->qenc->Reset();
 	elevation->qenc->Start();
 	RobotMap::compressor->Start();
@@ -63,39 +64,28 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-		printf("d1: %d", driver->en1->Get());
-		printf("    d2: %d\n", driver->en2->Get());
-	//	printf("Shoot: %f\n", 60.0f/elevation->OpticalShoot->GetPeriod());
-	//	printf("SEnq: %d\n", elevation->qenc->Get());
+//		printf("d1: %d", driver->en1->Get());
+//		printf("    d2: %d\n", driver->en2->Get());
+		printf("Shoot: %f\n", 60.0f/elevation->OpticalShoot->GetPeriod());
+		printf("SEnq: %d\n", elevation->qenc->Get());
 	
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
 	//printf("m: %d",matchTimerUpdateCounter);
+#ifdef USE_NETWORK
 	if (matchTimerUpdateCounter > 100) {
 		snprintf(buffer, 128, "%g",120- Robot::oi->matchTimer->Get() );
 		Robot::oi->server->PutString("timeremaining", buffer);
 		matchTimerUpdateCounter = 0;
 	}
 	matchTimerUpdateCounter++;
-	if(Robot::oi->getjoy1()->GetZ()<-.9){
-		printf("JOY1 TOP     ");
-	}else if(Robot::oi->getjoy1()->GetZ()>-.9 && Robot::oi->getjoy1()->GetZ() < .9){
-		printf("JOY1 MID     ");
-	}else{
-		printf("JOY1 DOWN    ");
-	}
-	if (Robot::oi->getjoy2()->GetZ() < -.9) {
-		printf("JOY2 TOP\n");
-	} else if (Robot::oi->getjoy2()->GetZ() > -.9
-			&& Robot::oi->getjoy2()->GetZ() < .9) {
-		printf("JOY2 MID\n");
-	} else {
-		printf("JOY2 DOWN\n");
-	}
+#endif	
 	//printf("JOY1  %f      JOY2  %f\n",Robot::oi->getjoy1()->GetZ(), Robot::oi->getjoy2()->GetZ());
 
 }
 void Robot::TestPeriodic() {
+#ifdef USE_NETWORK
 	lw->Run();
+#endif
 }
 START_ROBOT_CLASS(Robot)
 ;

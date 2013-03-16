@@ -40,6 +40,11 @@ void Elevation::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Elevation::Up(float value) {
+	RobotMap::chutehighextend->Set(false);
+	RobotMap::chutehighretract->Set(true);
+	RobotMap::chutelowextend->Set(false);
+	RobotMap::chutelowretract->Set(true);
+	
 	if (Robot::elevation->qenc->Get() < 5360) {
 		spd1->Set(value);
 	} else {

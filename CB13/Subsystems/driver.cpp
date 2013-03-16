@@ -2,6 +2,7 @@
 #include "../Robotmap.h"
 #include "../Robot.h"
 #include "../Commands/drive3.h"
+#include "../OI.h"
 driver::driver() : Subsystem("driver") {
 	en1 = RobotMap::driveren1;
 	en2 = RobotMap::driveren2;
@@ -18,7 +19,7 @@ void driver::InitDefaultCommand() {
 // here. Call these from Commands.
 void driver::M_drive(Joystick* stick1, Joystick* stick2, Joystick* gamepad){
 	driveTrain->TankDrive(stick1, stick2,true);
-	RobotMap::climberspd1->Set(gamepad->GetRawAxis(1));
+	if(gamepad->GetRawButton(10))	RobotMap::climberspd1->Set(gamepad->GetRawAxis(2));
 }
 void driver::drive2(Joystick* stick1, Joystick* stick2){
 	float s1, s2;

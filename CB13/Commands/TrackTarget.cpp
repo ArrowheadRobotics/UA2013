@@ -8,6 +8,7 @@ void TrackTarget::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void TrackTarget::Execute() {
+#ifdef USE_NETWORK
 	try
 		{
 			printf(" 123  =  %f\n",Robot::oi->server->GetNumber("targetPixelHeight"));
@@ -28,7 +29,10 @@ void TrackTarget::Execute() {
 		Robot::elevation->Stop();
 		printf("STOP %f\n",height);
 	}
-	
+#endif
+#ifndef USE_NETWORK
+
+#endif
 }
 // Make this return true when this Command no longer needs to run execute()
 bool TrackTarget::IsFinished() {
