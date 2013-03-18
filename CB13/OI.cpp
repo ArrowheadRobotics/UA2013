@@ -53,9 +53,9 @@ OI::OI() {
 	joy1 = new Joystick(2);
 	joy2 = new Joystick(3);
 	upButton = new JoystickButton(gamepad, 1);
-	upButton->WhileHeld(new move_dn());
+	upButton->WhileHeld(new move_up());
 	dnButton = new JoystickButton(gamepad, 2);
-	dnButton->WhileHeld(new move_up());
+	dnButton->WhileHeld(new move_dn());
 	stButton = new JoystickButton(gamepad, 3);
 	stButton->WhileHeld(new EnqElev());
 	trButton = new JoystickButton(gamepad, 4);//Rename

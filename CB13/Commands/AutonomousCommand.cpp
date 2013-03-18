@@ -85,144 +85,8 @@ void AutonomousCommand::Execute() {
 			printf("Sit and shoot auto\n");
 
 		} else if (Robot::oi->getjoy2()->GetZ() > -.9
-				&& Robot::oi->getjoy2()->GetZ() < .9) {//UP MID
-			//FORWARDS
-			if (t.Get() > 1.25f && t.Get() < 4.0f) {//drive forwards, open gates
-
-				RobotMap::gatesol1->Set(true);//gates
-				RobotMap::gatesol2->Set(false);
-				while (Robot::driver->en1->Get() > -520
-						|| Robot::driver->en2->Get() > -520) {
-					Robot::frisbee->AutoState();
-					/////////////////////////////
-
-
-					if (tConv.Get() > 1.25f || firstGate) {//timer has completed, run conveyor
-						if (!RobotMap::forkLiftSW->Get()) {//the switch was triggered, stop conveyor and reset timer
-							firstGate = false;
-							Robot::conveyor->conv->Set(Relay::kOff);
-							tConv.Reset();
-							if (Robot::driver->en1->Get() > -520)
-								Robot::driver->spd1->Set(-.0f);
-							if (Robot::driver->en2->Get() > -520)
-								Robot::driver->spd2->Set(.0f);
-						} else {//switch not triggered, timer completed, run conveyor
-							if (Robot::driver->en1->Get() > -520)
-								Robot::driver->spd1->Set(-.7f);
-							if (Robot::driver->en2->Get() > -520)
-								Robot::driver->spd2->Set(.7f);
-							Robot::conveyor->Move();
-						}
-					}
-
-					//////////////////////////////////
-					//Wait(10);
-					printf("d1  %d    d2  %d  Forwards\n",
-							Robot::driver->en1->Get(),
-							Robot::driver->en2->Get());
-				}
-				//backin it up
-			}
-			if (t.Get() > 4.1f && t.Get() < 7.0f) {//drive forwards, open gates
-
-				RobotMap::gatesol1->Set(true);//gates
-				RobotMap::gatesol2->Set(false);
-				printf("yerp %d %d %f %d\n",Robot::driver->en1->Get(),Robot::driver->en2->Get(),t.Get(),t.Get()<8.0f);
-				while ((Robot::driver->en1->Get() < -450
-						|| Robot::driver->en2->Get() < -450) && t.Get() < 8.0f) {
-					Robot::frisbee->AutoState();
-					/////////////////////////////
-				
-					printf("lolo %d %d %f %d\n",Robot::driver->en1->Get(),Robot::driver->en2->Get(),t.Get(),t.Get()<8.0f);
-
-					if (tConv.Get() > 1.25f || firstGate) {//timer has completed, run conveyor
-						if (!RobotMap::forkLiftSW->Get()) {//the switch was triggered, stop conveyor and reset timer
-							firstGate = false;
-							Robot::conveyor->conv->Set(Relay::kOff);
-							tConv.Reset();
-		
-								Robot::driver->spd1->Set(-.0f);
-	
-								Robot::driver->spd2->Set(.0f);
-						} else {//switch not triggered, timer completed, run conveyor
-							if (Robot::driver->en1->Get() < -450)
-								Robot::driver->spd1->Set(.7f);
-							if (Robot::driver->en2->Get() < -450)
-								Robot::driver->spd2->Set(-.7f);
-							Robot::conveyor->Move();
-						}
-					}
-
-					//////////////////////////////////
-					//Wait(10);
-					printf("d1  %d    d2  %d  backwards\n",
-							Robot::driver->en1->Get(),
-							Robot::driver->en2->Get());
-				}
-
-				RobotMap::gatesol1->Set(false);//gates
-				RobotMap::gatesol2->Set(true);
-
-				Robot::driver->spd1->Set(0);
-				Robot::driver->spd2->Set(0);
-
-				printf("JOY2 MID\n");
-				printf("Side of pyramid auto\n");
-			}
-			if (t.Get() > 8.0f) {
-				Robot::conveyor->conv->Set(Relay::kOff);
-				RobotMap::frisbeesol1->Set(false);
-				RobotMap::frisbeesol2->Set(true);
-				//UP UP
-				//* Sit here and shoot ***********************************
-				if (t.Get() < 10.0f) {
-					Robot::elevation->recoil();
-					Robot::elevation->ShootLoop();
-					Robot::elevation->elevationSetPoint = 3400;
-					if (!Robot::elevation->atSet)
-						Robot::elevation->gotoSetPoint();
-				}
-					if (!Robot::elevation->atSet)
-						Robot::elevation->gotoSetPoint();
-				if (t.Get() > 11.0f && t.Get() < 11.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 11.0f && t.Get() < 11.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 11.5f && t.Get() < 11.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 11.5f && t.Get() < 11.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-				if (t.Get() > 12.0f && t.Get() < 12.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 12.0f && t.Get() < 12.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 12.5f && t.Get() < 12.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 12.5f && t.Get() < 12.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-				if (t.Get() > 13.0f && t.Get() < 13.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 13.0f && t.Get() < 13.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 13.5f && t.Get() < 13.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 13.5f && t.Get() < 13.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-				if (t.Get() > 14.0f && t.Get() < 14.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 14.0f && t.Get() < 14.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 14.5f && t.Get() < 14.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 14.5f && t.Get() < 14.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-
-
-			}
+				&& Robot::oi->getjoy2()->GetZ() < .9) {
+			
 		} else {
 			printf("JOY2 DOWN\n");//UP DOWN
 		}
@@ -242,13 +106,151 @@ void AutonomousCommand::Execute() {
 		printf("JOY1 DOWN    ");
 		if (Robot::oi->getjoy2()->GetZ() < -.9) {//DOWN UP
 			printf("JOY2 TOP\n");
+			//UP MID
+						//FORWARDS
+						if (t.Get() > 1.25f && t.Get() < 4.0f) {//drive forwards, open gates
+
+							RobotMap::gatesol1->Set(true);//gates
+							RobotMap::gatesol2->Set(false);
+							while (Robot::driver->en1->Get() > -520
+									|| Robot::driver->en2->Get() > -520) {
+								Robot::frisbee->AutoState();
+								/////////////////////////////
+
+
+								if (tConv.Get() > 1.25f || firstGate) {//timer has completed, run conveyor
+									if (!RobotMap::forkLiftSW->Get()) {//the switch was triggered, stop conveyor and reset timer
+										firstGate = false;
+										Robot::conveyor->conv->Set(Relay::kOff);
+										tConv.Reset();
+										if (Robot::driver->en1->Get() > -520)
+											Robot::driver->spd1->Set(-.0f);
+										if (Robot::driver->en2->Get() > -520)
+											Robot::driver->spd2->Set(.0f);
+									} else {//switch not triggered, timer completed, run conveyor
+										if (Robot::driver->en1->Get() > -520)
+											Robot::driver->spd1->Set(-.7f);
+										if (Robot::driver->en2->Get() > -520)
+											Robot::driver->spd2->Set(.7f);
+										Robot::conveyor->Move();
+									}
+								}
+
+								//////////////////////////////////
+								//Wait(10);
+								printf("d1  %d    d2  %d  Forwards\n",
+										Robot::driver->en1->Get(),
+										Robot::driver->en2->Get());
+							}
+							//backin it up
+						}
+						if (t.Get() > 4.1f && t.Get() < 7.0f) {//drive forwards, open gates
+
+							RobotMap::gatesol1->Set(true);//gates
+							RobotMap::gatesol2->Set(false);
+							printf("yerp %d %d %f %d\n",Robot::driver->en1->Get(),Robot::driver->en2->Get(),t.Get(),t.Get()<8.0f);
+							while ((Robot::driver->en1->Get() < -450
+									|| Robot::driver->en2->Get() < -450) && t.Get() < 8.0f) {
+								Robot::frisbee->AutoState();
+								/////////////////////////////
+							
+								printf("lolo %d %d %f %d\n",Robot::driver->en1->Get(),Robot::driver->en2->Get(),t.Get(),t.Get()<8.0f);
+
+								if (tConv.Get() > 1.25f || firstGate) {//timer has completed, run conveyor
+									if (!RobotMap::forkLiftSW->Get()) {//the switch was triggered, stop conveyor and reset timer
+										firstGate = false;
+										Robot::conveyor->conv->Set(Relay::kOff);
+										tConv.Reset();
+					
+											Robot::driver->spd1->Set(-.0f);
+				
+											Robot::driver->spd2->Set(.0f);
+									} else {//switch not triggered, timer completed, run conveyor
+										if (Robot::driver->en1->Get() < -450)
+											Robot::driver->spd1->Set(.7f);
+										if (Robot::driver->en2->Get() < -450)
+											Robot::driver->spd2->Set(-.7f);
+										Robot::conveyor->Move();
+									}
+								}
+
+								//////////////////////////////////
+								//Wait(10);
+								printf("d1  %d    d2  %d  backwards\n",
+										Robot::driver->en1->Get(),
+										Robot::driver->en2->Get());
+							}
+
+							RobotMap::gatesol1->Set(false);//gates
+							RobotMap::gatesol2->Set(true);
+
+							Robot::driver->spd1->Set(0);
+							Robot::driver->spd2->Set(0);
+
+							printf("JOY2 MID\n");
+							printf("Side of pyramid auto\n");
+						}
+						if (t.Get() > 8.0f) {
+							Robot::conveyor->conv->Set(Relay::kOff);
+							RobotMap::frisbeesol1->Set(false);
+							RobotMap::frisbeesol2->Set(true);
+							//UP UP
+							//* Sit here and shoot ***********************************
+							if (t.Get() < 10.0f) {
+								Robot::elevation->recoil();
+								Robot::elevation->ShootLoop();
+								Robot::elevation->elevationSetPoint = 3400;
+								if (!Robot::elevation->atSet)
+									Robot::elevation->gotoSetPoint();
+							}
+								if (!Robot::elevation->atSet)
+									Robot::elevation->gotoSetPoint();
+							if (t.Get() > 11.0f && t.Get() < 11.1f)
+								Robot::elevation->firingpinIn->Set(true);
+							if (t.Get() > 11.0f && t.Get() < 11.1f)
+								Robot::elevation->firingpinOut->Set(false);
+							if (t.Get() > 11.5f && t.Get() < 11.6f)
+								Robot::elevation->firingpinIn->Set(false);
+							if (t.Get() > 11.5f && t.Get() < 11.6f)
+								Robot::elevation->firingpinOut->Set(true);
+
+							if (t.Get() > 12.0f && t.Get() < 12.1f)
+								Robot::elevation->firingpinIn->Set(true);
+							if (t.Get() > 12.0f && t.Get() < 12.1f)
+								Robot::elevation->firingpinOut->Set(false);
+							if (t.Get() > 12.5f && t.Get() < 12.6f)
+								Robot::elevation->firingpinIn->Set(false);
+							if (t.Get() > 12.5f && t.Get() < 12.6f)
+								Robot::elevation->firingpinOut->Set(true);
+
+							if (t.Get() > 13.0f && t.Get() < 13.1f)
+								Robot::elevation->firingpinIn->Set(true);
+							if (t.Get() > 13.0f && t.Get() < 13.1f)
+								Robot::elevation->firingpinOut->Set(false);
+							if (t.Get() > 13.5f && t.Get() < 13.6f)
+								Robot::elevation->firingpinIn->Set(false);
+							if (t.Get() > 13.5f && t.Get() < 13.6f)
+								Robot::elevation->firingpinOut->Set(true);
+
+							if (t.Get() > 14.0f && t.Get() < 14.1f)
+								Robot::elevation->firingpinIn->Set(true);
+							if (t.Get() > 14.0f && t.Get() < 14.1f)
+								Robot::elevation->firingpinOut->Set(false);
+							if (t.Get() > 14.5f && t.Get() < 14.6f)
+								Robot::elevation->firingpinIn->Set(false);
+							if (t.Get() > 14.5f && t.Get() < 14.6f)
+								Robot::elevation->firingpinOut->Set(true);
+
+
+
+						}
+					
 		} else if (Robot::oi->getjoy2()->GetZ() > -.9
 				&& Robot::oi->getjoy2()->GetZ() < .9) { //DOWN MID
 			printf("JOY2 MID\n");
 		} else {//DOWN DOWN
-			//* DO NOTHING! SAFETY AUTO ************************************
 			printf("JOY2 DOWN\n");
-			printf("SAFETY AUTO MODE\n");
+			
 		}
 	}
 
