@@ -150,4 +150,7 @@ void RobotMap::init() {
 	driveren1->Reset();
 	driveren2->Reset();
 
+	// LED **********************************************************
+	LED1 = new Relay (moduleONE, portLED1, Relay::kBothDirections);
+	LED2 = new Relay (moduleONE, portLED2, Relay::kForwardOnly);
 }

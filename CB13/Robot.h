@@ -12,7 +12,9 @@
 #include "Subsystems/Climber.h"
 #include "Subsystems/Chute.h"
 #include "Subsystems/Conveyor.h"
+#include "Subsystems/LED.h"
 #include "OI.h"
+
 class Robot : public IterativeRobot {
 public:
 	int matchTimerUpdateCounter;
@@ -28,6 +30,7 @@ public:
 	static ::Frisbee* frisbee;
 	static ::Climber* climber;
 	static ::Chute* chute;
+	static :: LED* led;
 	virtual void RobotInit();
 	virtual void AutonomousInit();
 	virtual void AutonomousPeriodic();

@@ -19,6 +19,8 @@
 //RELAY
 #define portCONVEYOR 1
 #define portCOMPRESSOR 2
+#define portLED1 3
+#define portLED2 4
 
 //MODULES
 #define moduleONE 1
