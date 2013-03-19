@@ -60,9 +60,5 @@ public:
 	// Robot *****************************************************
 	static Compressor* compressor;
 	static void init();
-	
-	// LED *********************************************
-	static Relay* LED1;
-	static Relay* LED2;
 };
 #endif

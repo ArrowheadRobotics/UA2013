@@ -9,7 +9,6 @@ Climber* Robot::climber = 0;
 Chute* Robot::chute = 0;
 Conveyor* Robot::conveyor = 0;
 Frisbee* Robot::frisbee = 0;
-LED* Robot::led = 0;
 char buffer[128];
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -22,7 +21,6 @@ void Robot::RobotInit() {
 	chute = new ::Chute();
 	gate = new ::gate();
 	frisbee = new ::Frisbee();
-	led = new ::LED();
 	oi = new OI();
 #ifdef USE_NETWORK
 	lw = LiveWindow::GetInstance();
