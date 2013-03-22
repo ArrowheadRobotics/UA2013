@@ -35,14 +35,12 @@ void Robot::RobotInit() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Start();
-	Robot::elevation->atSet =false;
+	Robot::elevation->atSet = false;
 	RobotMap::driveren1->Start();
 	RobotMap::driveren2->Start();
 	RobotMap::driveren1->Reset();
 	RobotMap::driveren2->Reset();
-	
 
-	
 }
 
 void Robot::AutonomousPeriodic() {
@@ -59,16 +57,19 @@ void Robot::TeleopInit() {
 	Robot::oi->matchTimer->Start();
 	Robot::driver->en1->Reset();
 	Robot::driver->en2->Reset();
+	Robot::driver->gyro1->Reset();
+
 }
 
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-//		printf("d1: %d", driver->en1->Get());
-//		printf("    d2: %d\n", driver->en2->Get());
-		printf("Shoot: %f\n", 60.0f/elevation->OpticalShoot->GetPeriod());
-		printf("SEnq: %d\n", elevation->qenc->Get());
-	
+	printf("en1: %d", driver->en1->Get());
+	//		printf("    d2: %d\n", driver->en2->Get());
+	printf("Shoot: %f\n", 60.0f / elevation->OpticalShoot->GetPeriod());
+	printf("SEnq: %d\n", elevation->qenc->Get());
+	printf("Gyro: %f\n", driver->gyro1->GetAngle());
+
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
 	//printf("m: %d",matchTimerUpdateCounter);
 #ifdef USE_NETWORK
