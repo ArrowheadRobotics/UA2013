@@ -250,104 +250,119 @@ void AutonomousCommand::Execute() {
 			printf("JOY2 MID\n");
 		} else {//DOWN DOWN
 			printf("JOY2 DOWN\n");
-			while (t.Get() < 5.6f) {
-				if (t.Get() < 2.0f) {
-					Robot::elevation->recoil();
-					Robot::elevation->ShootLoop();
-					Robot::elevation->elevationSetPoint = 3400;
-					if (!Robot::elevation->atSet)
-						Robot::elevation->gotoSetPoint();
-				}
-				if (t.Get() > 2.0f && t.Get() < 2.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 2.0f && t.Get() < 2.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 2.5f && t.Get() < 2.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 2.5f && t.Get() < 2.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-				if (t.Get() > 3.0f && t.Get() < 3.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 3.0f && t.Get() < 3.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 3.5f && t.Get() < 3.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 3.5f && t.Get() < 3.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-				if (t.Get() > 4.0f && t.Get() < 4.1f)
-					Robot::elevation->firingpinIn->Set(true);
-				if (t.Get() > 4.0f && t.Get() < 4.1f)
-					Robot::elevation->firingpinOut->Set(false);
-				if (t.Get() > 4.5f && t.Get() < 4.6f)
-					Robot::elevation->firingpinIn->Set(false);
-				if (t.Get() > 4.5f && t.Get() < 4.6f)
-					Robot::elevation->firingpinOut->Set(true);
-
-			}
-			Robot::driver->gyro1->Reset();//done shooting
-			while (Robot::driver->gyro1->GetAngle() < 20 && t.Get() < 14.9f) {
-				Robot::driver->spd1->Set(.8f);//spin
-				Robot::driver->spd2->Set(.8f);
-
-			}
-			while (Robot::driver->en1->Get() > -250 && t.Get() < 14.9f) {
-				Robot::driver->spd1->Set(-.8f);//move forwards
-				Robot::driver->spd2->Set(.8f);
-
-			}
-			Robot::driver->gyro1->Reset();
-			while (Robot::driver->gyro1->GetAngle() < 20 && t.Get() < 14.9f) {
-				Robot::driver->spd1->Set(.8f);//spin
-				Robot::driver->spd2->Set(.8f);
-
-			}
-			while (Robot::driver->en1->Get() > -250 && t.Get() < 14.9f) {
-				Robot::driver->spd1->Set(-.8f);//open gates, run conveyor, move forward
-				Robot::driver->spd2->Set(.8f);
-				RobotMap::gatesol1->Set(true);//gates
-				RobotMap::gatesol2->Set(false);
-				Robot::frisbee->AutoState();
-				Robot::conveyor->Move();
-			}
-			while (Robot::driver->en1->Get() < 0 && t.Get() < 14.9f) {
-				Robot::driver->spd1->Set(-.8f);//open gates, run conveyor, move backwards
-				Robot::driver->spd2->Set(.8f);
-				RobotMap::gatesol1->Set(true);//gates
-				RobotMap::gatesol2->Set(false);
-				Robot::frisbee->AutoState();
-				Robot::conveyor->Move();
-			}
-			Robot::conveyor->conv->Set(Relay::kOff);
-			while (t.Get() < 14.9f) {//shoot
-							if (t.Get() < 13.0f) {
-								Robot::elevation->recoil();
-								Robot::elevation->ShootLoop();
-								Robot::elevation->elevationSetPoint = 3400;
-								if (!Robot::elevation->atSet)
-									Robot::elevation->gotoSetPoint();
-							}
-							if (t.Get() > 13.0f && t.Get() < 13.1f && Robot::elevation->atSet)
-								Robot::elevation->firingpinIn->Set(true);
-							if (t.Get() > 13.0f && t.Get() < 13.1f && Robot::elevation->atSet)
-								Robot::elevation->firingpinOut->Set(false);
-							if (t.Get() > 13.5f && t.Get() < 13.6f && Robot::elevation->atSet)
-								Robot::elevation->firingpinIn->Set(false);
-							if (t.Get() > 13.5f && t.Get() < 13.6f && Robot::elevation->atSet)
-								Robot::elevation->firingpinOut->Set(true);
-
-							if (t.Get() > 14.0f && t.Get() < 14.1f && Robot::elevation->atSet)
-								Robot::elevation->firingpinIn->Set(true);
-							if (t.Get() > 14.0f && t.Get() < 14.1f && Robot::elevation->atSet)
-								Robot::elevation->firingpinOut->Set(false);
-							if (t.Get() > 14.5f && t.Get() < 14.6f && Robot::elevation->atSet)
-								Robot::elevation->firingpinIn->Set(false);
-							if (t.Get() > 14.5f && t.Get() < 14.9f && Robot::elevation->atSet)
-								Robot::elevation->firingpinOut->Set(true);
-
-
-						}
+//			while (t.Get() < 5.6f) {
+//				if (t.Get() < 2.0f) {
+//					Robot::elevation->recoil();
+//					Robot::elevation->ShootLoop();
+//					Robot::elevation->elevationSetPoint = 3400;
+//					if (!Robot::elevation->atSet)
+//						Robot::elevation->gotoSetPoint();
+//				}
+//				if (t.Get() > 2.0f && t.Get() < 2.1f)
+//					Robot::elevation->firingpinIn->Set(true);
+//				if (t.Get() > 2.0f && t.Get() < 2.1f)
+//					Robot::elevation->firingpinOut->Set(false);
+//				if (t.Get() > 2.5f && t.Get() < 2.6f)
+//					Robot::elevation->firingpinIn->Set(false);
+//				if (t.Get() > 2.5f && t.Get() < 2.6f)
+//					Robot::elevation->firingpinOut->Set(true);
+//
+//				if (t.Get() > 3.0f && t.Get() < 3.1f)
+//					Robot::elevation->firingpinIn->Set(true);
+//				if (t.Get() > 3.0f && t.Get() < 3.1f)
+//					Robot::elevation->firingpinOut->Set(false);
+//				if (t.Get() > 3.5f && t.Get() < 3.6f)
+//					Robot::elevation->firingpinIn->Set(false);
+//				if (t.Get() > 3.5f && t.Get() < 3.6f)
+//					Robot::elevation->firingpinOut->Set(true);
+//
+//				if (t.Get() > 4.0f && t.Get() < 4.1f)
+//					Robot::elevation->firingpinIn->Set(true);
+//				if (t.Get() > 4.0f && t.Get() < 4.1f)
+//					Robot::elevation->firingpinOut->Set(false);
+//				if (t.Get() > 4.5f && t.Get() < 4.6f)
+//					Robot::elevation->firingpinIn->Set(false);
+//				if (t.Get() > 4.5f && t.Get() < 4.6f)
+//					Robot::elevation->firingpinOut->Set(true);
+//
+//			}
+//			Robot::driver->gyro1->Reset();//done shooting
+//			while (Robot::elevation->qenc->Get() > 10 && t.Get() < 14.9f) {
+//				Robot::elevation->recoil();
+//				Robot::elevation->ShootLoop();
+//				Robot::elevation->elevationSetPoint = 0;
+//				if (!Robot::elevation->atSet)
+//					Robot::elevation->gotoSetPoint();
+//			}
+//
+//			while (Robot::driver->gyro1->GetAngle() > -45 && t.Get() < 14.9f) {
+//				Robot::driver->spd1->Set(.8f);//spin
+//				Robot::driver->spd2->Set(.8f);
+//
+//			}
+//			while (Robot::driver->en1->Get() > -250 && t.Get() < 14.9f) {
+//				Robot::driver->spd1->Set(-.8f);//move forwards
+//				Robot::driver->spd2->Set(.8f);
+//
+//			}
+//			Robot::driver->gyro1->Reset();
+//			while (Robot::driver->gyro1->GetAngle() < 45 && t.Get() < 14.9f) {
+//				Robot::driver->spd1->Set(-.8f);//spin
+//				Robot::driver->spd2->Set(-.8f);
+//
+//			}
+//			while (Robot::driver->en1->Get() > -250 && t.Get() < 14.9f) {
+//				Robot::driver->spd1->Set(-.8f);//open gates, run conveyor, move forward
+//				Robot::driver->spd2->Set(.8f);
+//				RobotMap::gatesol1->Set(true);//gates
+//				RobotMap::gatesol2->Set(false);
+//				Robot::frisbee->AutoState();
+//				Robot::conveyor->Move();
+//			}
+//			while (Robot::driver->en1->Get() < 0 && t.Get() < 14.9f) {
+//				Robot::driver->spd1->Set(.8f);//open gates, run conveyor, move backwards
+//				Robot::driver->spd2->Set(-.8f);
+//				RobotMap::gatesol1->Set(true);//gates
+//				RobotMap::gatesol2->Set(false);
+//				Robot::frisbee->AutoState();
+//				Robot::conveyor->Move();
+//			}
+//			Robot::conveyor->conv->Set(Relay::kOff);
+//			while (t.Get() < 14.9f) {//shoot
+//				if (t.Get() < 13.0f) {
+//					Robot::elevation->recoil();
+//					Robot::elevation->ShootLoop();
+//					Robot::elevation->elevationSetPoint = 3400;
+//					if (!Robot::elevation->atSet)
+//						Robot::elevation->gotoSetPoint();
+//				}
+//				if (t.Get() > 13.0f && t.Get() < 13.1f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinIn->Set(true);
+//				if (t.Get() > 13.0f && t.Get() < 13.1f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinOut->Set(false);
+//				if (t.Get() > 13.5f && t.Get() < 13.6f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinIn->Set(false);
+//				if (t.Get() > 13.5f && t.Get() < 13.6f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinOut->Set(true);
+//
+//				if (t.Get() > 14.0f && t.Get() < 14.1f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinIn->Set(true);
+//				if (t.Get() > 14.0f && t.Get() < 14.1f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinOut->Set(false);
+//				if (t.Get() > 14.5f && t.Get() < 14.6f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinIn->Set(false);
+//				if (t.Get() > 14.5f && t.Get() < 14.9f
+//						&& Robot::elevation->atSet)
+//					Robot::elevation->firingpinOut->Set(true);
+//
+//			}
 		}
 	}
 

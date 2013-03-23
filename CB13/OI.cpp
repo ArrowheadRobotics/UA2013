@@ -72,10 +72,8 @@ OI::OI() {
 	climberups->WhileHeld(new ClimberMove());
 	//look see the driver class for extra winch control
 	gateButton = new JoystickButton(joy1, 1);
-	gateButton->WhenPressed(new gateToggle());
-	
-	gateButton = new JoystickButton(joy1, 1);
-	gateButton->WhenPressed(new gateToggle());
+	gateButton->WhileHeld(new gateToggle());
+
 	
 	shootButton = new JoystickButton(joy2, 1);
 	shootButton->WhileHeld(new Fire());

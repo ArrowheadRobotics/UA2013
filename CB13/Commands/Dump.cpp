@@ -14,8 +14,10 @@ Dump::Dump() {
 void Dump::Initialize() {
 	t->Start();
 	t->Reset();
-	RobotMap::frisbeesol1->Set(true);
-	RobotMap::frisbeesol2->Set(false);
+	if (Robot::oi->getgamepad()->GetRawAxis(3) > .8f) {
+		RobotMap::frisbeesol1->Set(true);
+		RobotMap::frisbeesol2->Set(false);
+	}
 	SetTimeout(5.0f);
 
 }
@@ -25,7 +27,7 @@ void Dump::Execute() {
 	RobotMap::frisbeeServo->Set(0.0f);
 	if (t->Get() > .5f)
 		Robot::conveyor->Purge();
-	if (RobotMap::bottomLimit->Get()) {
+	if (RobotMap::bottomLimit->Get()&&Robot::oi->getgamepad()->GetRawAxis(3) > .8f) {
 		RobotMap::frisbeesol1->Set(true);
 		RobotMap::frisbeesol2->Set(false);
 	}
@@ -40,6 +42,8 @@ void Dump::End() {
 	Robot::conveyor->UnPurge();
 	RobotMap::frisbeesol1->Set(false);
 	RobotMap::frisbeesol2->Set(true);
+	RobotMap::gatesol1->Set(false);
+	RobotMap::gatesol2->Set(true);	
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
@@ -47,4 +51,6 @@ void Dump::Interrupted() {
 	Robot::conveyor->UnPurge();
 	RobotMap::frisbeesol1->Set(false);
 	RobotMap::frisbeesol2->Set(true);
+	RobotMap::gatesol1->Set(false);
+	RobotMap::gatesol2->Set(true);	
 }
