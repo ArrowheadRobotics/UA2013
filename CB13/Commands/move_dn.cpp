@@ -1,7 +1,7 @@
 #include "move_dn.h"
 move_dn::move_dn() {
 	Requires(Robot::elevation);
-	SetTimeout(.5);
+	//SetTimeout(.5);
 	t = new Timer();
 }
 // Called just before this Command runs the first time
@@ -28,12 +28,17 @@ void move_dn::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void move_dn::Execute() {
 
-			Robot::elevation->Down(0.5f);
+	if (t->Get() < .5) {
+			Robot::elevation->Down(.5f);
+		}
+		else{
+			Robot::elevation->Down(1.0f);
+		}
 		
 }
 // Make this return true when this Command no longer needs to run execute()
 bool move_dn::IsFinished() {
-	return IsTimedOut();
+	return false;
 }
 // Called once after isFinished returns true
 void move_dn::End() {
