@@ -39,7 +39,7 @@ void Frisbee::AutoState() {
 	} else {//down
 		Robot::elevation->ShooterStop();//Conserve energy	
 	}
-	if (!RobotMap::forkLiftSW->Get()&&RobotMap::bottomLimit->Get()) {//load hopper on switch, only if the thing is at home
+	if (!RobotMap::forkLiftSW->Get()&&RobotMap::bottomLimit->Get()) {//load hopper on switch, only if the limit is at home
 		sol1->Set(true);
 		sol2->Set(false);
 

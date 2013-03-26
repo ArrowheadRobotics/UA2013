@@ -64,12 +64,12 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-//	printf("en1: %d", driver->en1->Get());
-	printf("Yeah: %f", Robot::oi->getgamepad()->GetRawAxis(3));
+	printf("en1: %d", driver->en1->Get());
+	//printf("Yeah: %f", Robot::oi->getgamepad()->GetRawAxis(3));
 	//		printf("    d2: %d\n", driver->en2->Get());
 //	printf("Shoot: %f\n", 60.0f / elevation->OpticalShoot->GetPeriod());
-//	printf("SEnq: %d\n", elevation->qenc->Get());
-//	printf("Gyro: %f\n", driver->gyro1->GetAngle());
+	printf("SEnq: %d\n", elevation->qenc->Get());
+	printf("Gyro: %f\n", driver->gyro1->GetAngle());
 
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
 	//printf("m: %d",matchTimerUpdateCounter);
