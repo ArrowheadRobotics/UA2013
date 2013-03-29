@@ -139,7 +139,7 @@ void RobotMap::init() {
 	driverdriveTrain->SetMaxOutput(1.0);
 
 	drivergyro1 = new Gyro(moduleONE, 1);//TODO create port for gyro
-	drivergyro1->SetSensitivity(.75);
+	drivergyro1->SetSensitivity(.007);
 #ifdef USE_NETWORK
 	lw->AddSensor("driver", "gyro1", drivergyro1);
 #endif

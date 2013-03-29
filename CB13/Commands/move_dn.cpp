@@ -28,8 +28,8 @@ void move_dn::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void move_dn::Execute() {
 
-	if (t->Get() < .5) {
-			Robot::elevation->Down(.5f);
+	if (t->Get() < .3) {
+			Robot::elevation->Down(.3f);
 		}
 		else{
 			Robot::elevation->Down(1.0f);

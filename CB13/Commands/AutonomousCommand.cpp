@@ -249,6 +249,8 @@ void AutonomousCommand::Execute() {
 				&& Robot::oi->getjoy2()->GetZ() < .9) { //DOWN MID
 			printf("JOY2 MID\n");
 		} else {//DOWN DOWN
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
 			printf("JOY2 DOWN\n");
 			while (t.Get() < 5.6f) {
 				if (t.Get() < 2.0f) {//initial shoot
@@ -287,6 +289,8 @@ void AutonomousCommand::Execute() {
 
 			}
 			//done shooting		
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
 			Robot::elevation->recoil();
 			Robot::elevation->Down(0.7f);//tune
 			while (Robot::elevation->qenc->Get() > 100 && t.Get() < 14.9f
@@ -294,24 +298,51 @@ void AutonomousCommand::Execute() {
 				;//tune  //DONT TOUCH THE COLON
 
 			Robot::elevation->Stop();//stop elevation
-			while (Robot::driver->en1->Get() > -250 && t.Get() < 14.9f) {
-				Robot::driver->spd1->Set(-.8f);//move backwards
-				Robot::driver->spd2->Set(.8f);
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
+			//* Turning to to get to 45, 35
+			while (Robot::driver->gyro1->GetAngle() > -35 && t.Get() < 14.9f) {//tune
+				Robot::driver->spd1->Set(0.8f);//spin
+				Robot::driver->spd2->Set(0.0f);
+			}
+
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
+
+			//back 66 inchdes
+			while (Robot::driver->en1->GetDistance() < 66.0f && t.Get() < 14.9f) {
+				Robot::driver->spd1->Set(.8f);//move backwards
+				Robot::driver->spd2->Set(-.8f);
 
 			}
+
 			Robot::driver->spd1->Set(0.0f);//stop
 			Robot::driver->spd2->Set(0.0f);
 
 			Robot::driver->gyro1->Reset();
-			while (Robot::driver->gyro1->GetAngle() > -25 && t.Get() < 14.9f) {//tune
-				Robot::driver->spd1->Set(.8f);//spin
+			Robot::driver->en1->Reset();
+			//			
+			while (Robot::driver->gyro1->GetAngle() < 45.0f && t.Get() < 14.9f) {//tune
+				Robot::driver->spd1->Set(-.8f);//spin
+				Robot::driver->spd2->Set(-.8f);
+
+			}
+
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
+
+			while (Robot::driver->en1->GetDistance() > -46.0f && t.Get()
+					< 14.9f) {
+				Robot::driver->spd1->Set(-.8f);//move backwards
 				Robot::driver->spd2->Set(.8f);
 
 			}
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
 			Robot::driver->spd1->Set(0.0f);//stop
 			Robot::driver->spd2->Set(0.0f);
 
-			while (Robot::driver->en1->Get() > -750 && t.Get() < 14.9f) {
+			while (Robot::driver->en1->GetDistance() > -94 && t.Get() < 14.9f) {
 				Robot::driver->spd1->Set(-.8f);//open gates, run conveyor, move forward
 				Robot::driver->spd2->Set(.8f);
 				RobotMap::gatesol1->Set(true);//gates
@@ -319,14 +350,23 @@ void AutonomousCommand::Execute() {
 				Robot::frisbee->AutoState();
 				Robot::conveyor->Move();
 			}
+			Robot::driver->gyro1->Reset();
+			Robot::driver->en1->Reset();
 			RobotMap::gatesol1->Set(false);//gates
 			RobotMap::gatesol2->Set(true);
+			
 			Robot::driver->spd1->Set(.8f);//open gates, run conveyor, move backwards
 			Robot::driver->spd2->Set(-.8f);
-			while (Robot::driver->en1->Get() < -250 && t.Get() < 14.9f) {
+			
+			while (Robot::driver->en1->GetDistance() < 47.0  && t.Get() < 14.9f) {
 				Robot::frisbee->AutoState();
 				Robot::conveyor->Move();
 			}
+			
+			Robot::driver->spd1->Set(0.0f);//open gates, run conveyor, move backwards
+			Robot::driver->spd2->Set(0.0f);
+			
+			
 			Robot::conveyor->conv->Set(Relay::kOff);
 			Robot::elevation->atSet = false;
 			while (t.Get() < 14.9f) {//shoot
@@ -335,7 +375,7 @@ void AutonomousCommand::Execute() {
 					RobotMap::frisbeesol2->Set(true);//TEST THIS!
 					Robot::elevation->recoil();
 					Robot::elevation->ShootLoop();
-					Robot::elevation->elevationSetPoint = 3400;
+					Robot::elevation->elevationSetPoint = 3700;
 					if (!Robot::elevation->atSet)
 						Robot::elevation->gotoSetPoint();
 				}
@@ -360,7 +400,7 @@ void AutonomousCommand::Execute() {
 				while (Robot::elevation->qenc->Get() > 100 && t.Get() < 14.9f
 						&& RobotMap::bottomLimit->Get() == 0)
 					;
-				
+
 				Robot::elevation->Stop();//tune
 				//tune  //DONT TOUCH THE COLON
 

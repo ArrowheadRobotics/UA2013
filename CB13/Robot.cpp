@@ -40,11 +40,18 @@ void Robot::AutonomousInit() {
 	RobotMap::driveren2->Start();
 	RobotMap::driveren1->Reset();
 	RobotMap::driveren2->Reset();
+	Robot::driver->en1->SetDistancePerPulse((6*3.14)/250);
 
 }
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+//	printf("en1: %d\n", driver->en1->Get());
+//	//printf("Yeah: %f", Robot::oi->getgamepad()->GetRawAxis(3));
+//	//		printf("    d2: %d\n", driver->en2->Get());
+////	printf("Shoot: %f\n", 60.0f / elevation->OpticalShoot->GetPeriod());
+//	printf("SEnq: %d\n", elevation->qenc->Get());
+//	printf("Gyro: %f\n", driver->gyro1->GetAngle());
 }
 
 void Robot::TeleopInit() {
@@ -56,6 +63,7 @@ void Robot::TeleopInit() {
 	Robot::oi->matchTimer->Reset();
 	Robot::oi->matchTimer->Start();
 	Robot::driver->en1->Reset();
+	Robot::driver->en1->SetDistancePerPulse((6*3.14)/250);
 	Robot::driver->en2->Reset();
 	Robot::driver->gyro1->Reset();
 
@@ -64,11 +72,11 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	printf("en1: %d", driver->en1->Get());
+	printf("en1: %d\n", driver->en1->Get());
 	//printf("Yeah: %f", Robot::oi->getgamepad()->GetRawAxis(3));
 	//		printf("    d2: %d\n", driver->en2->Get());
 //	printf("Shoot: %f\n", 60.0f / elevation->OpticalShoot->GetPeriod());
-	printf("SEnq: %d\n", elevation->qenc->Get());
+	printf("SEnq: %d dist: %f\n", elevation->qenc->Get(),elevation->qenc->GetDistance());
 	printf("Gyro: %f\n", driver->gyro1->GetAngle());
 
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());

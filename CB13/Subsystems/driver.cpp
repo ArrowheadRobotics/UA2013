@@ -19,7 +19,7 @@ void driver::InitDefaultCommand() {
 // here. Call these from Commands.
 void driver::M_drive(Joystick* stick1, Joystick* stick2, Joystick* gamepad){
 	driveTrain->TankDrive(stick1, stick2,true);
-	if(gamepad->GetRawButton(10))	RobotMap::climberspd1->Set(gamepad->GetRawAxis(2));
+	if(gamepad->GetRawButton(10))	RobotMap::climberspd1->Set(gamepad->GetRawAxis(2));//3rd axis
 }
 void driver::drive2(Joystick* stick1, Joystick* stick2){
 	float s1, s2;
