@@ -76,7 +76,7 @@ void Robot::TeleopPeriodic() {
 	//printf("Yeah: %f", Robot::oi->getgamepad()->GetRawAxis(3));
 	//		printf("    d2: %d\n", driver->en2->Get());
 //	printf("Shoot: %f\n", 60.0f / elevation->OpticalShoot->GetPeriod());
-	printf("SEnq: %d dist: %f\n", elevation->qenc->Get(),elevation->qenc->GetDistance());
+	printf("SEnq: %d dist: %f\n", elevation->qenc->Get(),driver->en1->GetDistance());
 	printf("Gyro: %f\n", driver->gyro1->GetAngle());
 
 	//printf("Dump: %f\n", RobotMap::conveyorRelay->Get());
